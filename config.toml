@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Typical personal blog"
-baseurl = "https://benetis.me"
+baseurl = "http://benetis.github.com/benetis.me"
 paginate = 5
 Copyright = "All rights reserved - 2017"
 canonifyurls = true
