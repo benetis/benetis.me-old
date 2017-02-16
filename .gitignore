@@ -1,3 +1,6 @@
 /public
 
 .DS_Store
+/binaries/bin
+/binaries/pkg
+/binaries/src
