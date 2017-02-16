@@ -1,0 +1,26 @@
+languageCode = "en-us"
+title = "Typical personal blog"
+baseurl = "https://benetis.me"
+paginate = 5
+Copyright = "All rights reserved - 2017"
+canonifyurls = true
+
+[params]
+  description = "Thoughts on us, humans and software"
+  cover = "images/2017/02/z7jqddiz3_8-cam-adams.jpg"
+  author = "Žygimantas Benetis"
+  authorlocation = "Kaunas, Lithuania"
+  authorwebsite = "https://benetis.me"
+  # bio= "my bio"
+  # logo = "images/logo.png"
+  googleAnalyticsUserID = "UA-36419336-4"
+  # Optional RSS-Link, if not provided it defaults to the standard index.xml
+  # RSSLink = "http://feeds.feedburner.com/..."
+  githubName = "benetis"
+  twitterName = "benetisz"
+  # facebookName = ""
+  # linkedinName = ""
+  # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
+  hideHUGOSupport = true
+  [params.social]
+    twitter = "benetisz"
