@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learning on Typical personal blog</title>
+    <link>https://benetis.me/tags/learning/index.xml</link>
+    <description>Recent content in Learning on Typical personal blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="https://benetis.me/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HTML5 Canvas. Fundamentals</title>
+      <link>https://benetis.me/post/html5-canvas-fundamentals/</link>
+      <pubDate>Sun, 15 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://benetis.me/post/html5-canvas-fundamentals/</guid>
+      <description>
+
+&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;Today I met HTML5 Canvas. Not in real world - but during one the exercises from &lt;a href=&#34;https://benetis.me/vanilla-javascript-challenge/&#34;&gt;Javascript30&lt;/a&gt;. What are those &amp;ldquo;canvas&amp;rdquo;?&lt;/p&gt;
+
+&lt;h4 id=&#34;basics&#34;&gt;Basics&lt;/h4&gt;
+
+&lt;p&gt;Canvas is a HTML element used to draw graphics on fly via Javascript - [0].
+Main idea is that you have this rectangle box on the page without any content and you use javascript to draw stuff on it. You do drawing by interacting with context object not the actual canvas object. Example below:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const canvas = document.querySelector(&#39;#myCanvas&#39;);
+const ctx = canvas.getContext(&#39;2d&#39;);
+
+ctx.moveTo(50,50);
+ctx.lineTo(150,100);
+ctx.stroke();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Outputs a simple line. You can check and experiment &lt;a href=&#34;http://www.w3schools.com/html/tryit.asp?filename=tryhtml5_canvas_tut_path&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;our-task-from-javascript30&#34;&gt;Our task from Javascript30&lt;/h5&gt;
+
+&lt;p&gt;Create this simple drawing tool where you press mouse keys and it draws different color trail.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;First task - we want to take our canvas element and set its width and height to window size.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;canvas id=&amp;quot;draw&amp;quot; width=&amp;quot;800&amp;quot; height=&amp;quot;800&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;  const canvas = document.querySelector(&#39;#draw&#39;)
+  const ctx = canvas.getContext(&#39;2d&#39;)
+
+
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we want to catch mouse event needed to paint our beautiful rainbow. The thing is - we only want to paint when mouse is clicked.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;  let drawing = false;
+
+  function draw(e) {
+      if(drawing) {
+          console.log(e);
+      }
+  }
+
+  canvas.addEventListener(&#39;mousemove&#39;, draw);
+  canvas.addEventListener(&#39;mousedown&#39;, e =&amp;gt; drawing = true)
+  canvas.addEventListener(&#39;mouseout&#39;, e =&amp;gt; drawing = false)
+  canvas.addEventListener(&#39;mouseup&#39;, e =&amp;gt; drawing = false)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We add &lt;code&gt;mousemove&lt;/code&gt; listener to call draw function on each mouse movement, but we check if &lt;code&gt;drawing&lt;/code&gt; variables is true. Variable is to to true when &lt;code&gt;mousedown&lt;/code&gt; or &lt;code&gt;mouseout&lt;/code&gt; event happens. In draw function we &amp;lsquo;bounce&amp;rsquo; calls if &lt;code&gt;drawing&lt;/code&gt; is set to false&lt;/p&gt;
+
+&lt;p&gt;Moving on. Drawing the actual line. We need the point FROM and point TO for line to appear. Let&amp;rsquo;s add a new object &lt;code&gt;drawFrom&lt;/code&gt; which will hold our point with x and y coordinates where we want our line to being&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    let drawFrom = {x: 0, y: 0}
+    function draw(e) {
+        if (drawing) {
+            ctx.beginPath() 
+            ctx.moveTo(drawFrom.x, drawFrom.y)
+            ctx.lineTo(e.offsetX, e.offsetY)
+            ctx.stroke() //drawing wont happen until we call stroke
+            drawFrom.x = e.offsetX //we update our point
+            drawFrom.y = e.offsetY
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and of course when we click down we need to update our point as well&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    canvas.addEventListener(&#39;mousedown&#39;, e =&amp;gt; {
+        drawing = true
+        drawFrom.x = e.offsetX
+        drawFrom.y = e.offsetY
+    })
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--1-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next step - hue rainbows.&lt;/p&gt;
+
+&lt;p&gt;After setting canvas size let&amp;rsquo;s include basic styles for our stroke.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    ctx.lineWidth = 50
+    ctx.lineJoin = &#39;round&#39; //makes our point round
+    ctx.lineCap = &#39;round&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For hue rainbows - we can use and abuse HSL. More on HSL &lt;a href=&#34;https://css-tricks.com/yay-for-hsla/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Adding this line after &lt;code&gt;ctx.beginPath()&lt;/code&gt; will result in drawing gummy bear worms.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    ctx.strokeStyle = `hsl(${e.offsetX % 360}, 100%, 50%)`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--2-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want - you can adjust width and count hue differently like it is shown in challenge, but IMHO this is enough for understanding the very very basics of HTML5 canvas.&lt;/p&gt;
+
+&lt;p&gt;Code is in github - &lt;a href=&#34;https://github.com/benetis/JavaScript30/blob/608928a47a6b1c6f54a9fa99118f5a3f6f605bdf/08%20-%20Fun%20with%20HTML5%20Canvas/index-START.html&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[0] - &lt;a href=&#34;http://www.w3schools.com/html/html5_canvas.asp&#34;&gt;http://www.w3schools.com/html/html5_canvas.asp&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vanilla Javascript challenge</title>
+      <link>https://benetis.me/post/vanilla-javascript-challenge/</link>
+      <pubDate>Sat, 10 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://benetis.me/post/vanilla-javascript-challenge/</guid>
+      <description>
+
+&lt;h5 id=&#34;challenge&#34;&gt;Challenge&lt;/h5&gt;
+
+&lt;p&gt;Today while reading dev news I came across a 30 days Vanilla JS challenge. Idea is simple - there are 30 &amp;ldquo;tasks&amp;rdquo; you need to complete.  The catch? You cannot use any libraries, compilers (lodash, jquery, react, typescript, angular..). In other words - we can only use vanilla js.&lt;/p&gt;
+
+&lt;p&gt;In my humble opinion this a great way to practice javascript. We are using tons of libraries, precompilers, postcompilers . This brings us to distance with the language itself.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll pick up the glove and complete the challenge_&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://javascript30.com/&#34;&gt;Javascript30&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/wesbos/JavaScript30&#34;&gt;Javascript30 start files&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s code: Learning Haskell #1</title>
+      <link>https://benetis.me/post/lets-code-learning-haskell-1/</link>
+      <pubDate>Sun, 04 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://benetis.me/post/lets-code-learning-haskell-1/</guid>
+      <description>
+
+&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;Last week has been very immutable for me. I was looking into redux, Elm, React - just the ideas and trying to implement something similar for Angular.&lt;/p&gt;
+
+&lt;p&gt;For few years I have had a keen interest into functional programming and considered myself a good in the field. You know - using higher order functions, understand why &lt;code&gt;null&lt;/code&gt; is evil - so code produced by me was &amp;ldquo;fairly&amp;rdquo; functional. Avoiding state, writing functions as pure as possible. During the last year I upgraded my level to good novice by learning concepts of partials functions, functors. What is the next step? Tackle the real beast - learn the &lt;em&gt;haskell&lt;/em&gt;. Baby steps.&lt;/p&gt;
+
+&lt;h4 id=&#34;exercises&#34;&gt;Exercises&lt;/h4&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start with Project Euler and go problem by problem googling haskell syntax and semantics on our way.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Problem #1&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let&amp;rsquo;s go step by step.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;take first 1000 of natural numbers  &lt;code&gt;[1..999]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;filter the list to only have multiples of &lt;code&gt;3&lt;/code&gt; or &lt;code&gt;5&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;disibleByThreeOrFive n = 
+    if n `mod` 3 == 0 || n `mod` 5 == 0 then
+        True 
+    else 
+        False
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;filter disibleByThreeOrFive [1..999]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which returns a list of all numbers we need to sum&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;fold and sum them
+&lt;code&gt;haskell
+foldl (\res prev -&amp;gt; res + prev) 0 (filter disibleByThreeOrFive [1..999])
+&lt;/code&gt;
+which returns &lt;code&gt;233168&lt;/code&gt;. It is accepted by euler website - but the code we wrote could be improved.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;First let&amp;rsquo;s get replace &lt;code&gt;foldl&lt;/code&gt; with &lt;code&gt;sum&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;sum (filter disibleByThreeOrFive [1..999])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Okay - those brackets are still there - good for us there is &lt;code&gt;$&lt;/code&gt; operator which is exactly for that - getting rid of them. Anything that comes after dollar sign will take precedence.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;sum $ filter disibleByThreeOrFive [1..999]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Making it a one liner by extracting to lambda function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;sum $
+      filter
+       (\x -&amp;gt; x `mod` 3 == 0
+       || x `mod` 5 == 0)
+       [1..999]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;summary&#34;&gt;Summary&lt;/h4&gt;
+
+&lt;p&gt;Remembered a little bit of haskell syntax, tackled the new editor plugin change and looking forward to doing more exercises.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Quick glimpse at world of Elm</title>
+      <link>https://benetis.me/post/quick-glimpse-at-world-of-elm/</link>
+      <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://benetis.me/post/quick-glimpse-at-world-of-elm/</guid>
+      <description>
+
+&lt;h5 id=&#34;intro&#34;&gt;Intro&lt;/h5&gt;
+
+&lt;p&gt;Recently I have came across a thing called Elm. It is a functional programming language dedicated to frontend.&lt;/p&gt;
+
+&lt;h5 id=&#34;about-language-itself&#34;&gt;About language itself&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Functional language&lt;/li&gt;
+&lt;li&gt;You will not have to worry about state mutations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No runtime errors.&lt;/strong&gt; I&amp;rsquo;ll just leave that here&lt;/li&gt;
+&lt;li&gt;Friendly and helpful community. Go to slack, try talking - not only you will get your answers - but community will make you feel part of it&lt;/li&gt;
+&lt;li&gt;Simplicity. You have this simple architecture emerging from language itself. More about it here - &lt;a href=&#34;https://guide.elm-lang.org/architecture/&#34;&gt;The Elm Architecture&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;a-lot-to-gain-by-learning&#34;&gt;A lot to gain by learning&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;Instant new brain power to think in Types while coding&lt;/strong&gt; -
+&lt;em&gt;f(x) transforms my x to f(x)&lt;/em&gt; - while it sounds to simple - this new ability almost instantly made all code produced by me with less side&lt;/p&gt;
+
+&lt;h5 id=&#34;trying-with-simple-app&#34;&gt;Trying with simple app&lt;/h5&gt;
+
+&lt;p&gt;It has one purpose - show how old are you with millisecond accuracy. Imagine your age here - quite a kick to stop procrastinating.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--6-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;While coding - a part where I needed to get current time was more difficult since it involves something that cannot be gained in a pure way. Not enough documentation on this, however Slack community together with SO answers solved the issue.&lt;/p&gt;
+
+&lt;p&gt;You can observe how Elm&amp;rsquo;s code looks here - &lt;a href=&#34;https://github.com/benetis/elm-birthday/blob/master/Main.elm&#34;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;summary&#34;&gt;Summary&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Thinking in types makes development easier&lt;/li&gt;
+&lt;li&gt;Coding frontend without runtime errors is relaxing&lt;/li&gt;
+&lt;li&gt;Easy to understand architecture keeps things simple&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Elm is cool - try it!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

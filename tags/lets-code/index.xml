@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lets Code on Typical personal blog</title>
+    <link>https://benetis.me/tags/lets-code/index.xml</link>
+    <description>Recent content in Lets Code on Typical personal blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="https://benetis.me/tags/lets-code/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Let&#39;s code: Learning Haskell #1</title>
+      <link>https://benetis.me/post/lets-code-learning-haskell-1/</link>
+      <pubDate>Sun, 04 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://benetis.me/post/lets-code-learning-haskell-1/</guid>
+      <description>
+
+&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;Last week has been very immutable for me. I was looking into redux, Elm, React - just the ideas and trying to implement something similar for Angular.&lt;/p&gt;
+
+&lt;p&gt;For few years I have had a keen interest into functional programming and considered myself a good in the field. You know - using higher order functions, understand why &lt;code&gt;null&lt;/code&gt; is evil - so code produced by me was &amp;ldquo;fairly&amp;rdquo; functional. Avoiding state, writing functions as pure as possible. During the last year I upgraded my level to good novice by learning concepts of partials functions, functors. What is the next step? Tackle the real beast - learn the &lt;em&gt;haskell&lt;/em&gt;. Baby steps.&lt;/p&gt;
+
+&lt;h4 id=&#34;exercises&#34;&gt;Exercises&lt;/h4&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start with Project Euler and go problem by problem googling haskell syntax and semantics on our way.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Problem #1&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let&amp;rsquo;s go step by step.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;take first 1000 of natural numbers  &lt;code&gt;[1..999]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;filter the list to only have multiples of &lt;code&gt;3&lt;/code&gt; or &lt;code&gt;5&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;disibleByThreeOrFive n = 
+    if n `mod` 3 == 0 || n `mod` 5 == 0 then
+        True 
+    else 
+        False
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;filter disibleByThreeOrFive [1..999]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;which returns a list of all numbers we need to sum&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;fold and sum them
+&lt;code&gt;haskell
+foldl (\res prev -&amp;gt; res + prev) 0 (filter disibleByThreeOrFive [1..999])
+&lt;/code&gt;
+which returns &lt;code&gt;233168&lt;/code&gt;. It is accepted by euler website - but the code we wrote could be improved.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;First let&amp;rsquo;s get replace &lt;code&gt;foldl&lt;/code&gt; with &lt;code&gt;sum&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;sum (filter disibleByThreeOrFive [1..999])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Okay - those brackets are still there - good for us there is &lt;code&gt;$&lt;/code&gt; operator which is exactly for that - getting rid of them. Anything that comes after dollar sign will take precedence.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;sum $ filter disibleByThreeOrFive [1..999]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Making it a one liner by extracting to lambda function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;sum $
+      filter
+       (\x -&amp;gt; x `mod` 3 == 0
+       || x `mod` 5 == 0)
+       [1..999]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;summary&#34;&gt;Summary&lt;/h4&gt;
+
+&lt;p&gt;Remembered a little bit of haskell syntax, tackled the new editor plugin change and looking forward to doing more exercises.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s code: Creating functional table with Angular</title>
+      <link>https://benetis.me/post/angular-table/</link>
+      <pubDate>Sun, 06 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://benetis.me/post/angular-table/</guid>
+      <description>
+
+&lt;h5 id=&#34;offtopic&#34;&gt;Offtopic&lt;/h5&gt;
+
+&lt;p&gt;Currently volunteering in organisation called &amp;ldquo;Erasmus student Network Lithuania&amp;rdquo;. Working with a team to develop internal HR system.&lt;/p&gt;
+
+&lt;h5 id=&#34;intro&#34;&gt;Intro&lt;/h5&gt;
+
+&lt;p&gt;Looking at the requirement - there is a need to display data. A list of users. And some actions which can be done with each of the user. Table is a good way to make data look good.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s try to design how could this table look.&lt;/p&gt;
+
+&lt;h5 id=&#34;basic-requirements&#34;&gt;Basic requirements&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Table might need to display hundreds of records - pagination&lt;/li&gt;
+&lt;li&gt;No need for selecting rows&lt;/li&gt;
+&lt;li&gt;There will be action buttons in each row to interact with user&lt;/li&gt;
+&lt;li&gt;Inline editing&lt;/li&gt;
+&lt;li&gt;Should look nice (we don&amp;rsquo;t really care about design, just nice is enough)&lt;/li&gt;
+&lt;li&gt;Filtering&lt;/li&gt;
+&lt;li&gt;Sorting&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;attempt-1&#34;&gt;Attempt #1&lt;/h5&gt;
+
+&lt;p&gt;Using bootstrap - just the markup with some &lt;code&gt;*ngFor&lt;/code&gt; magic.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_17_06_50.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;table class=&amp;quot;table table-striped table-hover&amp;quot;&amp;gt;
+  &amp;lt;thead&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;th&amp;gt;First Name&amp;lt;/th&amp;gt;
+    &amp;lt;th&amp;gt;Surname&amp;lt;/th&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;/thead&amp;gt;
+  &amp;lt;tbody&amp;gt;
+  &amp;lt;tr *ngFor=&amp;quot;let user of users&amp;quot;
+  &amp;gt;
+    &amp;lt;td&amp;gt;{{user.name}}&amp;lt;/td&amp;gt;
+    &amp;lt;td&amp;gt;{{user.surname}}&amp;lt;/td&amp;gt;
+    &amp;lt;td&amp;gt;{{user.section}}&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What is cool about this - just because of &lt;code&gt;table-striped&lt;/code&gt; class we get odd/even rows and because of &lt;code&gt;table-hover&lt;/code&gt; class rows have hover effect. While this is simple enough - we don&amp;rsquo;t have pagination, filtering and sorting - and this would require us put some real angular code. While using helpers from &lt;code&gt;ng-bootstrap&lt;/code&gt; like pagination could speed us up - but there should be a more complete solution just for the table.&lt;/p&gt;
+
+&lt;h5 id=&#34;attempt-2&#34;&gt;Attempt #2&lt;/h5&gt;
+
+&lt;p&gt;There are other more complete solutions to the table like: &lt;code&gt;angular2-data-table&lt;/code&gt; or &lt;code&gt;ng2-table&lt;/code&gt; - which has all the features we discussed earlier.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;angular2-data-table&lt;/code&gt; looks like more successful project (and has more features), but I have already tried it out - so let&amp;rsquo;s go with &lt;code&gt;ng2-table&lt;/code&gt;.
+&lt;em&gt;If you are choosing between those two - go with &lt;code&gt;angular2-data-table&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;There is enough documentation of table to just copy and adjust the code to have a working example. It is just that in example it uses pagination of &lt;code&gt;ng2-bootstrap&lt;/code&gt;, while I am using &lt;code&gt;ng-bootstrap&lt;/code&gt;. For consistency sake I changed few lines and it works like a charm. Although the table itself could be transformed to component - we can skip this until we need another table.
+You can check code:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ESNLithuania/boarded/blob/401cd4ca9595417ea0eea58279476a370d7cb7ba/src/app/modules/dashboard/manage-users.component.html&#34;&gt;manage-users.component.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ESNLithuania/boarded/blob/401cd4ca9595417ea0eea58279476a370d7cb7ba/src/app/modules/dashboard/manage-users.component.ts&#34;&gt;manage-users.component.ts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Table currently looks like this -&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_20_16_20.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s check what requirements we fulfilled -&lt;/p&gt;
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Table might need to display hundreds of records - pagination&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; No need for selecting rows&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; There will be action buttons in each row to interact with user&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; Each row will have inline editing&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Should look nice (we don&amp;rsquo;t really care about design, just nice is enough)&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Filtering&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Sorting&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And there seems to be no good way to have inline-editing or buttons. After checking project code - it seems to be really old (using &lt;code&gt;[innerHtml]&lt;/code&gt;), without tests - probably abandoned.&lt;/p&gt;
+
+&lt;h5 id=&#34;attempt-3&#34;&gt;Attempt #3&lt;/h5&gt;
+
+&lt;p&gt;Let&amp;rsquo;s get rid of ng2-table. Use it&amp;rsquo;s API ideas and just implement simple functionality we need. No need to make it reusable.&lt;/p&gt;
+
+&lt;h6 id=&#34;table-template&#34;&gt;Table template&lt;/h6&gt;
+
+&lt;p&gt;Let&amp;rsquo;s bring back the good ol&amp;rsquo; bootstrap in attempt #1 one and few enhancements.&lt;/p&gt;
+
+&lt;p&gt;First we want to have columns as an for easier sorting and etc. While we are at it - we can introduce interface Column just for better types.
+Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;table class=&amp;quot;table table-striped table-hover&amp;quot;&amp;gt;
+  &amp;lt;thead&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;th *ngFor=&amp;quot;let column of columns&amp;quot;&amp;gt;{{column.title}}&amp;lt;/th&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;/thead&amp;gt;
+  &amp;lt;tbody&amp;gt;
+  &amp;lt;tr *ngFor=&amp;quot;let row of rows&amp;quot;
+  &amp;gt;
+    &amp;lt;td *ngFor=&amp;quot;let column of columns&amp;quot;&amp;gt;
+      {{getData(row, column)}}
+    &amp;lt;/td&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pagination works, table loads.&lt;/p&gt;
+
+&lt;h6 id=&#34;filtering&#34;&gt;Filtering&lt;/h6&gt;
+
+&lt;p&gt;We are now not depending on ng2-table anyyway, except its&amp;rsquo; API and documentation.&lt;/p&gt;
+
+&lt;p&gt;We want our all fields filter to work to filter our rows.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;input *ngIf=&amp;quot;config.filtering&amp;quot;
+           placeholder=&amp;quot;Filter all columns&amp;quot;
+           [(ngModel)]=&amp;quot;config.filtering.filterString&amp;quot;
+           class=&amp;quot;form-control&amp;quot;
+           (keydown)=&amp;quot;onChangeTable(config)&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Changed the directive of ng2 table to &lt;code&gt;ngModel&lt;/code&gt; - to bind it to filtering string + custom change event - changed it to keypress and we have desired functionality. So far so good.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--3-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;sorting&#34;&gt;Sorting&lt;/h5&gt;
+
+&lt;p&gt;From the api it seems that columns need to have &lt;code&gt;sort&lt;/code&gt; property which is either &lt;code&gt;&#39;desc&#39;, &#39;asc&#39;, &#39;&#39;(unsorted)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s make it a little more cleaner by limiting string in our interface:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;interface Column {
+  title: string,
+  name: string,
+  sort? : &#39;desc&#39; | &#39;asc&#39; | &#39;&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sorting function seems complicated -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;  public changeSort(data: any, config: any): any {
+    if (!config.sorting) {
+      return data;
+    }
+    let columns = this.config.sorting.columns || [];
+
+    let columnName: string = void 0;
+    let sort: string = void 0;
+
+    for (let i = 0; i &amp;lt; columns.length; i++) {
+      if (columns[i].sort !== &#39;&#39; &amp;amp;&amp;amp; columns[i].sort !== false) {
+        columnName = columns[i].name;
+        sort = columns[i].sort;
+      }
+    }
+
+    if (!columnName) {
+      return data;
+    }
+
+    // simple sorting
+    return data.sort((previous: any, current: any) =&amp;gt; {
+      if (previous[columnName] &amp;gt; current[columnName]) {
+        return sort === &#39;desc&#39;
+          ? -1
+          : 1;
+      } else if (previous[columnName] &amp;lt; current[columnName]) {
+        return sort === &#39;asc&#39;
+          ? -1
+          : 1;
+      }
+      return 0;
+    });
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s see how can we make this more simple by keeping the functionality&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt; public changeSort(data: any, config: any): any {
+    if (!config.sorting) {
+      return data;
+    }
+    const columns = this.config.sorting.columns || [];
+
+    const columnWithSort: Column = columns.find((column: Column) =&amp;gt; {
+      /* Checking if sort prop exists and column needs to be sorted */
+      if(column.hasOwnProperty(&#39;sort&#39;) &amp;amp;&amp;amp; column.sort !== &#39;&#39;) {
+        return true;
+      }
+    });
+
+    return data.sort((previous: any, current: any) =&amp;gt; {
+      if (previous[columnWithSort.name] &amp;gt; current[columnWithSort.name]) {
+        return columnWithSort.sort === &#39;desc&#39;
+          ? -1
+          : 1;
+      } else if (previous[columnWithSort.name] &amp;lt; current[columnWithSort.name]) {
+        return columnWithSort.sort === &#39;asc&#39;
+          ? -1
+          : 1;
+      }
+      return 0;
+    });
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sorting seems to be working - just that there are no events which trigger sorting. Now only works from initial config.&lt;/p&gt;
+
+&lt;p&gt;What is needed - upon clicking on &lt;th&gt; it should sort that column showing icons needed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;    &amp;lt;th *ngFor=&amp;quot;let column of columns&amp;quot; (click)=&amp;quot;sortByColumn(column)&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Triggers the function the new function I just wrote - which updated the columns sorting&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;  public sortByColumn(columnToSort: Column) {
+    const sorting: Array&amp;lt;Column&amp;gt; = Object.assign({}, this.config.sorting).columns;
+
+    const sorted = sorting.map((column: Column) =&amp;gt; {
+      if (columnToSort.name === column.name) {
+        const newSort = column.sort === &#39;asc&#39;
+          ? &#39;desc&#39;
+          : &#39;asc&#39;;
+        return Object.assign(column, {sort: newSort});
+      } else {
+        return Object.assign(column, {sort: &#39;&#39;});
+      }
+    });
+
+    const config = Object.assign({}, this.config, {
+      sorting: {columns: sorted}
+    });
+    this.onChangeTable(config);
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All is left to add some icons to indicate currently sorted columns. Bootstrap 4 currently has this nice &amp;ldquo;TODO&amp;rdquo; in Icon fonts. Let&amp;rsquo;s go with font-awesome.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;
+      &amp;lt;i *ngIf=&amp;quot;columnSortWay(column) !== &#39;&#39;&amp;quot; class=&amp;quot;fa fa-sort-alpha-{{columnSortWay(column)}}&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;
+      &amp;lt;/i&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Looks good! And changes on click.
+&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_23_07_51.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;continuing&#34;&gt;Continuing&lt;/h5&gt;
+
+&lt;p&gt;Let&amp;rsquo;s look at our requirements list.&lt;/p&gt;
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Table might need to display hundreds of records - pagination&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; No need for selecting rows&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; There will be action buttons in each row to interact with user&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled class=&#34;task-list-item&#34;&gt; Inline editing&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Should look nice (we don&amp;rsquo;t really care about design, just nice is enough)&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Filtering&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Sorting&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We are at same position as before - its just that we have as much freedom as we want to upgrade our table!&lt;/p&gt;
+
+&lt;h5 id=&#34;inline-editing&#34;&gt;Inline editing&lt;/h5&gt;
+
+&lt;p&gt;Next we want inline editing. Users clicks edit icon - all fields become editable. Once user click out - they become static again and field is saved.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s do it the simple way.&lt;/p&gt;
+
+&lt;p&gt;Icon itself&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;      &amp;lt;i class=&amp;quot;fa fa-pencil-square row-icon&amp;quot;
+         (click)=&amp;quot;editRow(i)&amp;quot;
+      &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If to display input for editable row. For now let&amp;rsquo;s go with simple variable - we just need to keep number of row we are editing.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div *ngIf=&amp;quot;editableRowNumber === i&amp;quot;&amp;gt;
+        &amp;lt;input [ngModel]=&amp;quot;getData(row, column)&amp;quot;&amp;gt;
+      &amp;lt;/div&amp;gt;
+      &amp;lt;div *ngIf=&amp;quot;editableRow !== i&amp;quot;&amp;gt;
+        {{getData(row, column)}}
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And for this I am going to hell. Simple solution for editing cancellation?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;  @HostListener(&#39;document:click&#39;, [&#39;$event.target&#39;])
+  public onClick(targetElement: HTMLElement) {
+    const tagsNotToInteractWith = [&#39;INPUT&#39;, &#39;I&#39;, &#39;TH&#39;];
+    const interact = tagsNotToInteractWith.reduce((result, item) =&amp;gt; {
+      return result &amp;amp;&amp;amp; targetElement.tagName != item;
+    }, true);
+
+    if(interact) {
+      this.updateUser();
+      this.editableRowNumber = -1;
+    }
+
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yep. Catching all clicks and checking if they are not th (sorting), input (all inputs we want to ignore) or i (icons, edit-icon). Basic version should work for now. &lt;em&gt;NOTE&lt;/em&gt; - we probably can do something smarter with ViewChild checking if it inside/outside of component, but we want to cancel in component also.&lt;/p&gt;
+
+&lt;p&gt;Will make a good post in the future to refactor!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--4-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We have the UI working for inline editing - what is left is saving the data.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s do it a fast way (will definitely need refactor - but that is what love) -&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;  private editableRow: Array&amp;lt;any&amp;gt; = [];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;  public updateEditableRowData(data: any, column: Column) {
+    this.editableRow[column.name] = data;
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;        &amp;lt;input #input [value]=&amp;quot;getData(row, column)&amp;quot; (blur)=&amp;quot;updateEditableRowData(input.value, column)&amp;quot;&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now UI is outputting the values we need and we have row number in component state.&lt;/p&gt;
+
+&lt;p&gt;Lastly, let&amp;rsquo;s just merge old and new user data:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;  private updateUser() {
+    if(this.editableRowNumber !== -1) {
+      const originalUser = this.rows[this.editableRowNumber];
+      const updatedUser = &amp;lt;User&amp;gt;Object.assign(originalUser, this.editableRow);
+       this.userService
+        .updateUser(updatedUser)
+    }
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--5-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The way service is implemented I&amp;rsquo;ll leave for another post. However if you are interested you can check code here -
+&lt;a href=&#34;https://github.com/ESNLithuania/boarded/blob/3f33924df738580cece1c32f9c4e13e50c732ec3/src/app/services/request.service.ts&#34;&gt;request.service.ts&lt;/a&gt;
+&lt;a href=&#34;https://github.com/ESNLithuania/boarded/blob/3f33924df738580cece1c32f9c4e13e50c732ec3/src/app/services/user.service.ts&#34;&gt;user.service.ts&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If we check our requirements list&lt;/p&gt;
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Table might need to display hundreds of records - pagination&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; No need for selecting rows&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; There will be action buttons in each row to interact with user&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Inline editing&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Should look nice (we don&amp;rsquo;t really care about design, just nice is enough)&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Filtering&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; Sorting&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It seems we have filled all of them. All is left are some small tweaks.&lt;/p&gt;
+
+&lt;p&gt;Until next time!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
