@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Learning on Typical personal blog</title>
-    <link>https://benetis.me/tags/learning/index.xml</link>
+    <link>http://benetis.github.com/benetis.me/tags/learning/index.xml</link>
     <description>Recent content in Learning on Typical personal blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2017</copyright>
-    <atom:link href="https://benetis.me/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://benetis.github.com/benetis.me/tags/learning/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>HTML5 Canvas. Fundamentals</title>
-      <link>https://benetis.me/post/html5-canvas-fundamentals/</link>
+      <link>http://benetis.github.com/benetis.me/post/html5-canvas-fundamentals/</link>
       <pubDate>Sun, 15 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://benetis.me/post/html5-canvas-fundamentals/</guid>
+      <guid>http://benetis.github.com/benetis.me/post/html5-canvas-fundamentals/</guid>
       <description>
 
 &lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
@@ -40,7 +40,7 @@ ctx.stroke();
 
 &lt;p&gt;Create this simple drawing tool where you press mouse keys and it draws different color trail.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;First task - we want to take our canvas element and set its width and height to window size.&lt;/p&gt;
 
@@ -100,7 +100,7 @@ ctx.stroke();
 
 &lt;p&gt;Result:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--1-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/giphy--1-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Next step - hue rainbows.&lt;/p&gt;
 
@@ -118,7 +118,7 @@ ctx.stroke();
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    ctx.strokeStyle = `hsl(${e.offsetX % 360}, 100%, 50%)`
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--2-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/giphy--2-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;If you want - you can adjust width and count hue differently like it is shown in challenge, but IMHO this is enough for understanding the very very basics of HTML5 canvas.&lt;/p&gt;
 
@@ -130,10 +130,10 @@ ctx.stroke();
     
     <item>
       <title>Vanilla Javascript challenge</title>
-      <link>https://benetis.me/post/vanilla-javascript-challenge/</link>
+      <link>http://benetis.github.com/benetis.me/post/vanilla-javascript-challenge/</link>
       <pubDate>Sat, 10 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://benetis.me/post/vanilla-javascript-challenge/</guid>
+      <guid>http://benetis.github.com/benetis.me/post/vanilla-javascript-challenge/</guid>
       <description>
 
 &lt;h5 id=&#34;challenge&#34;&gt;Challenge&lt;/h5&gt;
@@ -152,10 +152,10 @@ ctx.stroke();
     
     <item>
       <title>Let&#39;s code: Learning Haskell #1</title>
-      <link>https://benetis.me/post/lets-code-learning-haskell-1/</link>
+      <link>http://benetis.github.com/benetis.me/post/lets-code-learning-haskell-1/</link>
       <pubDate>Sun, 04 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://benetis.me/post/lets-code-learning-haskell-1/</guid>
+      <guid>http://benetis.github.com/benetis.me/post/lets-code-learning-haskell-1/</guid>
       <description>
 
 &lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
@@ -229,10 +229,10 @@ which returns &lt;code&gt;233168&lt;/code&gt;. It is accepted by euler website -
     
     <item>
       <title>Quick glimpse at world of Elm</title>
-      <link>https://benetis.me/post/quick-glimpse-at-world-of-elm/</link>
+      <link>http://benetis.github.com/benetis.me/post/quick-glimpse-at-world-of-elm/</link>
       <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://benetis.me/post/quick-glimpse-at-world-of-elm/</guid>
+      <guid>http://benetis.github.com/benetis.me/post/quick-glimpse-at-world-of-elm/</guid>
       <description>
 
 &lt;h5 id=&#34;intro&#34;&gt;Intro&lt;/h5&gt;
@@ -258,7 +258,7 @@ which returns &lt;code&gt;233168&lt;/code&gt;. It is accepted by euler website -
 
 &lt;p&gt;It has one purpose - show how old are you with millisecond accuracy. Imagine your age here - quite a kick to stop procrastinating.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--6-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/giphy--6-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;While coding - a part where I needed to get current time was more difficult since it involves something that cannot be gained in a pure way. Not enough documentation on this, however Slack community together with SO answers solved the issue.&lt;/p&gt;
 

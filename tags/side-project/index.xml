@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Side Project on Typical personal blog</title>
-    <link>https://benetis.me/tags/side-project/index.xml</link>
+    <link>http://benetis.github.com/benetis.me/tags/side-project/index.xml</link>
     <description>Recent content in Side Project on Typical personal blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2017</copyright>
-    <atom:link href="https://benetis.me/tags/side-project/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://benetis.github.com/benetis.me/tags/side-project/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Let&#39;s code: Creating functional table with Angular</title>
-      <link>https://benetis.me/post/angular-table/</link>
+      <link>http://benetis.github.com/benetis.me/post/angular-table/</link>
       <pubDate>Sun, 06 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://benetis.me/post/angular-table/</guid>
+      <guid>http://benetis.github.com/benetis.me/post/angular-table/</guid>
       <description>
 
 &lt;h5 id=&#34;offtopic&#34;&gt;Offtopic&lt;/h5&gt;
@@ -43,7 +43,7 @@
 
 &lt;p&gt;Using bootstrap - just the markup with some &lt;code&gt;*ngFor&lt;/code&gt; magic.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_17_06_50.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_17_06_50.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;table class=&amp;quot;table table-striped table-hover&amp;quot;&amp;gt;
   &amp;lt;thead&amp;gt;
@@ -82,7 +82,7 @@ You can check code:&lt;/p&gt;
 
 &lt;p&gt;Table currently looks like this -&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_20_16_20.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_20_16_20.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s check what requirements we fulfilled -&lt;/p&gt;
 
@@ -142,7 +142,7 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 
 &lt;p&gt;Changed the directive of ng2 table to &lt;code&gt;ngModel&lt;/code&gt; - to bind it to filtering string + custom change event - changed it to keypress and we have desired functionality. So far so good.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--3-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/giphy--3-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;sorting&#34;&gt;Sorting&lt;/h5&gt;
 
@@ -263,7 +263,7 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Looks good! And changes on click.
-&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_23_07_51.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_23_07_51.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;continuing&#34;&gt;Continuing&lt;/h5&gt;
 
@@ -325,7 +325,7 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 
 &lt;p&gt;Will make a good post in the future to refactor!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--4-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/giphy--4-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We have the UI working for inline editing - what is left is saving the data.&lt;/p&gt;
 
@@ -359,7 +359,7 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
   }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--5-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://benetis.github.com/benetis.me/images/2017/02/giphy--5-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The way service is implemented I&amp;rsquo;ll leave for another post. However if you are interested you can check code here -
 &lt;a href=&#34;https://github.com/ESNLithuania/boarded/blob/3f33924df738580cece1c32f9c4e13e50c732ec3/src/app/services/request.service.ts&#34;&gt;request.service.ts&lt;/a&gt;
