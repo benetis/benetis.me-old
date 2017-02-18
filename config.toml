@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Typical personal blog"
-baseurl = "http://benetis.me/"
+baseurl = "https://benetis.me/"
 paginate = 5
 Copyright = "All rights reserved - 2017"
 canonifyurls = true
@@ -10,7 +10,7 @@ theme = "ghost-casper"
   cover = "images/2017/02/z7jqddiz3_8-cam-adams.jpg"
   author = "Žygimantas Benetis"
   authorlocation = "Kaunas, Lithuania"
-  authorwebsite = "http://benetis.me"
+  authorwebsite = "https://benetis.me"
   # bio= "my bio"
   # logo = "images/logo.png"
   googleAnalyticsUserID = "UA-36419336-4"
