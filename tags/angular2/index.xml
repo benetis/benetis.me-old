@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Angular2 on Typical personal blog</title>
-    <link>http://benetis.me/tags/angular2/index.xml</link>
+    <link>https://benetis.me/tags/angular2/index.xml</link>
     <description>Recent content in Angular2 on Typical personal blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2017</copyright>
-    <atom:link href="http://benetis.me/tags/angular2/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://benetis.me/tags/angular2/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Creating shopping cart with product list in Angular2</title>
-      <link>http://benetis.me/post/creating-shopping-cart-with-product-list-in-angular2/</link>
+      <link>https://benetis.me/post/creating-shopping-cart-with-product-list-in-angular2/</link>
       <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://benetis.me/post/creating-shopping-cart-with-product-list-in-angular2/</guid>
+      <guid>https://benetis.me/post/creating-shopping-cart-with-product-list-in-angular2/</guid>
       <description>
 
 &lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
@@ -33,9 +33,9 @@
 
 &lt;p&gt;To view the details and remove items from it. You can see an image below.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-11.16.27.png&#34; alt=&#34;http://i64.tinypic.com/v48aya.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-11.16.27.png&#34; alt=&#34;http://i64.tinypic.com/v48aya.png&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-11.22.09.png&#34; alt=&#34;Shopping cart&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-11.22.09.png&#34; alt=&#34;Shopping cart&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Of course we want everything to be responsive and made with Angular. We will skip unit tests.&lt;/p&gt;
 
@@ -55,7 +55,7 @@
 
 &lt;p&gt;We can say that we will need two folders - for landing page and for cart page.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-14.38.58.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-14.38.58.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Also while we are at it - let&amp;rsquo;s create our routes file &lt;code&gt;app.routes.ts&lt;/code&gt; where we will define root module routes. We will make these routes &lt;em&gt;lazy&lt;/em&gt; a little bit later&lt;/p&gt;
 
@@ -133,7 +133,7 @@ export interface Item {
 
 &lt;p&gt;Our &lt;code&gt;Item&lt;/code&gt; component will need to display an image. Instead of getting images from some json file (encoded) we will do it lazy way - just use icon of image.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-15.02.26.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-15.02.26.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Just a dumb component where all info is passed to it. Because of this we can utilise &lt;code&gt;ChangeDetection.OnPush&lt;/code&gt; which will increase our performance due to fact that it only needs to do changes when input data is changed&lt;/p&gt;
 
@@ -194,7 +194,7 @@ export class ItemComponent {
 
 &lt;p&gt;At this moment this is how our application looks (with some mock data passed down from &lt;code&gt;Landing&lt;/code&gt; component)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-15.15.34.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen-Shot-2017-02-11-at-15.15.34.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Continuing - we want a grid view of our items. This is where &lt;code&gt;flexbox&lt;/code&gt; can help us.&lt;/p&gt;
 
@@ -230,7 +230,7 @@ export class ItemComponent {
 
 &lt;p&gt;This is the result:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Feb-11-2017-15-25-06.gif&#34; alt=&#34;resizing_browser_columns_wrap&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Feb-11-2017-15-25-06.gif&#34; alt=&#34;resizing_browser_columns_wrap&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Aesthetically not the most pleasing look - but wrapping works as we expected. We can add more padding later.&lt;/p&gt;
 
@@ -401,7 +401,7 @@ export class ItemListComponent implements OnInit {
 
 &lt;p&gt;Let&amp;rsquo;s see how our application looks.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Feb-11-2017-19-50-15.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Feb-11-2017-19-50-15.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;item-details&#34;&gt;Item details&lt;/h4&gt;
 
@@ -640,7 +640,7 @@ export class ShoppingCartComponent implements OnInit {
 
 &lt;p&gt;Let&amp;rsquo;s see how it looks:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Feb-12-2017-15-06-46.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Feb-12-2017-15-06-46.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Okay 3 major things are left:&lt;/p&gt;
 
@@ -704,7 +704,7 @@ export class ShoppingCartComponent implements OnInit {
 
 &lt;p&gt;Ok let&amp;rsquo;s see how it works.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Feb-12-2017-19-04-41.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Feb-12-2017-19-04-41.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;At this moment we have few problems left:&lt;/p&gt;
 
@@ -723,10 +723,10 @@ export class ShoppingCartComponent implements OnInit {
     
     <item>
       <title>Angular 2 is cool. So is Typescript</title>
-      <link>http://benetis.me/post/angular2-is-cool-so-is-typescript/</link>
+      <link>https://benetis.me/post/angular2-is-cool-so-is-typescript/</link>
       <pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://benetis.me/post/angular2-is-cool-so-is-typescript/</guid>
+      <guid>https://benetis.me/post/angular2-is-cool-so-is-typescript/</guid>
       <description>
 
 &lt;h5 id=&#34;introduction&#34;&gt;Introduction&lt;/h5&gt;
@@ -777,7 +777,7 @@ export class ShoppingCartComponent implements OnInit {
 
 &lt;p&gt;In this diagram you can see main building blocks of Angular application&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/overview2.png&#34; alt=&#34;Angular2 architecture&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/overview2.png&#34; alt=&#34;Angular2 architecture&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;For best explaining - refer to Angular documentation -
 &lt;a href=&#34;https://angular.io/docs/ts/latest/guide/architecture.html&#34;&gt;https://angular.io/docs/ts/latest/guide/architecture.html&lt;/a&gt;&lt;/p&gt;
@@ -847,7 +847,7 @@ export class AppModule { }
 
 &lt;p&gt;&lt;strong&gt;File structure&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Screen_Shot_2016_11_27_at_11_38_14.png&#34; alt=&#34;File structure&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_27_at_11_38_14.png&#34; alt=&#34;File structure&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see all component related files are sitting together. Styles, tests, logic. It is easy to find things you need and you won&amp;rsquo;t abandon your tests if they are so close to your code.&lt;/p&gt;
 
@@ -869,7 +869,7 @@ export class AppModule { }
 
 &lt;p&gt;An example how easily you can stub a service in a test is just below.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Screen_Shot_2016_11_30_at_17_12_46.png&#34; alt=&#34;Testing DI&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_30_at_17_12_46.png&#34; alt=&#34;Testing DI&#34; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;mobile-and-offline-friendly&#34;&gt;Mobile and offline friendly&lt;/h5&gt;
 
@@ -942,10 +942,10 @@ export class AppModule { }
     
     <item>
       <title>Let&#39;s code: Creating functional table with Angular</title>
-      <link>http://benetis.me/post/angular-table/</link>
+      <link>https://benetis.me/post/angular-table/</link>
       <pubDate>Sun, 06 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://benetis.me/post/angular-table/</guid>
+      <guid>https://benetis.me/post/angular-table/</guid>
       <description>
 
 &lt;h5 id=&#34;offtopic&#34;&gt;Offtopic&lt;/h5&gt;
@@ -974,7 +974,7 @@ export class AppModule { }
 
 &lt;p&gt;Using bootstrap - just the markup with some &lt;code&gt;*ngFor&lt;/code&gt; magic.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_17_06_50.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_17_06_50.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;table class=&amp;quot;table table-striped table-hover&amp;quot;&amp;gt;
   &amp;lt;thead&amp;gt;
@@ -1013,7 +1013,7 @@ You can check code:&lt;/p&gt;
 
 &lt;p&gt;Table currently looks like this -&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_20_16_20.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_20_16_20.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s check what requirements we fulfilled -&lt;/p&gt;
 
@@ -1073,7 +1073,7 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 
 &lt;p&gt;Changed the directive of ng2 table to &lt;code&gt;ngModel&lt;/code&gt; - to bind it to filtering string + custom change event - changed it to keypress and we have desired functionality. So far so good.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/giphy--3-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--3-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;sorting&#34;&gt;Sorting&lt;/h5&gt;
 
@@ -1194,7 +1194,7 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Looks good! And changes on click.
-&lt;img src=&#34;http://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_23_07_51.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://benetis.me/images/2017/02/Screen_Shot_2016_11_06_at_23_07_51.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;continuing&#34;&gt;Continuing&lt;/h5&gt;
 
@@ -1256,7 +1256,7 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 
 &lt;p&gt;Will make a good post in the future to refactor!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/giphy--4-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--4-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We have the UI working for inline editing - what is left is saving the data.&lt;/p&gt;
 
@@ -1290,7 +1290,7 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
   }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://benetis.me/images/2017/02/giphy--5-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--5-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The way service is implemented I&amp;rsquo;ll leave for another post. However if you are interested you can check code here -
 &lt;a href=&#34;https://github.com/ESNLithuania/boarded/blob/3f33924df738580cece1c32f9c4e13e50c732ec3/src/app/services/request.service.ts&#34;&gt;request.service.ts&lt;/a&gt;
