@@ -7,7 +7,7 @@ canonifyurls = true
 theme = "ghost-casper"
 [params]
   description = "Thoughts on us, humans and software"
-  cover = "images/2017/02/z7jqddiz3_8-cam-adams.jpg"
+  cover = "images/blog_cover_optimized_stars.jpg"
   author = "Žygimantas Benetis"
   authorlocation = "Kaunas, Lithuania"
   authorwebsite = "https://benetis.me"
