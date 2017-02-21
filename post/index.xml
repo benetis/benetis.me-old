@@ -7,8 +7,154 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Sat, 11 Feb 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Feb 2017 21:43:46 +0200</lastBuildDate>
     <atom:link href="https://benetis.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Becoming the one with flexbox: Intro to handling the monster</title>
+      <link>https://benetis.me/post/taming-flexbox-intro-to-handling-the-monster-2/</link>
+      <pubDate>Tue, 21 Feb 2017 21:43:46 +0200</pubDate>
+      
+      <guid>https://benetis.me/post/taming-flexbox-intro-to-handling-the-monster-2/</guid>
+      <description>
+
+&lt;h3 id=&#34;learn-more-about-it-but-why&#34;&gt;Learn more about it. But why?&lt;/h3&gt;
+
+&lt;p&gt;Flexbox is becoming one of core concepts in CSS. Might as well get to know more about it. It&amp;rsquo;s always a good investment to know basics well.
+We will keep this as short as possible. No unneeded content, pictures and etc. Reading whole post should give you basics of it.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-is-flexbox&#34;&gt;What is flexbox?&lt;/h3&gt;
+
+&lt;p&gt;Also known as &amp;ldquo;Flexible box&amp;rdquo; is layout mode in CSS. Main purpose of it is to be predictable when coding responsive layouts [1].  Solves some of the major problems we have been complaining as web developers [2].&lt;/p&gt;
+
+&lt;h3 id=&#34;flexbox-concepts&#34;&gt;Flexbox concepts&lt;/h3&gt;
+
+&lt;p&gt;MDN has wrote this perfectly. Just read it slowly.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The defining aspect of the flex layout is the ability to alter its items&amp;rsquo; width and/or height to best fit in the available space on any display device. A flex container expands items to fill available free space, or shrinks them to prevent overflow.&lt;/p&gt;
+
+&lt;p&gt;The flexbox layout algorithm is direction-agnostic as opposed to the block layout, which is vertically-biased, or the inline layout, which is horizontally-biased.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;getting-into-flexbox&#34;&gt;Getting into flexbox&lt;/h3&gt;
+
+&lt;h4 id=&#34;container-properties&#34;&gt;Container properties&lt;/h4&gt;
+
+&lt;p&gt;Flexbox container has two main properties - main axis and cross axis&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screenshot_18_02_2017__20_49.png&#34; alt=&#34;flexbox&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Both of them go across the whole container.&lt;/p&gt;
+
+&lt;h4 id=&#34;justify-content&#34;&gt;&lt;code&gt;justify-content&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;For moving items along main axis there is property called &lt;code&gt;justify-content&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Put items at start of main axis
+&lt;code&gt;justify-content: flex-start;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Put items at end of main axis
+&lt;code&gt;justify-content: flex-end;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Put items at center of main axis
+&lt;code&gt;justify-content: center;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Distribute evenly, but first and last items are at beginning and end
+&lt;code&gt;justify-content: space-between;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Distribute so each item has equal space around
+&lt;code&gt;justify-content: space-evenly;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Distribute evenly, but either end there is half size space
+&lt;code&gt;justify-content: space-evenly;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Great - you are in a lot of power now. Just knowing these properties.&lt;/p&gt;
+
+&lt;h4 id=&#34;ever-heard-of-flex-direction&#34;&gt;Ever heard of &lt;code&gt;flex-direction&lt;/code&gt;?&lt;/h4&gt;
+
+&lt;p&gt;Remember how we talked that there are two axis? Main and cross? So with &lt;code&gt;flex-direction&lt;/code&gt; you can change which axis is main. As a bonus - you can also reverse that axis.&lt;/p&gt;
+
+&lt;h3 id=&#34;align-items&#34;&gt;&lt;code&gt;align-items&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;As you probably guessed or already know - this property is for playing with cross axis.&lt;/p&gt;
+
+&lt;p&gt;Same as before:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Put items at start of main axis
+&lt;code&gt;align-items: flex-start;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Put items at end of main axis
+&lt;code&gt;align-items: flex-end;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Put items at center of main axis
+&lt;code&gt;align-items: center;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additional ones:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Stretch. Stretches the items to fit
+&lt;code&gt;align-items: stretch&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Aligns to items baselines
+&lt;code&gt;align-items: baseline&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;order&#34;&gt;&lt;code&gt;order&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Want some element appear before another one? &lt;code&gt;order: number&lt;/code&gt; property is reporting for duty. You can specify it on flex-item. As a default - all flex-items start with &lt;code&gt;0&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;align-self&#34;&gt;&lt;code&gt;align-self&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;If you are looking how to align one element on cross axis? Just use &lt;code&gt;align-self&lt;/code&gt;. Works with same values as &lt;code&gt;align-items&lt;/code&gt;, just applied to one item. Overrides &lt;code&gt;align-items&lt;/code&gt; behavior&lt;/p&gt;
+
+&lt;h3 id=&#34;real-world-case&#34;&gt;Real world case&lt;/h3&gt;
+
+&lt;h4 id=&#34;the-notorious-sticky-footer&#34;&gt;The notorious sticky footer&lt;/h4&gt;
+
+&lt;p&gt;Ahh, the pain of developing it in CSS. You don&amp;rsquo;t its height and you want it to be responsive. And it is such a common case - its crazy.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Negative margins (will never be perfect)&lt;/li&gt;
+&lt;li&gt;JS layout resize (UI presentation using JS sucks)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Flexbox makes this thing possible without hacks. If you like to see how - read here &lt;a href=&#34;https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/&#34;&gt;https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;More cases - you can find here - &lt;a href=&#34;https://philipwalton.github.io/solved-by-flexbox/demos&#34;&gt;https://philipwalton.github.io/solved-by-flexbox/demos&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;when-to-avoid-flexbox&#34;&gt;When to avoid flexbox&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you can use CSS grids - avoid using flexbox for page layouts. Flexbox depends on its content which means using it for grids can be unpredictable [3] + performance&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t use it everywhere. There are other CSS properties that might fit better.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;browser-support&#34;&gt;Browser support&lt;/h3&gt;
+
+&lt;p&gt;Supported in major browsers + two versions back. Unless you specifically have to support old ones - no reason why you should hold back from using it.&lt;/p&gt;
+
+&lt;p&gt;Up to date link - &lt;a href=&#34;http://caniuse.com/#feat=flexbox&#34;&gt;caniuse.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/Screen-Shot-2017-02-15-at-07.55.58.png&#34; alt=&#34;Browser support table&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;learn-more&#34;&gt;Learn more&lt;/h3&gt;
+
+&lt;p&gt;A cool tutorial/game which introduces and lets you practice flexbox as you go - &lt;a href=&#34;http://www.flexboxdefense.com&#34;&gt;flexboxdefense.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;sources&#34;&gt;Sources&lt;/h2&gt;
+
+&lt;p&gt;[1] - &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes&#34;&gt;https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2] - &lt;a href=&#34;https://philipwalton.github.io/solved-by-flexbox/&#34;&gt;https://philipwalton.github.io/solved-by-flexbox/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[3] - &lt;a href=&#34;https://jakearchibald.com/2014/dont-use-flexbox-for-page-layout/&#34;&gt;https://jakearchibald.com/2014/dont-use-flexbox-for-page-layout/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Creating shopping cart with product list in Angular2</title>
