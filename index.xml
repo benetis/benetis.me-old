@@ -63,12 +63,6 @@ We will keep this as short as possible. No unneeded content, pictures and etc. R
 
 &lt;li&gt;&lt;p&gt;Distribute evenly, but first and last items are at beginning and end
 &lt;code&gt;justify-content: space-between;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Distribute so each item has equal space around
-&lt;code&gt;justify-content: space-evenly;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Distribute evenly, but either end there is half size space
-&lt;code&gt;justify-content: space-evenly;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Great - you are in a lot of power now. Just knowing these properties.&lt;/p&gt;
