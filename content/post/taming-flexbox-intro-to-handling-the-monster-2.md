@@ -51,11 +51,6 @@ For moving items along main axis there is property called `justify-content`
 - Distribute evenly, but first and last items are at beginning and end
     `justify-content: space-between;`
 
-- Distribute so each item has equal space around
-    `justify-content: space-evenly;`
-
-- Distribute evenly, but either end there is half size space
-    `justify-content: space-evenly;`
 
 Great - you are in a lot of power now. Just knowing these properties.
 
