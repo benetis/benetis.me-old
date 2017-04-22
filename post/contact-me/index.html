@@ -14,15 +14,15 @@
 
 
 
-<meta name="twitter:title" content="Use functions to your advantage"/>
+<meta name="twitter:title" content="How to contact me. Waiting for your feedback!"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@benetisz"/>
 
 
 
-  	<meta property="og:title" content="Use functions to your advantage &middot; Typical personal blog" />
+  	<meta property="og:title" content="How to contact me. Waiting for your feedback! &middot; Typical personal blog" />
   	<meta property="og:site_name" content="Typical personal blog" />
-  	<meta property="og:url" content="https://benetis.me/post/use-functions-to-your-advantage/" />
+  	<meta property="og:url" content="https://benetis.me/post/contact-me/" />
     
     
         
@@ -34,12 +34,12 @@
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
     <meta property="og:image" content="https://benetis.me/" />
-    <meta property="article:published_time" content="2016-11-12T00:00:00Z" />
+    <meta property="article:published_time" content="2017-04-22T22:00:24&#43;02:00" />
 
     
     
 
-    <title>Use functions to your advantage &middot; Typical personal blog</title>
+    <title>How to contact me. Waiting for your feedback! &middot; Typical personal blog</title>
 
     
     <meta name="description" content="" />
@@ -65,7 +65,7 @@
     
     <meta name="generator" content="Hugo 0.19-DEV" />
 
-    <link rel="canonical" href="https://benetis.me/post/use-functions-to-your-advantage/" />
+    <link rel="canonical" href="https://benetis.me/post/contact-me/" />
 
     
       
@@ -94,23 +94,23 @@
             
         ]
     },
-    "headline": "Use functions to your advantage",
-    "name": "Use functions to your advantage",
-    "wordCount":  316 ,
-    "timeRequired": "PT2M",
+    "headline": "How to contact me. Waiting for your feedback!",
+    "name": "How to contact me. Waiting for your feedback!",
+    "wordCount":  47 ,
+    "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
-    "url": "https://benetis.me/post/use-functions-to-your-advantage/",
-    "datePublished": "2016-11-12T00:00Z",
-    "dateModified": "2016-11-12T00:00Z",
+    "url": "https://benetis.me/post/contact-me/",
+    "datePublished": "2017-04-22T22:00Z",
+    "dateModified": "2017-04-22T22:00Z",
     
     "keywords": "",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://benetis.me/post/use-functions-to-your-advantage/"
+        "@id": "https://benetis.me/post/contact-me/"
     }
 }
     </script>
@@ -183,13 +183,13 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">Use functions to your advantage</h1>
+        <h1 class="post-title">How to contact me. Waiting for your feedback!</h1>
         <small></small>
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2016-11-12T00:00:00Z">
-            Nov 12, 2016
+          <time class="post-date" datetime="2017-04-22T22:00:24&#43;02:00">
+            Apr 22, 2017
           </time>
         
          
@@ -199,92 +199,14 @@
     <section class="post-content">
       
 
-<h5 id="intro">Intro</h5>
+<h2 id="contacts-and-feedback">Contacts and feedback</h2>
 
-<p>Looking on how to write better code? One way to do that would be to use functions more than variables. You want to define some variable which returns some data? Define it as a function!</p>
+<p>Feedback is important for everyone. I am no exception. Ping me if something is off. Or you just want to say hi. You can email me at:
+<img src="https://benetis.me/images/2017/04/Screen Shot 2017-04-22 at 22.05.54.png" alt="" /></p>
 
-<h5 id="example">Example</h5>
+<p>Another way to suggest changes to blog content is to open issue here: <a href="https://github.com/benetis/benetis.me/issues">https://github.com/benetis/benetis.me/issues</a></p>
 
-<p>Let&rsquo;s say we columns array:</p>
-
-<pre><code class="language-typescript">  public columns: Array&lt;Column&gt; = [
-      {
-        title: 'Name',
-        name: 'name',
-        sort: 'desc',
-        type: 'text'
-      },
-      {
-        title: 'Surname',
-        name: 'surname',
-        type: 'text'
-      },
-      {
-        title: 'Section',
-        name: 'section',
-        type: 'select',
-        data: this.sections
-      },
-      {
-        title: 'Role',
-        name: 'role',
-        type: 'select',
-        data: this.roles
-      }
-  ];
-</code></pre>
-
-<p>Note on <code>data</code> property. It binds to this.roles. But when does it do that? On initialisation. What if this.roles fills after some time (Promise is resolved) - well that would leave us with empty hands. (Or with <code>cannot read property name of undefined</code> or similar result)</p>
-
-<p>Let&rsquo;s do a quick upgrade!</p>
-
-<pre><code class="language-typescript">  public columns(): Array&lt;Column&gt; {
-    return [
-      {
-        title: 'Name',
-        name: 'name',
-        sort: 'desc',
-        type: 'text'
-      },
-      {
-        title: 'Surname',
-        name: 'surname',
-        type: 'text'
-      },
-      {
-        title: 'Section',
-        name: 'section',
-        type: 'select',
-        data: this.sections
-      },
-      {
-        title: 'Role',
-        name: 'role',
-        type: 'select',
-        data: this.roles
-      }
-    ];
-  }
-</code></pre>
-
-<p>What actually changed? We just declared a function which returns an array. Same as before? You will be surprised.</p>
-
-<p>Now if we call our function <code>columns()</code> we get same thing we got before. It&rsquo;s just that <code>data</code> property will be assigned on call - so our snippet has already became <em>lazy</em> - which is good enough for us.</p>
-
-<p>Now while this is not the best example since we are using <code>this.</code> calls - there is a nice way to avoid that - but for sake of short post - let&rsquo;s skip it for now.</p>
-
-<h5 id="summary">Summary</h5>
-
-<p>Pros of using functions more</p>
-
-<ul>
-<li>We calculate what we need on fly (lazy)</li>
-<li>Easier to refactor function to add new data transformations (explicit transformations)</li>
-</ul>
-
-<h3 id="feedback">Feedback</h3>
-
-<p>If you have any suggestions - I am eagerly waiting for feedback. <a href="https://benetis.me/post/contact-me/">https://benetis.me/post/contact-me/</a></p>
+<p>Thanks in advance!</p>
 
     </section>
 
@@ -316,19 +238,19 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Use%20functions%20to%20your%20advantage&nbsp;-&nbsp;Typical%20personal%20blog&amp;url=https%3a%2f%2fbenetis.me%2fpost%2fuse-functions-to-your-advantage%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=How%20to%20contact%20me.%20Waiting%20for%20your%20feedback%21&nbsp;-&nbsp;Typical%20personal%20blog&amp;url=https%3a%2f%2fbenetis.me%2fpost%2fcontact-me%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
-  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenetis.me%2fpost%2fuse-functions-to-your-advantage%2f"
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenetis.me%2fpost%2fcontact-me%2f"
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fbenetis.me%2fpost%2fuse-functions-to-your-advantage%2f&amp;description=Use%20functions%20to%20your%20advantage"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fbenetis.me%2fpost%2fcontact-me%2f&amp;description=How%20to%20contact%20me.%20Waiting%20for%20your%20feedback%21"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
-  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fbenetis.me%2fpost%2fuse-functions-to-your-advantage%2f"
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fbenetis.me%2fpost%2fcontact-me%2f"
      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
       <span class="hidden">Google+</span>
   </a>

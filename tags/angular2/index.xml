@@ -718,6 +718,10 @@ export class ShoppingCartComponent implements OnInit {
 
 &lt;p&gt;You can find code here - &lt;a href=&#34;https://github.com/benetis/didactic-computing-machine/tree/master/ng/small-commercial-spa&#34;&gt;https://github.com/benetis/didactic-computing-machine/tree/master/ng/small-commercial-spa
 &lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -933,6 +937,10 @@ export class AppModule { }
 &lt;li&gt;Setting up is complicated (cli) - while angular-cli seems nice - for more complex applications you will want your own configuration. Oh and setting up project with Webpack and other cursewords is a nightmare&lt;/li&gt;
 &lt;li&gt;Not Javascript oriented - has a lot of custom DSL (domain specific language)&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h6 id=&#34;feedback&#34;&gt;Feedback&lt;/h6&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h6 id=&#34;sources&#34;&gt;Sources&lt;/h6&gt;
 
@@ -1311,6 +1319,10 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 &lt;p&gt;It seems we have filled all of them. All is left are some small tweaks.&lt;/p&gt;
 
 &lt;p&gt;Until next time!&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

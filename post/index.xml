@@ -7,8 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2017</copyright>
-    <lastBuildDate>Tue, 21 Feb 2017 21:43:46 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 22 Apr 2017 22:00:24 +0200</lastBuildDate>
     <atom:link href="https://benetis.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to contact me. Waiting for your feedback!</title>
+      <link>https://benetis.me/post/contact-me/</link>
+      <pubDate>Sat, 22 Apr 2017 22:00:24 +0200</pubDate>
+      
+      <guid>https://benetis.me/post/contact-me/</guid>
+      <description>
+
+&lt;h2 id=&#34;contacts-and-feedback&#34;&gt;Contacts and feedback&lt;/h2&gt;
+
+&lt;p&gt;Feedback is important for everyone. I am no exception. Ping me if something is off. Or you just want to say hi. You can email me at:
+&lt;img src=&#34;https://benetis.me/images/2017/04/Screen Shot 2017-04-22 at 22.05.54.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Another way to suggest changes to blog content is to open issue here: &lt;a href=&#34;https://github.com/benetis/benetis.me/issues&#34;&gt;https://github.com/benetis/benetis.me/issues&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks in advance!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Becoming the one with flexbox: Intro to handling the monster</title>
@@ -139,6 +158,10 @@ We will keep this as short as possible. No unneeded content, pictures and etc. R
 &lt;h3 id=&#34;learn-more&#34;&gt;Learn more&lt;/h3&gt;
 
 &lt;p&gt;A cool tutorial/game which introduces and lets you practice flexbox as you go - &lt;a href=&#34;http://www.flexboxdefense.com&#34;&gt;flexboxdefense.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;sources&#34;&gt;Sources&lt;/h2&gt;
 
@@ -859,6 +882,10 @@ export class ShoppingCartComponent implements OnInit {
 
 &lt;p&gt;You can find code here - &lt;a href=&#34;https://github.com/benetis/didactic-computing-machine/tree/master/ng/small-commercial-spa&#34;&gt;https://github.com/benetis/didactic-computing-machine/tree/master/ng/small-commercial-spa
 &lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -932,7 +959,7 @@ ctx.stroke();
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;    let drawFrom = {x: 0, y: 0}
     function draw(e) {
         if (drawing) {
-            ctx.beginPath() 
+            ctx.beginPath()
             ctx.moveTo(drawFrom.x, drawFrom.y)
             ctx.lineTo(e.offsetX, e.offsetY)
             ctx.stroke() //drawing wont happen until we call stroke
@@ -978,6 +1005,10 @@ ctx.stroke();
 &lt;p&gt;Code is in github - &lt;a href=&#34;https://github.com/benetis/JavaScript30/blob/608928a47a6b1c6f54a9fa99118f5a3f6f605bdf/08%20-%20Fun%20with%20HTML5%20Canvas/index-START.html&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;[0] - &lt;a href=&#34;http://www.w3schools.com/html/html5_canvas.asp&#34;&gt;http://www.w3schools.com/html/html5_canvas.asp&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -1119,6 +1150,12 @@ a[href^=&amp;quot;http&amp;quot;]::after {content: &amp;quot; (&amp;quot; var(--
 
 &lt;p&gt;Custom properties are quite cool - although we cannot throw SASS/Less in favour of them because lack of support of other features - mixins, nesting. Browser support is also still behind. All in all, still an interesting thing to try out. I bet in year or two we will be using them daily&lt;/p&gt;
 
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;sources&#34;&gt;Sources&lt;/h3&gt;
+
 &lt;ul&gt;
 &lt;li&gt;[0] - &lt;a href=&#34;https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care&#34;&gt;https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;[1] - &lt;a href=&#34;http://caniuse.com&#34;&gt;http://caniuse.com&lt;/a&gt;&lt;/li&gt;
@@ -1182,10 +1219,10 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
 &lt;li&gt;filter the list to only have multiples of &lt;code&gt;3&lt;/code&gt; or &lt;code&gt;5&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;disibleByThreeOrFive n = 
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;disibleByThreeOrFive n =
     if n `mod` 3 == 0 || n `mod` 5 == 0 then
-        True 
-    else 
+        True
+    else
         False
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1224,6 +1261,10 @@ which returns &lt;code&gt;233168&lt;/code&gt;. It is accepted by euler website -
 &lt;h4 id=&#34;summary&#34;&gt;Summary&lt;/h4&gt;
 
 &lt;p&gt;Remembered a little bit of haskell syntax, tackled the new editor plugin change and looking forward to doing more exercises.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -1440,6 +1481,10 @@ export class AppModule { }
 &lt;li&gt;Not Javascript oriented - has a lot of custom DSL (domain specific language)&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h6 id=&#34;feedback&#34;&gt;Feedback&lt;/h6&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
+
 &lt;h6 id=&#34;sources&#34;&gt;Sources&lt;/h6&gt;
 
 &lt;p&gt;[0] - &lt;a href=&#34;https://angular.io/docs/ts/latest/guide/architecture.html&#34;&gt;https://angular.io/docs/ts/latest/guide/architecture.html&lt;/a&gt;&lt;/p&gt;
@@ -1536,6 +1581,10 @@ export class AppModule { }
 &lt;li&gt;We calculate what we need on fly (lazy)&lt;/li&gt;
 &lt;li&gt;Easier to refactor function to add new data transformations (explicit transformations)&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -1910,6 +1959,10 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 &lt;p&gt;It seems we have filled all of them. All is left are some small tweaks.&lt;/p&gt;
 
 &lt;p&gt;Until next time!&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -1959,6 +2012,10 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 &lt;/ul&gt;
 
 &lt;p&gt;Elm is cool - try it!&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

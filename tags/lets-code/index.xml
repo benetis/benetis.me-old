@@ -41,10 +41,10 @@ Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
 &lt;li&gt;filter the list to only have multiples of &lt;code&gt;3&lt;/code&gt; or &lt;code&gt;5&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;disibleByThreeOrFive n = 
+&lt;pre&gt;&lt;code class=&#34;language-haskell&#34;&gt;disibleByThreeOrFive n =
     if n `mod` 3 == 0 || n `mod` 5 == 0 then
-        True 
-    else 
+        True
+    else
         False
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -83,6 +83,10 @@ which returns &lt;code&gt;233168&lt;/code&gt;. It is accepted by euler website -
 &lt;h4 id=&#34;summary&#34;&gt;Summary&lt;/h4&gt;
 
 &lt;p&gt;Remembered a little bit of haskell syntax, tackled the new editor plugin change and looking forward to doing more exercises.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -457,6 +461,10 @@ Same idea with rows instead of users. Easier to manipulate later for us.&lt;/p&g
 &lt;p&gt;It seems we have filled all of them. All is left are some small tweaks.&lt;/p&gt;
 
 &lt;p&gt;Until next time!&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
