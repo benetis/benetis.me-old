@@ -119,6 +119,10 @@ Up to date link - [caniuse.com](http://caniuse.com/#feat=flexbox)
 
 A cool tutorial/game which introduces and lets you practice flexbox as you go - [flexboxdefense.com](http://www.flexboxdefense.com)
 
+### Feedback
+
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
+
 ## Sources
 [1] - [https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
 

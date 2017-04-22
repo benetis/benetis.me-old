@@ -374,3 +374,7 @@ If we check our requirements list
 It seems we have filled all of them. All is left are some small tweaks.
 
 Until next time!
+
+### Feedback
+
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)

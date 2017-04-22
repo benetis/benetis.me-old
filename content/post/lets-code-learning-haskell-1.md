@@ -27,14 +27,14 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 
 Let's go step by step.
 
-* take first 1000 of natural numbers  `[1..999]` 
+* take first 1000 of natural numbers  `[1..999]`
 * filter the list to only have multiples of `3` or `5`
 
 ```haskell
-disibleByThreeOrFive n = 
+disibleByThreeOrFive n =
     if n `mod` 3 == 0 || n `mod` 5 == 0 then
-        True 
-    else 
+        True
+    else
         False
 ```
 
@@ -47,15 +47,15 @@ which returns a list of all numbers we need to sum
 ```haskell
 foldl (\res prev -> res + prev) 0 (filter disibleByThreeOrFive [1..999])
 ```
-which returns `233168`. It is accepted by euler website - but the code we wrote could be improved. 
+which returns `233168`. It is accepted by euler website - but the code we wrote could be improved.
 
-First let's get replace `foldl` with `sum` 
+First let's get replace `foldl` with `sum`
 
 ```haskell
 sum (filter disibleByThreeOrFive [1..999])
 ```
 
-Okay - those brackets are still there - good for us there is `$` operator which is exactly for that - getting rid of them. Anything that comes after dollar sign will take precedence. 
+Okay - those brackets are still there - good for us there is `$` operator which is exactly for that - getting rid of them. Anything that comes after dollar sign will take precedence.
 
 ```haskell
 sum $ filter disibleByThreeOrFive [1..999]
@@ -75,3 +75,6 @@ sum $
 
 Remembered a little bit of haskell syntax, tackled the new editor plugin change and looking forward to doing more exercises.
 
+### Feedback
+
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)

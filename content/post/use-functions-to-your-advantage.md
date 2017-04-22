@@ -9,7 +9,7 @@ banner = ""
 aliases = ['/use-functions-to-your-advantage/']
 +++
 
-##### Intro 
+##### Intro
 Looking on how to write better code? One way to do that would be to use functions more than variables. You want to define some variable which returns some data? Define it as a function!
 
 ##### Example
@@ -90,5 +90,6 @@ Pros of using functions more
 * We calculate what we need on fly (lazy)
 * Easier to refactor function to add new data transformations (explicit transformations)
 
+### Feedback
 
-
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)

@@ -20,9 +20,3 @@ I'll pick up the glove and complete the challenge_
 [Javascript30](https://javascript30.com/)
 
 [Javascript30 start files](https://github.com/wesbos/JavaScript30)
-
-
-
-
-
-

@@ -20,8 +20,8 @@ Angular was written in Typescript. As for Dart - Typescript was easily transpile
 Now for development - its a different story. You can use use:
 
 * Pure Javascript (ES5)
-* Typescript 
-- Dart 
+* Typescript
+- Dart
 - ES2015* (lack of docs -> horror, no AOT support)
 
 All there choices have separate Angular documentations - but as you can expect - Typescript's version is the best. If you are considering the language - _just go with Typescript_ unless you have some really specific needs.
@@ -35,12 +35,12 @@ _It has optional types_ - this makes migrating from JS to Typescript easy - non-
 _Refactoring and IntelliSense_ - Oh yes. This is one of the best things. You decide to change something for let's say naming consistency? No problem IDE will do job for you. Most of the thing IDE misses will still be reported by the compiler. Big codebase of Typescript - nothing to fear! - it can be refactored.
 
 _Type thinking_ - You can just about types when coding - makes everything so much easier!
-> f(x) transforms my x to f(x) - while it sounds to simple - this new ability almost instantly made all code produced by me with less side effect 
+> f(x) transforms my x to f(x) - while it sounds to simple - this new ability almost instantly made all code produced by me with less side effect
 
 taken from http://benetis.me/quick-glimpse-at-world-of-elm/
 
 
-_Language features_ - classes, interfaces, type switching, strict null checks, encapsulation(sort of)... And so many more are coming! 
+_Language features_ - classes, interfaces, type switching, strict null checks, encapsulation(sort of)... And so many more are coming!
 
 _Raw Javascript just works_ - As mentioned above - you can compile any JS using the compiler and it will just work.
 
@@ -52,13 +52,13 @@ _Community is big_ - you won't be solving problems alone. Typescript is popular 
 
 What kind of file structure, components tree, libraries and etc. you find in Angular project?
 
-First of all - The framework consists of several libraries, some of them core and some optional [0]. 
+First of all - The framework consists of several libraries, some of them core and some optional [0].
 
 In this diagram you can see main building blocks of Angular application
 
 ![Angular2 architecture](/images/2017/02/overview2.png)
 
-For best explaining - refer to Angular documentation - 
+For best explaining - refer to Angular documentation -
 https://angular.io/docs/ts/latest/guide/architecture.html
 
 TLDR; below
@@ -146,7 +146,7 @@ Lazy loading - why it is relevant. *You just don't want to ship your users code 
 
 DI is used everywhere. Providers are constantly injected into components. Angular makes it easy to do DI - because it is done through types (Typescript annotations). Also -  makes testing simple.
 
-An example how easily you can stub a service in a test is just below. 
+An example how easily you can stub a service in a test is just below.
 
 ![Testing DI](/images/2017/02/Screen_Shot_2016_11_30_at_17_12_46.png)
 
@@ -168,7 +168,7 @@ This leaves us with few cool things:
 * Faster rendering - no compiler time
 * Smaller application size (no need to drag that "huge" compiler together)
 * Template errors are caught at compile time
-* Better security 
+* Better security
 * Tree shaking (dependency graph walking)
 
 ##### Angular Universal (Server side rendering)
@@ -181,21 +181,21 @@ Angular team said there will be improvements during next six months (two months 
 
 ##### Angular-cli
 
-Command line interface for Angular applications. Let's you setup quick boilerplate, compile apps, run tests. Even generate components and etc. It is based on ember-cli. Main idea is to solve problem of complex configurations. 
+Command line interface for Angular applications. Let's you setup quick boilerplate, compile apps, run tests. Even generate components and etc. It is based on ember-cli. Main idea is to solve problem of complex configurations.
 
 https://twitter.com/iamdevloper/status/787969734918668289
 
 At this moment - it is not flexible and is slow. Promises to make it faster at near future.
 
-##### Community 
+##### Community
 
 Community is great. Although not that big that moment - but we already have some great tools (Augury, ngrx stuff..)
 
 There are also enough Stack overflow answer to live and develop. (Almost)
 
-Lots of info and talks during conferences about it. 
+Lots of info and talks during conferences about it.
 
-Seems like a case of Hype driven development, but I really doubt it will be abandoned - probably the opposite. 
+Seems like a case of Hype driven development, but I really doubt it will be abandoned - probably the opposite.
 [](https://blog.daftcode.pl/hype-driven-development-3469fc2e9b22#.t3suy6t3h)
 
 ##### Angular 3.0
@@ -209,11 +209,10 @@ Angular versioning is stupid. They know it, we know it. As an example RC5 releas
 * Setting up is complicated (cli) - while angular-cli seems nice - for more complex applications you will want your own configuration. Oh and setting up project with Webpack and other cursewords is a nightmare
 * Not Javascript oriented - has a lot of custom DSL (domain specific language)
 
+###### Feedback
+
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
 
 ###### Sources
 
 [0] - https://angular.io/docs/ts/latest/guide/architecture.html
-
-
-
-

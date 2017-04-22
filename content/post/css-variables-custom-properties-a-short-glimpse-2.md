@@ -84,7 +84,11 @@ taken from [2]
 
 Custom properties are quite cool - although we cannot throw SASS/Less in favour of them because lack of support of other features - mixins, nesting. Browser support is also still behind. All in all, still an interesting thing to try out. I bet in year or two we will be using them daily
 
+### Feedback
 
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
+
+### Sources
 
 - [0] - https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care
 - [1] - http://caniuse.com

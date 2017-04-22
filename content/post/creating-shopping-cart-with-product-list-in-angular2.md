@@ -63,7 +63,7 @@ export const routes: Routes = [
 ];
 ```
 
-Ignore the part where `LandingComponent` is red. We will import it later. 
+Ignore the part where `LandingComponent` is red. We will import it later.
 
 What is left for routes is to include them into our `app.module.ts`
 
@@ -91,7 +91,7 @@ We also will need to include `LandingModule` for now since we directly load it o
 
 I always like to start from the data. How will our data look?
 
-Each item will have some data and it can have multiple colors assigned to it. 
+Each item will have some data and it can have multiple colors assigned to it.
 
 ```typescript
 export type ItemColor = 'blue' | 'green' | 'gray';
@@ -114,7 +114,7 @@ Second, let's think what kind of components we will need.
 - **ItemList** which will represent list of Items in a list
 - **Landing** which will hold our **ItemList** and **ItemFilter** components
 
-For components creation we can utilise `Angular CLI`. 
+For components creation we can utilise `Angular CLI`.
 
 - `cd +landing`
 - `mkdir components`
@@ -123,7 +123,7 @@ For components creation we can utilise `Angular CLI`.
 
 #### Item component
 
-Our `Item` component will need to display an image. Instead of getting images from some json file (encoded) we will do it lazy way - just use icon of image. 
+Our `Item` component will need to display an image. Instead of getting images from some json file (encoded) we will do it lazy way - just use icon of image.
 
 ![](/images/2017/02/Screen-Shot-2017-02-11-at-15.02.26.png)
 
@@ -401,7 +401,7 @@ Let's see how our application looks.
 
 #### Item details
 
-Clicking on item name should take us to another page where it's details and "Add to cart" button is displayed. 
+Clicking on item name should take us to another page where it's details and "Add to cart" button is displayed.
 
 Also at this point it makes sense to change `Item` to `Product` in our application just to avoid further confusion ahead. We don't want our naming to be confusing us.
 
@@ -443,7 +443,7 @@ export class ProductsService {
 }
 ```
 
-Next up - fixing the routes. 
+Next up - fixing the routes.
 
 Okay so first `app.routes.ts`
 
@@ -537,7 +537,7 @@ Subscribe to route and according to id - fetch the wanted product details. As fo
 </div>
 ```
 
-As a side quest let's add a back button. 
+As a side quest let's add a back button.
 
 At top of the `product-details.component.html`
 
@@ -553,7 +553,7 @@ Yep - that simple.
 
 Cart is a place where items will be placed. A good place to start is with cart service which can be injected into app and be utilised to keep track of what is in it.
 
-Let's make use of `BehaviorSubject`. It can be used in so many places that we can write a blog post of it own. As for now - think of it as `Subject` which hold last value. So when we subscribe - we get what it holds. 
+Let's make use of `BehaviorSubject`. It can be used in so many places that we can write a blog post of it own. As for now - think of it as `Subject` which hold last value. So when we subscribe - we get what it holds.
 
 `cart.service.ts`
 
@@ -715,14 +715,11 @@ At this moment we have few problems left:
 - You cannot disable filters
 - You cannot choose a color when you are adding an item to shopping bag
 
-But IMHO that is enough for now. 
+But IMHO that is enough for now.
 
 You can find code here - [https://github.com/benetis/didactic-computing-machine/tree/master/ng/small-commercial-spa
 ](https://github.com/benetis/didactic-computing-machine/tree/master/ng/small-commercial-spa)
 
+### Feedback
 
-
-
-
-
-
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)

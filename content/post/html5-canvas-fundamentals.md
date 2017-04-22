@@ -15,7 +15,7 @@ Today I met HTML5 Canvas. Not in real world - but during one the exercises from 
 
 #### Basics
 
-Canvas is a HTML element used to draw graphics on fly via Javascript - [0]. 
+Canvas is a HTML element used to draw graphics on fly via Javascript - [0].
 Main idea is that you have this rectangle box on the page without any content and you use javascript to draw stuff on it. You do drawing by interacting with context object not the actual canvas object. Example below:
 ```javascript
 const canvas = document.querySelector('#myCanvas');
@@ -73,7 +73,7 @@ Moving on. Drawing the actual line. We need the point FROM and point TO for line
     let drawFrom = {x: 0, y: 0}
     function draw(e) {
         if (drawing) {
-            ctx.beginPath() 
+            ctx.beginPath()
             ctx.moveTo(drawFrom.x, drawFrom.y)
             ctx.lineTo(e.offsetX, e.offsetY)
             ctx.stroke() //drawing wont happen until we call stroke
@@ -122,3 +122,6 @@ Code is in github - [here](https://github.com/benetis/JavaScript30/blob/608928a4
 
 [0] - http://www.w3schools.com/html/html5_canvas.asp
 
+### Feedback
+
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)

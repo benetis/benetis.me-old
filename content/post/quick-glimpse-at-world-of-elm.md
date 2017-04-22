@@ -10,7 +10,7 @@ aliases = ['/quick-glimpse-at-world-of-elm/']
 +++
 
 ##### Intro
-Recently I have came across a thing called Elm. It is a functional programming language dedicated to frontend. 
+Recently I have came across a thing called Elm. It is a functional programming language dedicated to frontend.
 
 ##### About language itself
 * Functional language
@@ -21,21 +21,21 @@ Recently I have came across a thing called Elm. It is a functional programming l
 
 ##### A lot to gain by learning
 
-**Instant new brain power to think in Types while coding** - 
-_f(x) transforms my x to f(x)_ - while it sounds to simple - this new ability almost instantly made all code produced by me with less side 
+**Instant new brain power to think in Types while coding** -
+_f(x) transforms my x to f(x)_ - while it sounds to simple - this new ability almost instantly made all code produced by me with less side
 
 
 ##### Trying with simple app
 
 It has one purpose - show how old are you with millisecond accuracy. Imagine your age here - quite a kick to stop procrastinating.
- 
+
 ![](/images/2017/02/giphy--6-.gif)
 
 While coding - a part where I needed to get current time was more difficult since it involves something that cannot be gained in a pure way. Not enough documentation on this, however Slack community together with SO answers solved the issue.
 
 You can observe how Elm's code looks here - [github](https://github.com/benetis/elm-birthday/blob/master/Main.elm)
 
-##### Summary 
+##### Summary
 
 * Thinking in types makes development easier
 * Coding frontend without runtime errors is relaxing
@@ -43,5 +43,6 @@ You can observe how Elm's code looks here - [github](https://github.com/benetis/
 
 Elm is cool - try it!
 
+### Feedback
 
-
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
