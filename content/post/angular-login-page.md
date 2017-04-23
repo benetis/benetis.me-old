@@ -101,6 +101,10 @@ export const appRoutes: Routes = [
 ];
 ```
 
+You can see the result:
+
+![](/images/2017/04/login-route-without-nav.gif)
+
 
 
 ### Feedback
