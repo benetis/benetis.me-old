@@ -4,7 +4,7 @@ draft = true
 share = true
 title = "Let's code: Authentication in Angular #1 - creating login form"
 slug = "angular-authentication"
-tags = ['Angular', 'Frontend', 'Side-project', "Let's code"]
+tags = ['Angular', 'Frontend', 'Side-project', "Let's code", 'Material', 'FlexLayout']
 banner = ""
 aliases = ['/angular-authentication/']
 +++
@@ -136,12 +136,19 @@ Next, creating `login.routing.ts`
 export const loginRoutes: Routes = [
   {
     path: 'login',
-    component: LoginFormComponent
+    component: LoginComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginFormComponent,
+      },
+      {
+        path: 'register',
+        component: RegistrationFormComponent
+      }
+    ]
   },
-  {
-    path: 'register',
-    component: RegistrationFormComponent
-  }
+
 ]
 ```
 
@@ -154,6 +161,53 @@ RouterModule.forChild(loginRoutes)
 Let's see.
 
 ![](/images/2017/04/register-login-routes.gif)
+
+### Presentation "layer"
+
+Next up - form itself. We can use quite a lot of material components here.
+
+First step: get those tabs working. MdTabs (Material tabs) can be easily put to use. Also we will MdCard to get that nice tile looking card.
+
+Import `MdTabsModule, MdCardModule` and you are ready to go. Grabbing example from [https://material.angular.io/components/component/tabs](https://material.angular.io/components/component/tabs)
+
+we end up with this code for tabs:
+
+`login.component.html`
+```html
+<div class="login-container"
+     fxLayout="column"
+     fxLayoutAlign="center center">
+    <md-card>
+    <nav md-tab-nav-bar>
+        <a md-tab-link
+           routerLink="/login"
+           routerLinkActive
+           [routerLinkActiveOptions]="{ exact: true }"
+           #rlaLogin="routerLinkActive"
+           [active]="rlaLogin.isActive">
+            Login
+        </a>
+        <a md-tab-link
+           routerLink="register"
+           routerLinkActive
+           [routerLinkActiveOptions]="{ exact: true }"
+           #rlaRegister="routerLinkActive"
+           [active]="rlaRegister.isActive"
+        >
+            Register
+        </a>
+    </nav>
+    <router-outlet></router-outlet>
+    </md-card>
+</div>
+```
+
+Two tabs with routerLinkActive to select which one of them is active. `exact: true` is needed to selected subroute `/login/register`.
+
+And a little bit of flex-layout magic to center things out
+
+![](/images/2017/04/md-tabs-route.gif)
+
 
 ### Feedback
 
