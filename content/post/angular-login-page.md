@@ -1,5 +1,5 @@
 +++
-date = "2017-04-16T10:54:24+02:00"
+date = "2017-04-23T10:54:24+02:00"
 draft = true
 share = true
 title = "Let's code: Authentication in Angular #1 - creating login form"
@@ -49,4 +49,60 @@ Quick sketch before I dive into actual work. (Using draw.io)
 
 Sorry for poor sketch, but ignoring that - this is how login screen should look. We will add some material look 'n feel to it.
 
-Some considerations - we will need to display login form instead of whole application - it means route for login will need to be at app level. Also for us it means we can stick LoginForm into separate module.
+Whole form is in middle of screen, centered. Register/Login are tabs which can be switched easily. Both of those tabs have two fields - *email* and *password*. The only difference is button bellow them which indicates action that will performed. (Login, Register). Also after user clicks register - component will indicate to user that he has to click activate link in email.
+
+Code organization considerations: we will need to display login form instead of whole application - it means route for login will need to be at app level. We can stick it into `SharedModule`. (`SharedModule` is loaded eagerly in `AppModule` imports)
+
+### Setup and routing
+
+##### Setup
+
+First we will create new component in our shared module folder.
+
+- `cd src/app/shared`
+- `ng g component login` We are using angular-cli scaffolding tools. This will create login component with all needed files and add it to `SharedModule` declarations
+
+##### Routing
+
+Currently our application is routed with navigation menu stuck in one place.
+
+![](/images/2017/04/route-changing.gif)
+
+This means we will need to add another `router-outlet` for app itself and login page
+
+We will move our `app.component` template to `content-main` (new component) and instead put `router-outlet`
+
+Updating `app.routing` with login route. Moving other routes to `path: ''` and adding routes as children since they are going to be routed from `content-main` `router-outlet`
+
+```typescript
+export const appRoutes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  { path: '',
+    component: ContentMainComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: 'app/+dashboard/dashboard.module#DashboardModule',
+      },
+      {
+        path: 'reviews',
+        loadChildren: 'app/+reviews/reviews.module#ReviewsModule',
+      },
+      {
+        path: 'statistics',
+        loadChildren: 'app/+statistics/statistics.module#StatisticsModule',
+      },
+    ]
+  },
+  // { path: '**', component: PageNotFoundComponent }
+];
+```
+
+
+
+### Feedback
+
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
