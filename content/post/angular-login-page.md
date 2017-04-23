@@ -208,6 +208,42 @@ And a little bit of flex-layout magic to center things out
 
 ![](/images/2017/04/md-tabs-route.gif)
 
+##### Inputs
+
+Adding few MdInput does the magic
+
+`login-form.component.html`
+```html
+<form fxLayout="column">
+    <md-input-container fxFlex="100">
+        <input mdInput
+               name="email"
+               type="email"
+               [(ngModel)]="email"
+               required
+               placeholder="Email">
+    </md-input-container>
+    <md-input-container fxFlex="100">
+        <input mdInput
+               name="password"
+               type="password"
+               [(ngModel)]="password"
+               required
+               placeholder="Password">
+    </md-input-container>
+    <div fxFlex="33" fxFlexAlign="end">
+        <button md-raised-button>Login</button>
+    </div>
+</form>
+```
+
+![](/images/2017/04/form-inputs.gif)
+
+We only check if field is filled but we don't validate.
+
+##### Validation
+
+We need to validate if email is "right" and check if passwords strength is OK. We defined requirement to be at least 8 symbols.
 
 ### Feedback
 
