@@ -72,7 +72,9 @@ This means we will need to add another `router-outlet` for app itself and login 
 
 We will move our `app.component` template to `content-main` (new component) and instead put `router-outlet`
 
-Updating `app.routing` with login route. Moving other routes to `path: ''` and adding routes as children since they are going to be routed from `content-main` `router-outlet`
+You can read more about child route configuration here - [https://angular.io/docs/ts/latest/guide/router.html#!#child-route-config](https://angular.io/docs/ts/latest/guide/router.html#!#child-route-config)
+
+Moving on. Updating `app.routing` with login route. Moving other routes to `path: ''` and adding routes as children since they are going to be routed from `content-main` `router-outlet`
 
 ```typescript
 export const appRoutes: Routes = [
@@ -104,8 +106,6 @@ export const appRoutes: Routes = [
 You can see the result:
 
 ![](/images/2017/04/login-route-without-nav.gif)
-
-
 
 ### Feedback
 
