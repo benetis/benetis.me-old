@@ -1,6 +1,6 @@
 +++
-date = "2017-04-23T10:54:24+02:00"
-draft = true
+date = "2017-04-24T19:40:24+02:00"
+draft = false
 share = true
 title = "Let's code: Authentication in Angular #1 - creating login form"
 slug = "angular-authentication"
@@ -244,6 +244,50 @@ We only check if field is filled but we don't validate.
 ##### Validation
 
 We need to validate if email is "right" and check if passwords strength is OK. We defined requirement to be at least 8 symbols.
+
+I'll skip custom validator creation - you can read on how to do that in angular docs. [https://angular.io/docs/ts/latest/cookbook/form-validation.html#!#custom-validation](https://angular.io/docs/ts/latest/cookbook/form-validation.html#!#custom-validation)
+
+Using material's `<md-error>` we simply define our validators on inputs and here we have all the stuff we need for them.
+
+`login-form.component.html`
+
+```html
+<form fxLayout="column">
+    <md-input-container fxFlex="100">
+        <input mdInput
+               name="email"
+               type="email"
+               [(ngModel)]="email"
+               required
+               validEmail
+               placeholder="Email">
+        <md-error>Email is invalid</md-error>
+    </md-input-container>
+    <md-input-container fxFlex="100">
+        <input mdInput
+               name="password"
+               type="password"
+               [(ngModel)]="password"
+               required
+               minlength="8"
+               placeholder="Password">
+        <md-error>Needs to be at least 8 characters</md-error>
+    </md-input-container>
+    <div fxFlex="33" fxFlexAlign="end">
+        <button md-raised-button>Login</button>
+    </div>
+</form>
+```
+
+And we are done with login form.
+
+### Registration form
+
+It's simple. We just take what we have and change "Login" to "Register". You might say duplication of code is bad, but I will argue that in this case its not worth to try to generalize. If our form gets more difficult - we can go ahead and refactor common parts.
+
+One thing to mention - we defined minimum password length on login form. We can delete that from login-form and leave it only on registration-form.
+
+That's it. We have fulfilled our requirements at the top. Until next time.
 
 ### Feedback
 
