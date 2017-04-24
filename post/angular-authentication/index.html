@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Let&#39;s code: Authentication in Angular #1 - creating login form"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@benetisz"/>
+
+
+
+  	<meta property="og:title" content="Let&#39;s code: Authentication in Angular #1 - creating login form &middot; Typical personal blog" />
+  	<meta property="og:site_name" content="Typical personal blog" />
+  	<meta property="og:url" content="https://benetis.me/post/angular-authentication/" />
+    
+    
+        
+            <meta property="og:image" content="https://benetis.me/images/blog_cover_optimized_stars.jpg"/>
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="og:image" content="https://benetis.me/" />
+    <meta property="article:published_time" content="2017-04-24T19:40:24&#43;02:00" />
+
+    
+    <meta property="article:tag" content="Angular" />
+    
+    <meta property="article:tag" content="Frontend" />
+    
+    <meta property="article:tag" content="Side-project" />
+    
+    <meta property="article:tag" content="Let&#39;s code" />
+    
+    <meta property="article:tag" content="Material" />
+    
+    <meta property="article:tag" content="FlexLayout" />
+    
+    
+
+    <title>Let&#39;s code: Authentication in Angular #1 - creating login form &middot; Typical personal blog</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://benetis.me/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://benetis.me/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://benetis.me/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://benetis.me/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+    
+
+    
+      
+          <link href="https://benetis.me/index.xml" rel="alternate" type="application/rss+xml" title="Typical personal blog" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.19-DEV" />
+
+    <link rel="canonical" href="https://benetis.me/post/angular-authentication/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": ""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "",
+        
+        "url": "https://benetis.me",
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "Let's code: Authentication in Angular #1 - creating login form",
+    "name": "Let's code: Authentication in Angular #1 - creating login form",
+    "wordCount":  1134 ,
+    "timeRequired": "PT6M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://benetis.me/post/angular-authentication/",
+    "datePublished": "2017-04-24T19:40Z",
+    "dateModified": "2017-04-24T19:40Z",
+    
+    "keywords": "Angular, Frontend, Side-project, Let's code, Material, FlexLayout",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://benetis.me/post/angular-authentication/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-36419336-4', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="https://benetis.me/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="https://benetis.me/index.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Let&#39;s code: Authentication in Angular #1 - creating login form</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2017-04-24T19:40:24&#43;02:00">
+            Apr 24, 2017
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://benetis.me/tags/angular/">#Angular</a></span>
+         
+          <span class="post-tag small"><a href="https://benetis.me/tags/frontend/">#Frontend</a></span>
+         
+          <span class="post-tag small"><a href="https://benetis.me/tags/side-project/">#Side-project</a></span>
+         
+          <span class="post-tag small"><a href="https://benetis.me/tags/lets-code/">#Let&#39;s code</a></span>
+         
+          <span class="post-tag small"><a href="https://benetis.me/tags/material/">#Material</a></span>
+         
+          <span class="post-tag small"><a href="https://benetis.me/tags/flexlayout/">#FlexLayout</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h3 id="introduction">Introduction</h3>
+
+<p>Login form - a gate though which user logs into application. If it is working well - you don&rsquo;t notice it - if it is bad - it will always annoy you. Of course it is not only UX/UI problem - there are security implications on server side also. But we will keep these concerns beyond this post scope.</p>
+
+<p>We will have few blog posts on authenticating Angular application. This one will focus on login form. Before diving into login form we will outline what we in a whole for authentication</p>
+
+<p>The project to which we will add login form is a side project of mine. (anvilium.com)</p>
+
+<p>Versions: using latest angular-cli (1.0.0) with angular4(4.0.2)</p>
+
+<h3 id="plan-for-authentication">Plan for authentication</h3>
+
+<p>What we need for authentication to work:</p>
+
+<p>I will highlight the points which will be covered in this post.</p>
+
+<p>UX:</p>
+
+<ul>
+<li><strong>Our login page will consist of two tabs: login and registration</strong></li>
+<li><strong>For user to register we will only ask for email and password</strong></li>
+<li>If user is not authenticated - redirect him to login page</li>
+<li><strong>It should be easy to switch between login/register tabs</strong></li>
+<li>After registering - user needs to click on activation link in email</li>
+</ul>
+
+<p>Technical:</p>
+
+<ul>
+<li>If user has expired token - try refreshing it (OAuth)</li>
+<li>If user has no token or refresh token failed - redirect him to login page (OAuth)</li>
+<li>We need to limit login attempts (server only)</li>
+<li><strong>Password strength - at least 8 symbols</strong></li>
+<li>User should activate new account in 24 hours before it expires</li>
+</ul>
+
+<p>There is a great post on logins written by Jeff Atwood. We will use some ideas from that post in our login form. <a href="https://blog.codinghorror.com/the-god-login/">https://blog.codinghorror.com/the-god-login/</a></p>
+
+<h3 id="login-form-plan">Login form plan</h3>
+
+<p>Quick sketch before I dive into actual work. (Using draw.io)</p>
+
+<p><img src="https://benetis.me/images/2017/04/anvilium-login.jpg" alt="" /></p>
+
+<p>Sorry for poor sketch, but ignoring that - this is how login screen should look. We will add some material look &lsquo;n feel to it.</p>
+
+<p>Whole form is in middle of screen, centered. Register/Login are tabs which can be switched easily. Both of those tabs have two fields - <em>email</em> and <em>password</em>. The only difference is button bellow them which indicates action that will performed. (Login, Register). Also after user clicks register - component will indicate to user that he has to click activate link in email.</p>
+
+<p>Code organization considerations: we will need to display login form instead of whole application - it means route for login will need to be at app level. Will create <code>LoginModule</code> and eagerly load it in <code>app.module</code>.</p>
+
+<h3 id="setup-and-routing">Setup and routing</h3>
+
+<h5 id="setup">Setup</h5>
+
+<p>First we will create new component in our shared module folder.</p>
+
+<ul>
+<li><code>cd src/app</code></li>
+<li><code>ng g module login</code> Using angular-cli scaffolding we will create <code>LoginModule</code></li>
+<li><code>cd login</code></li>
+<li><code>ng g component login</code> This will create login component with all needed files and add it to <code>LoginModule</code> declarations</li>
+</ul>
+
+<p>Don&rsquo;t forget to include <code>LoginModule</code> into <code>AppModule</code> imports</p>
+
+<h5 id="routing-for-app">Routing for app</h5>
+
+<p>Currently our application is routed with navigation menu stuck in one place.</p>
+
+<p><img src="https://benetis.me/images/2017/04/route-changing.gif" alt="" /></p>
+
+<p>This means we will need to add another <code>router-outlet</code> for app itself and login page</p>
+
+<p>We will move our <code>app.component</code> template to <code>content-main</code> (new component) and instead put <code>router-outlet</code></p>
+
+<p>You can read more about child route configuration here - <a href="https://angular.io/docs/ts/latest/guide/router.html#!#child-route-config">https://angular.io/docs/ts/latest/guide/router.html#!#child-route-config</a></p>
+
+<p>Moving on. Updating <code>app.routing</code>. Moving other routes to <code>path: ''</code> and adding routes as children since they are going to be routed from <code>content-main</code> <code>router-outlet</code></p>
+
+<p><code>LoginModule</code> routes will be kept near LoginModule and imported together with module.</p>
+
+<pre><code class="language-typescript">export const appRoutes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'dashboard'
+  },
+  { path: '',
+    component: ContentMainComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: 'app/+dashboard/dashboard.module#DashboardModule',
+      },
+      {
+        path: 'reviews',
+        loadChildren: 'app/+reviews/reviews.module#ReviewsModule',
+      },
+      {
+        path: 'statistics',
+        loadChildren: 'app/+statistics/statistics.module#StatisticsModule',
+      },
+    ]
+  },
+  // { path: '**', component: PageNotFoundComponent }
+];
+
+</code></pre>
+
+<p>You can see the result:</p>
+
+<p><img src="https://benetis.me/images/2017/04/login-route-without-nav.gif" alt="" /></p>
+
+<h5 id="routing-for-login-and-registration">Routing for login and registration</h5>
+
+<p>As discussed, we will have two routes in our login. One will be for login and another for registration. We could not include these into actual web routes - but doing so will let users to bookmark/send links to our application login/registration forms.</p>
+
+<p>First, dummy components for <code>LoginForm</code> and <code>RegistrationForm</code></p>
+
+<p>In our <code>LoginModule</code> folder:</p>
+
+<p><code>ng g component login-form</code></p>
+
+<p><code>ng g component registration-form</code></p>
+
+<p>In <code>login.component.html</code> we will need to add <code>router-outlet</code> to change our forms in this module level.</p>
+
+<p>Next, creating <code>login.routing.ts</code></p>
+
+<pre><code class="language-typescript">export const loginRoutes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginFormComponent,
+      },
+      {
+        path: 'register',
+        component: RegistrationFormComponent
+      }
+    ]
+  },
+
+]
+</code></pre>
+
+<p>and in <code>LoginModule</code> imports we will add this line:</p>
+
+<pre><code class="language-typescript">RouterModule.forChild(loginRoutes)
+</code></pre>
+
+<p>Let&rsquo;s see.</p>
+
+<p><img src="https://benetis.me/images/2017/04/register-login-routes.gif" alt="" /></p>
+
+<h3 id="presentation-layer">Presentation &ldquo;layer&rdquo;</h3>
+
+<p>Next up - form itself. We can use quite a lot of material components here.</p>
+
+<p>First step: get those tabs working. MdTabs (Material tabs) can be easily put to use. Also we will MdCard to get that nice tile looking card.</p>
+
+<p>Import <code>MdTabsModule, MdCardModule</code> and you are ready to go. Grabbing example from <a href="https://material.angular.io/components/component/tabs">https://material.angular.io/components/component/tabs</a></p>
+
+<p>we end up with this code for tabs:</p>
+
+<p><code>login.component.html</code></p>
+
+<pre><code class="language-html">&lt;div class=&quot;login-container&quot;
+     fxLayout=&quot;column&quot;
+     fxLayoutAlign=&quot;center center&quot;&gt;
+    &lt;md-card&gt;
+    &lt;nav md-tab-nav-bar&gt;
+        &lt;a md-tab-link
+           routerLink=&quot;/login&quot;
+           routerLinkActive
+           [routerLinkActiveOptions]=&quot;{ exact: true }&quot;
+           #rlaLogin=&quot;routerLinkActive&quot;
+           [active]=&quot;rlaLogin.isActive&quot;&gt;
+            Login
+        &lt;/a&gt;
+        &lt;a md-tab-link
+           routerLink=&quot;register&quot;
+           routerLinkActive
+           [routerLinkActiveOptions]=&quot;{ exact: true }&quot;
+           #rlaRegister=&quot;routerLinkActive&quot;
+           [active]=&quot;rlaRegister.isActive&quot;
+        &gt;
+            Register
+        &lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
+    &lt;/md-card&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Two tabs with routerLinkActive to select which one of them is active. <code>exact: true</code> is needed to selected subroute <code>/login/register</code>.</p>
+
+<p>And a little bit of flex-layout magic to center things out</p>
+
+<p><img src="https://benetis.me/images/2017/04/md-tabs-route.gif" alt="" /></p>
+
+<h5 id="inputs">Inputs</h5>
+
+<p>Adding few MdInput does the magic</p>
+
+<p><code>login-form.component.html</code></p>
+
+<pre><code class="language-html">&lt;form fxLayout=&quot;column&quot;&gt;
+    &lt;md-input-container fxFlex=&quot;100&quot;&gt;
+        &lt;input mdInput
+               name=&quot;email&quot;
+               type=&quot;email&quot;
+               [(ngModel)]=&quot;email&quot;
+               required
+               placeholder=&quot;Email&quot;&gt;
+    &lt;/md-input-container&gt;
+    &lt;md-input-container fxFlex=&quot;100&quot;&gt;
+        &lt;input mdInput
+               name=&quot;password&quot;
+               type=&quot;password&quot;
+               [(ngModel)]=&quot;password&quot;
+               required
+               placeholder=&quot;Password&quot;&gt;
+    &lt;/md-input-container&gt;
+    &lt;div fxFlex=&quot;33&quot; fxFlexAlign=&quot;end&quot;&gt;
+        &lt;button md-raised-button&gt;Login&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p><img src="https://benetis.me/images/2017/04/form-inputs.gif" alt="" /></p>
+
+<p>We only check if field is filled but we don&rsquo;t validate.</p>
+
+<h5 id="validation">Validation</h5>
+
+<p>We need to validate if email is &ldquo;right&rdquo; and check if passwords strength is OK. We defined requirement to be at least 8 symbols.</p>
+
+<p>I&rsquo;ll skip custom validator creation - you can read on how to do that in angular docs. <a href="https://angular.io/docs/ts/latest/cookbook/form-validation.html#!#custom-validation">https://angular.io/docs/ts/latest/cookbook/form-validation.html#!#custom-validation</a></p>
+
+<p>Using material&rsquo;s <code>&lt;md-error&gt;</code> we simply define our validators on inputs and here we have all the stuff we need for them.</p>
+
+<p><code>login-form.component.html</code></p>
+
+<pre><code class="language-html">&lt;form fxLayout=&quot;column&quot;&gt;
+    &lt;md-input-container fxFlex=&quot;100&quot;&gt;
+        &lt;input mdInput
+               name=&quot;email&quot;
+               type=&quot;email&quot;
+               [(ngModel)]=&quot;email&quot;
+               required
+               validEmail
+               placeholder=&quot;Email&quot;&gt;
+        &lt;md-error&gt;Email is invalid&lt;/md-error&gt;
+    &lt;/md-input-container&gt;
+    &lt;md-input-container fxFlex=&quot;100&quot;&gt;
+        &lt;input mdInput
+               name=&quot;password&quot;
+               type=&quot;password&quot;
+               [(ngModel)]=&quot;password&quot;
+               required
+               minlength=&quot;8&quot;
+               placeholder=&quot;Password&quot;&gt;
+        &lt;md-error&gt;Needs to be at least 8 characters&lt;/md-error&gt;
+    &lt;/md-input-container&gt;
+    &lt;div fxFlex=&quot;33&quot; fxFlexAlign=&quot;end&quot;&gt;
+        &lt;button md-raised-button&gt;Login&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>And we are done with login form.</p>
+
+<h3 id="registration-form">Registration form</h3>
+
+<p>It&rsquo;s simple. We just take what we have and change &ldquo;Login&rdquo; to &ldquo;Register&rdquo;. You might say duplication of code is bad, but I will argue that in this case its not worth to try to generalize. If our form gets more difficult - we can go ahead and refactor common parts.</p>
+
+<p>One thing to mention - we defined minimum password length on login form. We can delete that from login-form and leave it only on registration-form.</p>
+
+<p>That&rsquo;s it. We have fulfilled our requirements at the top. Until next time.</p>
+
+<h3 id="feedback">Feedback</h3>
+
+<p>If you have any suggestions - I am eagerly waiting for feedback. <a href="https://benetis.me/post/contact-me/">https://benetis.me/post/contact-me/</a></p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://benetis.me/">Žygimantas Benetis</a></h4>
+  
+  <p>Read <a href="https://benetis.me/">more posts</a> by this author.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Kaunas, Lithuania</span>
+    <span class="author-link icon-link"><a href="https://benetis.me">https://benetis.me</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Let%27s%20code%3a%20Authentication%20in%20Angular%20%231%20-%20creating%20login%20form&nbsp;-&nbsp;Typical%20personal%20blog&amp;url=https%3a%2f%2fbenetis.me%2fpost%2fangular-authentication%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenetis.me%2fpost%2fangular-authentication%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fbenetis.me%2fpost%2fangular-authentication%2f&amp;description=Let%27s%20code%3a%20Authentication%20in%20Angular%20%231%20-%20creating%20login%20form"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fbenetis.me%2fpost%2fangular-authentication%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Typical personal blog</a> All rights reserved - 2017</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://benetis.me/js/jquery.js"></script>
+    <script type="text/javascript" src="https://benetis.me/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://benetis.me/js/index.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-typescript.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-haskell.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>
+

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Material on Typical personal blog</title>
+    <link>https://benetis.me/tags/material/index.xml</link>
+    <description>Recent content in Material on Typical personal blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2017</copyright>
+    <atom:link href="https://benetis.me/tags/material/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Let&#39;s code: Authentication in Angular #1 - creating login form</title>
+      <link>https://benetis.me/post/angular-authentication/</link>
+      <pubDate>Mon, 24 Apr 2017 19:40:24 +0200</pubDate>
+      
+      <guid>https://benetis.me/post/angular-authentication/</guid>
+      <description>
+
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Login form - a gate though which user logs into application. If it is working well - you don&amp;rsquo;t notice it - if it is bad - it will always annoy you. Of course it is not only UX/UI problem - there are security implications on server side also. But we will keep these concerns beyond this post scope.&lt;/p&gt;
+
+&lt;p&gt;We will have few blog posts on authenticating Angular application. This one will focus on login form. Before diving into login form we will outline what we in a whole for authentication&lt;/p&gt;
+
+&lt;p&gt;The project to which we will add login form is a side project of mine. (anvilium.com)&lt;/p&gt;
+
+&lt;p&gt;Versions: using latest angular-cli (1.0.0) with angular4(4.0.2)&lt;/p&gt;
+
+&lt;h3 id=&#34;plan-for-authentication&#34;&gt;Plan for authentication&lt;/h3&gt;
+
+&lt;p&gt;What we need for authentication to work:&lt;/p&gt;
+
+&lt;p&gt;I will highlight the points which will be covered in this post.&lt;/p&gt;
+
+&lt;p&gt;UX:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Our login page will consist of two tabs: login and registration&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For user to register we will only ask for email and password&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;If user is not authenticated - redirect him to login page&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;It should be easy to switch between login/register tabs&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;After registering - user needs to click on activation link in email&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Technical:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If user has expired token - try refreshing it (OAuth)&lt;/li&gt;
+&lt;li&gt;If user has no token or refresh token failed - redirect him to login page (OAuth)&lt;/li&gt;
+&lt;li&gt;We need to limit login attempts (server only)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Password strength - at least 8 symbols&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;User should activate new account in 24 hours before it expires&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There is a great post on logins written by Jeff Atwood. We will use some ideas from that post in our login form. &lt;a href=&#34;https://blog.codinghorror.com/the-god-login/&#34;&gt;https://blog.codinghorror.com/the-god-login/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;login-form-plan&#34;&gt;Login form plan&lt;/h3&gt;
+
+&lt;p&gt;Quick sketch before I dive into actual work. (Using draw.io)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/04/anvilium-login.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sorry for poor sketch, but ignoring that - this is how login screen should look. We will add some material look &amp;lsquo;n feel to it.&lt;/p&gt;
+
+&lt;p&gt;Whole form is in middle of screen, centered. Register/Login are tabs which can be switched easily. Both of those tabs have two fields - &lt;em&gt;email&lt;/em&gt; and &lt;em&gt;password&lt;/em&gt;. The only difference is button bellow them which indicates action that will performed. (Login, Register). Also after user clicks register - component will indicate to user that he has to click activate link in email.&lt;/p&gt;
+
+&lt;p&gt;Code organization considerations: we will need to display login form instead of whole application - it means route for login will need to be at app level. Will create &lt;code&gt;LoginModule&lt;/code&gt; and eagerly load it in &lt;code&gt;app.module&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;setup-and-routing&#34;&gt;Setup and routing&lt;/h3&gt;
+
+&lt;h5 id=&#34;setup&#34;&gt;Setup&lt;/h5&gt;
+
+&lt;p&gt;First we will create new component in our shared module folder.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cd src/app&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ng g module login&lt;/code&gt; Using angular-cli scaffolding we will create &lt;code&gt;LoginModule&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd login&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ng g component login&lt;/code&gt; This will create login component with all needed files and add it to &lt;code&gt;LoginModule&lt;/code&gt; declarations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Don&amp;rsquo;t forget to include &lt;code&gt;LoginModule&lt;/code&gt; into &lt;code&gt;AppModule&lt;/code&gt; imports&lt;/p&gt;
+
+&lt;h5 id=&#34;routing-for-app&#34;&gt;Routing for app&lt;/h5&gt;
+
+&lt;p&gt;Currently our application is routed with navigation menu stuck in one place.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/04/route-changing.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This means we will need to add another &lt;code&gt;router-outlet&lt;/code&gt; for app itself and login page&lt;/p&gt;
+
+&lt;p&gt;We will move our &lt;code&gt;app.component&lt;/code&gt; template to &lt;code&gt;content-main&lt;/code&gt; (new component) and instead put &lt;code&gt;router-outlet&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You can read more about child route configuration here - &lt;a href=&#34;https://angular.io/docs/ts/latest/guide/router.html#!#child-route-config&#34;&gt;https://angular.io/docs/ts/latest/guide/router.html#!#child-route-config&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Moving on. Updating &lt;code&gt;app.routing&lt;/code&gt;. Moving other routes to &lt;code&gt;path: &#39;&#39;&lt;/code&gt; and adding routes as children since they are going to be routed from &lt;code&gt;content-main&lt;/code&gt; &lt;code&gt;router-outlet&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;LoginModule&lt;/code&gt; routes will be kept near LoginModule and imported together with module.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;export const appRoutes: Routes = [
+  {
+    path: &#39;&#39;,
+    pathMatch: &#39;full&#39;,
+    redirectTo: &#39;dashboard&#39;
+  },
+  { path: &#39;&#39;,
+    component: ContentMainComponent,
+    children: [
+      {
+        path: &#39;dashboard&#39;,
+        loadChildren: &#39;app/+dashboard/dashboard.module#DashboardModule&#39;,
+      },
+      {
+        path: &#39;reviews&#39;,
+        loadChildren: &#39;app/+reviews/reviews.module#ReviewsModule&#39;,
+      },
+      {
+        path: &#39;statistics&#39;,
+        loadChildren: &#39;app/+statistics/statistics.module#StatisticsModule&#39;,
+      },
+    ]
+  },
+  // { path: &#39;**&#39;, component: PageNotFoundComponent }
+];
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can see the result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/04/login-route-without-nav.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;routing-for-login-and-registration&#34;&gt;Routing for login and registration&lt;/h5&gt;
+
+&lt;p&gt;As discussed, we will have two routes in our login. One will be for login and another for registration. We could not include these into actual web routes - but doing so will let users to bookmark/send links to our application login/registration forms.&lt;/p&gt;
+
+&lt;p&gt;First, dummy components for &lt;code&gt;LoginForm&lt;/code&gt; and &lt;code&gt;RegistrationForm&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In our &lt;code&gt;LoginModule&lt;/code&gt; folder:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ng g component login-form&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ng g component registration-form&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In &lt;code&gt;login.component.html&lt;/code&gt; we will need to add &lt;code&gt;router-outlet&lt;/code&gt; to change our forms in this module level.&lt;/p&gt;
+
+&lt;p&gt;Next, creating &lt;code&gt;login.routing.ts&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;export const loginRoutes: Routes = [
+  {
+    path: &#39;login&#39;,
+    component: LoginComponent,
+    children: [
+      {
+        path: &#39;login&#39;,
+        component: LoginFormComponent,
+      },
+      {
+        path: &#39;register&#39;,
+        component: RegistrationFormComponent
+      }
+    ]
+  },
+
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and in &lt;code&gt;LoginModule&lt;/code&gt; imports we will add this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;RouterModule.forChild(loginRoutes)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s see.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/04/register-login-routes.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;presentation-layer&#34;&gt;Presentation &amp;ldquo;layer&amp;rdquo;&lt;/h3&gt;
+
+&lt;p&gt;Next up - form itself. We can use quite a lot of material components here.&lt;/p&gt;
+
+&lt;p&gt;First step: get those tabs working. MdTabs (Material tabs) can be easily put to use. Also we will MdCard to get that nice tile looking card.&lt;/p&gt;
+
+&lt;p&gt;Import &lt;code&gt;MdTabsModule, MdCardModule&lt;/code&gt; and you are ready to go. Grabbing example from &lt;a href=&#34;https://material.angular.io/components/component/tabs&#34;&gt;https://material.angular.io/components/component/tabs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;we end up with this code for tabs:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;login.component.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div class=&amp;quot;login-container&amp;quot;
+     fxLayout=&amp;quot;column&amp;quot;
+     fxLayoutAlign=&amp;quot;center center&amp;quot;&amp;gt;
+    &amp;lt;md-card&amp;gt;
+    &amp;lt;nav md-tab-nav-bar&amp;gt;
+        &amp;lt;a md-tab-link
+           routerLink=&amp;quot;/login&amp;quot;
+           routerLinkActive
+           [routerLinkActiveOptions]=&amp;quot;{ exact: true }&amp;quot;
+           #rlaLogin=&amp;quot;routerLinkActive&amp;quot;
+           [active]=&amp;quot;rlaLogin.isActive&amp;quot;&amp;gt;
+            Login
+        &amp;lt;/a&amp;gt;
+        &amp;lt;a md-tab-link
+           routerLink=&amp;quot;register&amp;quot;
+           routerLinkActive
+           [routerLinkActiveOptions]=&amp;quot;{ exact: true }&amp;quot;
+           #rlaRegister=&amp;quot;routerLinkActive&amp;quot;
+           [active]=&amp;quot;rlaRegister.isActive&amp;quot;
+        &amp;gt;
+            Register
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/nav&amp;gt;
+    &amp;lt;router-outlet&amp;gt;&amp;lt;/router-outlet&amp;gt;
+    &amp;lt;/md-card&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Two tabs with routerLinkActive to select which one of them is active. &lt;code&gt;exact: true&lt;/code&gt; is needed to selected subroute &lt;code&gt;/login/register&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;And a little bit of flex-layout magic to center things out&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/04/md-tabs-route.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;inputs&#34;&gt;Inputs&lt;/h5&gt;
+
+&lt;p&gt;Adding few MdInput does the magic&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;login-form.component.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;form fxLayout=&amp;quot;column&amp;quot;&amp;gt;
+    &amp;lt;md-input-container fxFlex=&amp;quot;100&amp;quot;&amp;gt;
+        &amp;lt;input mdInput
+               name=&amp;quot;email&amp;quot;
+               type=&amp;quot;email&amp;quot;
+               [(ngModel)]=&amp;quot;email&amp;quot;
+               required
+               placeholder=&amp;quot;Email&amp;quot;&amp;gt;
+    &amp;lt;/md-input-container&amp;gt;
+    &amp;lt;md-input-container fxFlex=&amp;quot;100&amp;quot;&amp;gt;
+        &amp;lt;input mdInput
+               name=&amp;quot;password&amp;quot;
+               type=&amp;quot;password&amp;quot;
+               [(ngModel)]=&amp;quot;password&amp;quot;
+               required
+               placeholder=&amp;quot;Password&amp;quot;&amp;gt;
+    &amp;lt;/md-input-container&amp;gt;
+    &amp;lt;div fxFlex=&amp;quot;33&amp;quot; fxFlexAlign=&amp;quot;end&amp;quot;&amp;gt;
+        &amp;lt;button md-raised-button&amp;gt;Login&amp;lt;/button&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/04/form-inputs.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We only check if field is filled but we don&amp;rsquo;t validate.&lt;/p&gt;
+
+&lt;h5 id=&#34;validation&#34;&gt;Validation&lt;/h5&gt;
+
+&lt;p&gt;We need to validate if email is &amp;ldquo;right&amp;rdquo; and check if passwords strength is OK. We defined requirement to be at least 8 symbols.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll skip custom validator creation - you can read on how to do that in angular docs. &lt;a href=&#34;https://angular.io/docs/ts/latest/cookbook/form-validation.html#!#custom-validation&#34;&gt;https://angular.io/docs/ts/latest/cookbook/form-validation.html#!#custom-validation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Using material&amp;rsquo;s &lt;code&gt;&amp;lt;md-error&amp;gt;&lt;/code&gt; we simply define our validators on inputs and here we have all the stuff we need for them.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;login-form.component.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;form fxLayout=&amp;quot;column&amp;quot;&amp;gt;
+    &amp;lt;md-input-container fxFlex=&amp;quot;100&amp;quot;&amp;gt;
+        &amp;lt;input mdInput
+               name=&amp;quot;email&amp;quot;
+               type=&amp;quot;email&amp;quot;
+               [(ngModel)]=&amp;quot;email&amp;quot;
+               required
+               validEmail
+               placeholder=&amp;quot;Email&amp;quot;&amp;gt;
+        &amp;lt;md-error&amp;gt;Email is invalid&amp;lt;/md-error&amp;gt;
+    &amp;lt;/md-input-container&amp;gt;
+    &amp;lt;md-input-container fxFlex=&amp;quot;100&amp;quot;&amp;gt;
+        &amp;lt;input mdInput
+               name=&amp;quot;password&amp;quot;
+               type=&amp;quot;password&amp;quot;
+               [(ngModel)]=&amp;quot;password&amp;quot;
+               required
+               minlength=&amp;quot;8&amp;quot;
+               placeholder=&amp;quot;Password&amp;quot;&amp;gt;
+        &amp;lt;md-error&amp;gt;Needs to be at least 8 characters&amp;lt;/md-error&amp;gt;
+    &amp;lt;/md-input-container&amp;gt;
+    &amp;lt;div fxFlex=&amp;quot;33&amp;quot; fxFlexAlign=&amp;quot;end&amp;quot;&amp;gt;
+        &amp;lt;button md-raised-button&amp;gt;Login&amp;lt;/button&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we are done with login form.&lt;/p&gt;
+
+&lt;h3 id=&#34;registration-form&#34;&gt;Registration form&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s simple. We just take what we have and change &amp;ldquo;Login&amp;rdquo; to &amp;ldquo;Register&amp;rdquo;. You might say duplication of code is bad, but I will argue that in this case its not worth to try to generalize. If our form gets more difficult - we can go ahead and refactor common parts.&lt;/p&gt;
+
+&lt;p&gt;One thing to mention - we defined minimum password length on login form. We can delete that from login-form and leave it only on registration-form.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s it. We have fulfilled our requirements at the top. Until next time.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
