@@ -8,7 +8,7 @@ theme = "ghost-casper"
 [params]
   description = "Thoughts on us, humans and software"
   cover = "images/blog_cover_optimized_stars.jpg"
-  author = "Žygimantas Benetis"
+  author = "Žygimantas Benetis (Zygimantas Benetis)"
   authorlocation = "Kaunas, Lithuania"
   authorwebsite = "https://benetis.me"
   # bio= "my bio"

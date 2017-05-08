@@ -18,3 +18,5 @@ Feedback is important for everyone. I am no exception. Ping me if something is o
 Another way to suggest changes to blog content is to open issue here. You can add: paragraphs, comments, fixes, quotes - anything! Community contribution more than welcome. [https://github.com/benetis/benetis.me/issues](https://github.com/benetis/benetis.me/issues)
 
 Thanks in advance!
+
+Zygimantas Benetis
