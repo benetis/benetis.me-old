@@ -307,6 +307,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
 ```
 
+![](/images/2017/05/error-response.gif)
+
 Response handled. If error - shows it above login form. We can adjust that to our needs in effect or reducer. We also indicate request is happening by showing `<md-spinner>`
 
 #### Saving token
@@ -340,6 +342,8 @@ loginComplete$: Observable<Action> = this.actions$
     }
   })
 ```
+
+![](/images/2017/05/save-token.gif)
 
 ### Auth guard
 
@@ -383,6 +387,8 @@ export class AuthGuard implements CanActivate {
 We subscribe to get if user is loggedIn (we set this state property to true when we set AuthInfo). Before that - we dispatch an action with our token from LocalStorage. We do this - so that user from email link or bookmark can directly access our application. Everything else is self explanatory.
 
 p.s redirect url needs to be saved - I propose for you to dispatch action to save it and redirect later.
+
+![](/images/2017/05/auth-guard.gif)
 
 ## Summary
 
