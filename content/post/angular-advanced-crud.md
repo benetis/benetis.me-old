@@ -35,8 +35,26 @@ Aside of the stuff we mentioned above - we obviously will be implementing CRUD o
 - If something happens (duplicate points ignored...) user needs to be informed
 - Delete list of points
 
+We will be using Angular 4.1 with CLI 1.0.1
+
 ## Planning
 
 Quick mockup on how I imagine this will look like. Probably best starting place for any application which can be componetized.
 
 ![](/images/2017/05/points-mock.png)
+
+Clearly we will need a good grid/table component. I have implemented tables so many times in Angular that this time I am just gonna skip it. There is even a post on Angular table by me - [[https://benetis.me/post/angular-table/](/post/angular-table/)
+
+Tabs component to switch between points and squares. (Since squares need pagination) OR just put squares table below. This is a very possible solution since it let's to look at points and have squares "counting" at same time.
+
+Action menu for actions to perform on selected rows of table
+
+Validations for inputs to add to the table. We have limits
+
+Research into square finding algorithm - but I guess we can leave that for later.
+
+Import file and upload to table can be plugged anywhere
+
+After retro - I have updated mockup with another possible solution:
+
+![](/images/2017/05/updated-mockup.png)
