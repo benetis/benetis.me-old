@@ -387,3 +387,7 @@ p.s redirect url needs to be saved - I propose for you to dispatch action to sav
 ## Summary
 
 There are few more things we need to do for auth to be finished. Logout to clean redux state + LocalStorage items, refresh token and minor tweaks, updates.
+
+### Feedback
+
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
