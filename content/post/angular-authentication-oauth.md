@@ -1,5 +1,5 @@
 +++
-date = "2017-05-05T19:40:24+02:00"
+date = "2017-05-10T21:40:24+02:00"
 draft = true
 share = true
 title = "Let's code: Authentication in Angular #2 - Auth service"
@@ -20,10 +20,7 @@ Our setup - angular-cli 1.0 + Angular4 (Angular 4.1)
 ### Aims
 
 - After user clicks login - we need to call OAuth endpoint to get `access` and `refresh` tokens which we will store in local storage
-- After user clicks logout - we need to clean local storage and remove tokens + reset redux state.
 - Show errors for user
-- Create `AuthGuard` to protect routes. Basically we want to redirect unauthenticated user to our login form. Which we will do by checking local storage - if it has specific key defined where we saved our tokens
-- If user access token is expired - we want to use refresh token to get new access token. User shouldn't notice he was logged out.
 - We want to store tokens in our redux store so they are easily accessible and can be added as headers to our api requests
 
 ### Login
@@ -312,3 +309,32 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 Response handled. If error - shows it above login form. We can adjust that to our needs in effect or reducer. We also indicate request is happening by showing `<md-spinner>`
 
 #### Saving token
+
+Starting with action to set access token. After we set access token we will need to update our state to have newest token + put in local storage so it can be grabbed later. State update will happen in reducer, as for LocalStorage update - it is a side effect so we will put it in effects.
+
+```typescript
+export interface AuthInfo {
+  access_token: string,
+  expires_in: number
+}
+
+private readonly tokenItem = 'token'
+
+@Effect()
+loginComplete$: Observable<Action> = this.actions$
+  .ofType(auth.ActionTypes.LOGIN_COMPLETE)
+  .map(toPayload)
+  .switchMap((payload: AuthInfo) => {
+
+    localStorage.setItem(this.tokenItem, JSON.stringify(payload));
+
+    return of(new auth.SetAuthInfoAction({
+      authInfo: payload,
+      updated: Math.floor(Date.now() / 1000) // To know when token expires
+    }))
+  })
+```
+
+## Summary
+
+There are few more things we need to do for auth to be finished. AuthGuard to protect routes, logout to clean redux state + LocalStorage items, refresh token and minor tweaks, updates.
