@@ -106,7 +106,7 @@
     },
     "headline": "Let's code: Authentication in Angular #2 - Auth service",
     "name": "Let's code: Authentication in Angular #2 - Auth service",
-    "wordCount":  1178 ,
+    "wordCount":  1177 ,
     "timeRequired": "PT6M",
     "inLanguage": {
       "@type": "Language",
@@ -305,13 +305,13 @@ LOGIN_COMPLETE: type('[Auth] Login complete'),
     }
   }
 }
+</code></pre>
 
-Also it's important to note that since responses are different - we need to handle errors differently. We grab error description from json response and just leave it for effect to handle.
+<p>Also it&rsquo;s important to note that since responses are different - we need to handle errors differently. We grab error description from json response and just leave it for effect to handle.</p>
 
-Handle error function taken from - [https://angular.io/docs/ts/latest/guide/server-communication.html#!#error-handling](https://angular.io/docs/ts/latest/guide/server-communication.html#!#error-handling)
+<p>Handle error function taken from - <a href="https://angular.io/docs/ts/latest/guide/server-communication.html#!#error-handling">https://angular.io/docs/ts/latest/guide/server-communication.html#!#error-handling</a></p>
 
-```typescript
-private post(url: string
+<pre><code class="language-typescript">private post(url: string
   , objToPost: any): Observable&lt;Response&gt; {
 
   const headers = new Headers({'Content-Type': 'application/json'});

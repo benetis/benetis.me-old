@@ -103,13 +103,13 @@ LOGIN_COMPLETE: type(&#39;[Auth] Login complete&#39;),
     }
   }
 }
+&lt;/code&gt;&lt;/pre&gt;
 
-Also it&#39;s important to note that since responses are different - we need to handle errors differently. We grab error description from json response and just leave it for effect to handle.
+&lt;p&gt;Also it&amp;rsquo;s important to note that since responses are different - we need to handle errors differently. We grab error description from json response and just leave it for effect to handle.&lt;/p&gt;
 
-Handle error function taken from - [https://angular.io/docs/ts/latest/guide/server-communication.html#!#error-handling](https://angular.io/docs/ts/latest/guide/server-communication.html#!#error-handling)
+&lt;p&gt;Handle error function taken from - &lt;a href=&#34;https://angular.io/docs/ts/latest/guide/server-communication.html#!#error-handling&#34;&gt;https://angular.io/docs/ts/latest/guide/server-communication.html#!#error-handling&lt;/a&gt;&lt;/p&gt;
 
-```typescript
-private post(url: string
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;private post(url: string
   , objToPost: any): Observable&amp;lt;Response&amp;gt; {
 
   const headers = new Headers({&#39;Content-Type&#39;: &#39;application/json&#39;});
