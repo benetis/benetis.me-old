@@ -11,6 +11,25 @@
     <atom:link href="https://benetis.me/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Let&#39;s code: &#39;Advanced&#39; CRUD in Angular</title>
+      <link>https://benetis.me/post/angular-advanced-crud/</link>
+      <pubDate>Wed, 10 May 2017 23:00:24 +0200</pubDate>
+      
+      <guid>https://benetis.me/post/angular-advanced-crud/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;What does word advanced mean? It&amp;rsquo;s just that the CRUD application we are going to implement will have some additional features to what you might expect:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;import data&lt;/li&gt;
+&lt;li&gt;save/load chunks data&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Let&#39;s code: Authentication in Angular #2 - Auth service</title>
       <link>https://benetis.me/post/angular-authentication-oauth/</link>
       <pubDate>Wed, 10 May 2017 23:00:24 +0200</pubDate>
@@ -315,6 +334,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/error-response.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
 &lt;p&gt;Response handled. If error - shows it above login form. We can adjust that to our needs in effect or reducer. We also indicate request is happening by showing &lt;code&gt;&amp;lt;md-spinner&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;saving-token&#34;&gt;Saving token&lt;/h4&gt;
@@ -347,6 +368,8 @@ loginComplete$: Observable&amp;lt;Action&amp;gt; = this.actions$
     }
   })
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/save-token.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;auth-guard&#34;&gt;Auth guard&lt;/h3&gt;
 
@@ -390,9 +413,15 @@ export class AuthGuard implements CanActivate {
 
 &lt;p&gt;p.s redirect url needs to be saved - I propose for you to dispatch action to save it and redirect later.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/auth-guard.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;There are few more things we need to do for auth to be finished. Logout to clean redux state + LocalStorage items, refresh token and minor tweaks, updates.&lt;/p&gt;
+
+&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
+
+&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

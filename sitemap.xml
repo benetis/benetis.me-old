@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://benetis.me/post/angular-advanced-crud/</loc>
+    <lastmod>2017-05-10T23:00:24+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://benetis.me/post/angular-authentication-oauth/</loc>
     <lastmod>2017-05-10T23:00:24+02:00</lastmod>
   </url>
