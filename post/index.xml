@@ -47,11 +47,29 @@
 &lt;li&gt;Delete list of points&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;We will be using Angular 4.1 with CLI 1.0.1&lt;/p&gt;
+
 &lt;h2 id=&#34;planning&#34;&gt;Planning&lt;/h2&gt;
 
 &lt;p&gt;Quick mockup on how I imagine this will look like. Probably best starting place for any application which can be componetized.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/points-mock.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Clearly we will need a good grid/table component. I have implemented tables so many times in Angular that this time I am just gonna skip it. There is even a post on Angular table by me - [&lt;a href=&#34;https://benetis.me/post/angular-table/&#34;&gt;https://benetis.me/post/angular-table/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tabs component to switch between points and squares. (Since squares need pagination) OR just put squares table below. This is a very possible solution since it let&amp;rsquo;s to look at points and have squares &amp;ldquo;counting&amp;rdquo; at same time.&lt;/p&gt;
+
+&lt;p&gt;Action menu for actions to perform on selected rows of table&lt;/p&gt;
+
+&lt;p&gt;Validations for inputs to add to the table. We have limits&lt;/p&gt;
+
+&lt;p&gt;Research into square finding algorithm - but I guess we can leave that for later.&lt;/p&gt;
+
+&lt;p&gt;Import file and upload to table can be plugged anywhere&lt;/p&gt;
+
+&lt;p&gt;After retro - I have updated mockup with another possible solution:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/updated-mockup.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
