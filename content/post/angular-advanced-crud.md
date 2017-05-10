@@ -22,7 +22,7 @@ What does word advanced mean? It's just that the CRUD application we are going t
 
 ## Requirements & Task itself
 
-Aside of the stuff we mentioned above - we obviously will be implementing CRUD operations. Our model on which are going to operate is going to be points (coordinate points {x, y}).
+Aside of the stuff we mentioned above - we obviously will be implementing CRUD operations. Our model on which are going to operate is going to be points (coordinate points `{x, y}`).
 
 - Input points by hand
 - Import points from file
@@ -32,4 +32,11 @@ Aside of the stuff we mentioned above - we obviously will be implementing CRUD o
 - Remove loaded points
 - Save chunk of points with specific name (if name exists - overwrite)
 - Load chunk of points from saved list
+- If something happens (duplicate points ignored...) user needs to be informed
 - Delete list of points
+
+## Planning
+
+Quick mockup on how I imagine this will look like. Probably best starting place for any application which can be componetized.
+
+![](/images/2017/05/points-mock.png)
