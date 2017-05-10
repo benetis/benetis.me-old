@@ -1,5 +1,5 @@
 +++
-date = "2017-05-10T21:40:24+02:00"
+date = "2017-05-10T23:00:24+02:00"
 draft = false
 share = true
 title = "Let's code: Authentication in Angular #2 - Auth service"
@@ -315,27 +315,75 @@ Starting with action to set access token. After we set access token we will need
 
 ```typescript
 export interface AuthInfo {
-  access_token: string,
-  expires_in: number
+  access_token?: string,
+  expires?: number,
+  expires_in?: number
 }
 
-private readonly tokenItem = 'token'
+public static readonly tokenItem = 'token'
 
 @Effect()
 loginComplete$: Observable<Action> = this.actions$
   .ofType(auth.ActionTypes.LOGIN_COMPLETE)
   .map(toPayload)
-  .switchMap((payload: AuthInfo) => {
+  .switchMap((payload) => {
 
-    localStorage.setItem(this.tokenItem, JSON.stringify(payload));
-
-    return of(new auth.SetAuthInfoAction({
-      authInfo: payload,
-      updated: Math.floor(Date.now() / 1000) // To know when token expires
-    }))
+    if (payload) {
+      const authInfoUpdated: AuthInfo = {
+        ...payload,
+        expires: payload.expires_in + Math.floor(Date.now() / 1000)
+      }
+      localStorage.setItem(AuthEffects.tokenItem, JSON.stringify(authInfoUpdated));
+      return of(new auth.SetAuthInfoAction(authInfoUpdated))
+    } else {
+      return of(new auth.LogoutAction())
+    }
   })
 ```
 
+### Auth guard
+
+Now that we have token saved in LocalStorage we can enable our AuthGuard. It will protect our routes and redirect unauthenticated user to login form.
+
+```typescript
+@Injectable()
+export class AuthGuard implements CanActivate {
+
+  private loggedIn$: Observable<boolean>;
+
+  constructor(private store: Store<fromRoot.State>
+    , private router: Router) {
+
+    this.loggedIn$ = store.select(fromRoot.getAuthLoggedIn)
+
+  }
+
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    this.store.dispatch(new auth.LoginCompleteAction(
+      JSON.parse(
+        localStorage.getItem(AuthEffects.tokenItem)
+      )
+    ))
+
+    return this.loggedIn$.map(loggedIn => {
+      if (loggedIn) {
+        return true;
+      } else {
+        this.router.navigate(['/login']);
+      }
+    }).catch((err) => {
+      console.log(err)
+      this.router.navigate(['/login']);
+      return Observable.of(false);
+    }).first()
+  }
+}
+```
+
+We subscribe to get if user is loggedIn (we set this state property to true when we set AuthInfo). Before that - we dispatch an action with our token from LocalStorage. We do this - so that user from email link or bookmark can directly access our application. Everything else is self explanatory.
+
+p.s redirect url needs to be saved - I propose for you to dispatch action to save it and redirect later.
+
 ## Summary
 
-There are few more things we need to do for auth to be finished. AuthGuard to protect routes, logout to clean redux state + LocalStorage items, refresh token and minor tweaks, updates.
+There are few more things we need to do for auth to be finished. Logout to clean redux state + LocalStorage items, refresh token and minor tweaks, updates.
