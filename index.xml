@@ -11,7 +11,7 @@
     <atom:link href="https://benetis.me/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Let&#39;s code: &#39;Advanced&#39; CRUD in Angular</title>
+      <title>Let&#39;s code: Advanced CRUD in Angular with unit tests</title>
       <link>https://benetis.me/post/angular-advanced-crud/</link>
       <pubDate>Wed, 10 May 2017 23:00:24 +0200</pubDate>
       
@@ -20,12 +20,38 @@
 
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 
-&lt;p&gt;What does word advanced mean? It&amp;rsquo;s just that the CRUD application we are going to implement will have some additional features to what you might expect:&lt;/p&gt;
+&lt;p&gt;What does word advanced mean? It&amp;rsquo;s just that the CRUD application we are going to implement will have some additional complexity you might expect:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;import data&lt;/li&gt;
 &lt;li&gt;save/load chunks data&lt;/li&gt;
+&lt;li&gt;lazy data processing&lt;/li&gt;
+&lt;li&gt;pagination&lt;/li&gt;
+&lt;li&gt;tests&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;requirements-task-itself&#34;&gt;Requirements &amp;amp; Task itself&lt;/h2&gt;
+
+&lt;p&gt;Aside of the stuff we mentioned above - we obviously will be implementing CRUD operations. Our model on which are going to operate is going to be points (coordinate points &lt;code&gt;{x, y}&lt;/code&gt;).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Input points by hand&lt;/li&gt;
+&lt;li&gt;Import points from file&lt;/li&gt;
+&lt;li&gt;Clear all points&lt;/li&gt;
+&lt;li&gt;Points should be paginated, pagination size can change&lt;/li&gt;
+&lt;li&gt;How many squares can be formed from these squares (lazy processing)&lt;/li&gt;
+&lt;li&gt;Remove loaded points&lt;/li&gt;
+&lt;li&gt;Save chunk of points with specific name (if name exists - overwrite)&lt;/li&gt;
+&lt;li&gt;Load chunk of points from saved list&lt;/li&gt;
+&lt;li&gt;If something happens (duplicate points ignored&amp;hellip;) user needs to be informed&lt;/li&gt;
+&lt;li&gt;Delete list of points&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;planning&#34;&gt;Planning&lt;/h2&gt;
+
+&lt;p&gt;Quick mockup on how I imagine this will look like. Probably best starting place for any application which can be componetized.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/points-mock.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -715,6 +741,8 @@ export class AuthGuard implements CanActivate {
 &lt;p&gt;One thing to mention - we defined minimum password length on login form. We can delete that from login-form and leave it only on registration-form.&lt;/p&gt;
 
 &lt;p&gt;That&amp;rsquo;s it. We have fulfilled our requirements at the top. Until next time.&lt;/p&gt;
+
+&lt;p&gt;You can find part #2 here - &lt;a href=&#34;https://benetis.me/post/aangular-authentication-oauth/&#34;&gt;https://benetis.me/post/angular-authentication-oauth/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
 

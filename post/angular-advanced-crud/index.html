@@ -14,13 +14,13 @@
 
 
 
-<meta name="twitter:title" content="Let&#39;s code: &#39;Advanced&#39; CRUD in Angular"/>
+<meta name="twitter:title" content="Let&#39;s code: Advanced CRUD in Angular with unit tests"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@benetisz"/>
 
 
 
-  	<meta property="og:title" content="Let&#39;s code: &#39;Advanced&#39; CRUD in Angular &middot; Typical personal blog" />
+  	<meta property="og:title" content="Let&#39;s code: Advanced CRUD in Angular with unit tests &middot; Typical personal blog" />
   	<meta property="og:site_name" content="Typical personal blog" />
   	<meta property="og:url" content="https://benetis.me/post/angular-advanced-crud/" />
     
@@ -47,7 +47,7 @@
     
     
 
-    <title>Let&#39;s code: &#39;Advanced&#39; CRUD in Angular &middot; Typical personal blog</title>
+    <title>Let&#39;s code: Advanced CRUD in Angular with unit tests &middot; Typical personal blog</title>
 
     
     <meta name="description" content="" />
@@ -102,9 +102,9 @@
             
         ]
     },
-    "headline": "Let's code: 'Advanced' CRUD in Angular",
-    "name": "Let's code: 'Advanced' CRUD in Angular",
-    "wordCount":  32 ,
+    "headline": "Let's code: Advanced CRUD in Angular with unit tests",
+    "name": "Let's code: Advanced CRUD in Angular with unit tests",
+    "wordCount":  160 ,
     "timeRequired": "PT1M",
     "inLanguage": {
       "@type": "Language",
@@ -191,7 +191,7 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">Let&#39;s code: &#39;Advanced&#39; CRUD in Angular</h1>
+        <h1 class="post-title">Let&#39;s code: Advanced CRUD in Angular with unit tests</h1>
         <small></small>
 
         <section class="post-meta">
@@ -217,12 +217,38 @@
 
 <h2 id="introduction">Introduction</h2>
 
-<p>What does word advanced mean? It&rsquo;s just that the CRUD application we are going to implement will have some additional features to what you might expect:</p>
+<p>What does word advanced mean? It&rsquo;s just that the CRUD application we are going to implement will have some additional complexity you might expect:</p>
 
 <ul>
 <li>import data</li>
 <li>save/load chunks data</li>
+<li>lazy data processing</li>
+<li>pagination</li>
+<li>tests</li>
 </ul>
+
+<h2 id="requirements-task-itself">Requirements &amp; Task itself</h2>
+
+<p>Aside of the stuff we mentioned above - we obviously will be implementing CRUD operations. Our model on which are going to operate is going to be points (coordinate points <code>{x, y}</code>).</p>
+
+<ul>
+<li>Input points by hand</li>
+<li>Import points from file</li>
+<li>Clear all points</li>
+<li>Points should be paginated, pagination size can change</li>
+<li>How many squares can be formed from these squares (lazy processing)</li>
+<li>Remove loaded points</li>
+<li>Save chunk of points with specific name (if name exists - overwrite)</li>
+<li>Load chunk of points from saved list</li>
+<li>If something happens (duplicate points ignored&hellip;) user needs to be informed</li>
+<li>Delete list of points</li>
+</ul>
+
+<h2 id="planning">Planning</h2>
+
+<p>Quick mockup on how I imagine this will look like. Probably best starting place for any application which can be componetized.</p>
+
+<p><img src="https://benetis.me/images/2017/05/points-mock.png" alt="" /></p>
 
     </section>
 
@@ -254,7 +280,7 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Let%27s%20code%3a%20%27Advanced%27%20CRUD%20in%20Angular&nbsp;-&nbsp;Typical%20personal%20blog&amp;url=https%3a%2f%2fbenetis.me%2fpost%2fangular-advanced-crud%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Let%27s%20code%3a%20Advanced%20CRUD%20in%20Angular%20with%20unit%20tests&nbsp;-&nbsp;Typical%20personal%20blog&amp;url=https%3a%2f%2fbenetis.me%2fpost%2fangular-advanced-crud%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
@@ -262,7 +288,7 @@
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fbenetis.me%2fpost%2fangular-advanced-crud%2f&amp;description=Let%27s%20code%3a%20%27Advanced%27%20CRUD%20in%20Angular"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fbenetis.me%2fpost%2fangular-advanced-crud%2f&amp;description=Let%27s%20code%3a%20Advanced%20CRUD%20in%20Angular%20with%20unit%20tests"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
