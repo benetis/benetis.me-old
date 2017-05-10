@@ -289,6 +289,8 @@ One thing to mention - we defined minimum password length on login form. We can 
 
 That's it. We have fulfilled our requirements at the top. Until next time.
 
+You can find part #2 here - [https://benetis.me/post/angular-authentication-oauth/](/post/aangular-authentication-oauth/)
+
 ### Feedback
 
 If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
