@@ -12,7 +12,7 @@
     <item>
       <title>Let&#39;s code: Authentication in Angular #2 - Auth service</title>
       <link>https://benetis.me/post/angular-authentication-oauth/</link>
-      <pubDate>Wed, 10 May 2017 21:40:24 +0200</pubDate>
+      <pubDate>Wed, 10 May 2017 23:00:24 +0200</pubDate>
       
       <guid>https://benetis.me/post/angular-authentication-oauth/</guid>
       <description>
@@ -321,30 +321,77 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 &lt;p&gt;Starting with action to set access token. After we set access token we will need to update our state to have newest token + put in local storage so it can be grabbed later. State update will happen in reducer, as for LocalStorage update - it is a side effect so we will put it in effects.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;export interface AuthInfo {
-  access_token: string,
-  expires_in: number
+  access_token?: string,
+  expires?: number,
+  expires_in?: number
 }
 
-private readonly tokenItem = &#39;token&#39;
+public static readonly tokenItem = &#39;token&#39;
 
 @Effect()
 loginComplete$: Observable&amp;lt;Action&amp;gt; = this.actions$
   .ofType(auth.ActionTypes.LOGIN_COMPLETE)
   .map(toPayload)
-  .switchMap((payload: AuthInfo) =&amp;gt; {
+  .switchMap((payload) =&amp;gt; {
 
-    localStorage.setItem(this.tokenItem, JSON.stringify(payload));
-
-    return of(new auth.SetAuthInfoAction({
-      authInfo: payload,
-      updated: Math.floor(Date.now() / 1000) // To know when token expires
-    }))
+    if (payload) {
+      const authInfoUpdated: AuthInfo = {
+        ...payload,
+        expires: payload.expires_in + Math.floor(Date.now() / 1000)
+      }
+      localStorage.setItem(AuthEffects.tokenItem, JSON.stringify(authInfoUpdated));
+      return of(new auth.SetAuthInfoAction(authInfoUpdated))
+    } else {
+      return of(new auth.LogoutAction())
+    }
   })
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;auth-guard&#34;&gt;Auth guard&lt;/h3&gt;
+
+&lt;p&gt;Now that we have token saved in LocalStorage we can enable our AuthGuard. It will protect our routes and redirect unauthenticated user to login form.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;@Injectable()
+export class AuthGuard implements CanActivate {
+
+  private loggedIn$: Observable&amp;lt;boolean&amp;gt;;
+
+  constructor(private store: Store&amp;lt;fromRoot.State&amp;gt;
+    , private router: Router) {
+
+    this.loggedIn$ = store.select(fromRoot.getAuthLoggedIn)
+
+  }
+
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    this.store.dispatch(new auth.LoginCompleteAction(
+      JSON.parse(
+        localStorage.getItem(AuthEffects.tokenItem)
+      )
+    ))
+
+    return this.loggedIn$.map(loggedIn =&amp;gt; {
+      if (loggedIn) {
+        return true;
+      } else {
+        this.router.navigate([&#39;/login&#39;]);
+      }
+    }).catch((err) =&amp;gt; {
+      console.log(err)
+      this.router.navigate([&#39;/login&#39;]);
+      return Observable.of(false);
+    }).first()
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We subscribe to get if user is loggedIn (we set this state property to true when we set AuthInfo). Before that - we dispatch an action with our token from LocalStorage. We do this - so that user from email link or bookmark can directly access our application. Everything else is self explanatory.&lt;/p&gt;
+
+&lt;p&gt;p.s redirect url needs to be saved - I propose for you to dispatch action to save it and redirect later.&lt;/p&gt;
+
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
 
-&lt;p&gt;There are few more things we need to do for auth to be finished. AuthGuard to protect routes, logout to clean redux state + LocalStorage items, refresh token and minor tweaks, updates.&lt;/p&gt;
+&lt;p&gt;There are few more things we need to do for auth to be finished. Logout to clean redux state + LocalStorage items, refresh token and minor tweaks, updates.&lt;/p&gt;
 </description>
     </item>
     
