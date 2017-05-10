@@ -95,6 +95,7 @@ public oauth(): { login: (LoginUser) => Observable<Response> } {
     }
   }
 }
+```
 
 Also it's important to note that since responses are different - we need to handle errors differently. We grab error description from json response and just leave it for effect to handle.
 
