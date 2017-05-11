@@ -45,7 +45,7 @@ Quick mockup on how I imagine this will look like. Probably best starting place 
 
 Clearly we will need a good grid/table component. I have implemented tables so many times in Angular that this time I am just gonna skip it. There is even a post on Angular table by me - [[https://benetis.me/post/angular-table/](/post/angular-table/)
 
-Tabs component to switch between points and squares. (Since squares need pagination) OR just put squares table below. This is a very possible solution since it let's to look at points and have squares "counting" at same time.
+Tabs component to switch between points and squares. (Since squares need pagination) OR just put squares table below.
 
 Action menu for actions to perform on selected rows of table
 
@@ -58,3 +58,5 @@ Import file and upload to table can be plugged anywhere
 After retro - I have updated mockup with another possible solution:
 
 ![](/images/2017/05/updated-mockup.png)
+
+It doesn't really matter for us - we can decide this later.
