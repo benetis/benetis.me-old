@@ -147,7 +147,7 @@ And we can already see something:
 ![](/images/2017/05/table-initial.png)
 
 
-### Adding a point
+### Adding a points
 
 Since we will be adding a point - we need a service to handle this for us. We want to subscribe to that service for points to be updated.
 
@@ -156,23 +156,26 @@ Few tests TDD style and we should have basic service for getting points data.
 ```typescript
 
 @Injectable()
-export class PointsServiceService {
+export class PointService {
 
-    private points: Point[] = [];
+    private points = new BehaviorSubject([])
+    private _points = []
 
     constructor() {
+        this.points.subscribe(_ => this._points = _)
     }
 
     public getPoints(): Observable<Point[]> {
-        return new BehaviorSubject(this.points);
+        return this.points;
     }
 
     public addPoints(pointsToAdd): Observable<Point[]> {
-        this.points = this.points.concat(pointsToAdd)
+        this.points.next([...this._points, ...pointsToAdd])
         return this.getPoints()
     }
 
 }
+
 ```
 
 and their tests:
@@ -214,3 +217,66 @@ it('should add points twice and return all points', done => {
 ```
 
 You can find these files in github - [https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.ts](https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.ts)
+
+Of course instead of grabbing points inside points-table we will now need to subscribe for them from service.
+
+Next - AddPoint component. Put inputs inside that component and after clicking the button - just add points to our points service.
+
+This gives us a little bit of separation since we will need to handle validation here as well.
+
+```html
+<form>
+    <label>X
+        <input type="text" ngModel #x name="x">
+    </label>
+    <label>Y
+        <input type="text" ngModel #y name="y">
+    </label>
+    <button (click)="addPoint(x.value, y.value)">Add</button>
+</form>
+```
+
+```typescript
+public addPoint(x: number, y: number) {
+    this.pointsService.addPoints([{x, y}])
+}
+```
+
+And of course validations. Limits are:
+
+- integers only
+- min -5000, max +5000
+
+Being lazy - we can just install this library to provide custom validators:
+
+`npm install ng2-validation --save`
+
+```html
+<form #addPointForm="ngForm">
+    <label>X
+        <input type="text"
+               [(ngModel)]="x"
+               #field="ngModel"
+               name="x"
+               required
+               number
+               [min]="-5000"
+               [max]="5000">
+    </label>
+    <label>Y
+        <input type="text"
+               [(ngModel)]="y"
+               name="y"
+               required
+               number
+               [min]="-5000"
+               [max]="5000">
+    </label>
+    <button (click)="addPoint(x, y)">Add</button>
+</form>
+<p *ngIf="!addPointForm.form.valid && addPointForm.form.dirty">
+    X and Y need to be between -5000 and 5000
+</p>
+```
+
+![](/images/2017/05/validation.gif)
