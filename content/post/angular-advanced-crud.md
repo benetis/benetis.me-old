@@ -280,3 +280,105 @@ Being lazy - we can just install this library to provide custom validators:
 ```
 
 ![](/images/2017/05/validation.gif)
+
+Next step is to validate if point to add doesn't already exist in list. (No duplicates) + list cannot get bigger than 10000.
+
+```typescript
+interface PSResponse { message: string, error: boolean }
+```
+
+New type will hold response from `addPoint` to handle two conditions we defined above.
+
+Begin by updating tests in points-service. Check them here - [https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.spec.ts](https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.spec.ts)
+
+As for code - we ended up with this:
+
+```typescript
+public addPoints(pointsToAdd: Point[]): Observable<PSResponse[]> {
+        const limit = 10000
+        const currentSize = this._points.length
+        const union = _.differenceWith(pointsToAdd, this._points, this.isEqual)
+        const xor = _.isEqual(union, this._points) ? [] : union
+
+        const duplicates = _.intersectionWith(this._points, pointsToAdd, this.isEqual)
+            .map(p => ({
+                error: true,
+                message: 'duplicate',
+                point: p
+            }))
+
+        const toAddSize = pointsToAdd.length
+        const overLimit: boolean = (currentSize + toAddSize) > limit
+        if (overLimit) {
+            const canBeImported: number = Math.abs(limit - currentSize - toAddSize)
+            this.points.next([...this._points, ...union.slice(0, canBeImported)])
+
+            return of([
+                ...duplicates,
+                {error: true, message: 'over limit'}
+            ])
+        } else {
+            this.points.next(this._points.concat(xor))
+            return of([
+                ...duplicates,
+            ])
+        }
+
+    }
+```
+
+Let's hope to points importing and come back to table a little bit later
+
+## Points importing
+
+Check [https://caniuse.com/#search=file](https://caniuse.com/#search=file) to see if File API is supported. Which is good enough
+
+Create `import-gatekeeper` component to hold our input where file will be uploaded. If file is changed - will output its contents out :)
+
+```typescript
+export class ImportGatekeeperComponent implements OnInit {
+
+    @Output()
+    public fileContents: EventEmitter<any[]> = new EventEmitter();
+
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
+    public fileChange($event) {
+        this.readFile($event.target)
+    }
+
+    private readFile(inputValue) {
+        const file: File = inputValue.files[0];
+        const myReader: FileReader = new FileReader();
+
+        myReader.onloadend = e => {
+            this.fileContents.emit(
+                myReader
+                    .result
+                    .split('\n')
+                    .filter(_ => _ !== '')
+                    .map(line => {
+                        const [x, y] = line.split(' ')
+                        return {x: +x, y: +y}
+                    })
+                )
+        }
+
+        myReader.readAsText(file);
+    }
+
+}
+```
+
+In our wrapper (app.component) connect callback function to addPoints
+```typescript
+public fileUploaded(contents: any[]) {
+    this.importResponses$ = this.pointService.addPoints(contents)
+}
+```
+
+If file is uploaded - data is imported! All good - we get a response with what happened also! We can pass it to import gatekeeper for it to handle.
