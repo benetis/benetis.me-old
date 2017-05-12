@@ -3,7 +3,7 @@
 date = "2017-05-10T23:00:24+02:00"
 draft = false
 share = true
-title = "Let's code: Advanced CRUD in Angular with unit tests"
+title = "Let's code: CRUD in Angular with unit tests"
 slug = "angular-advanced-crud"
 tags = ['Angular', 'Frontend', 'Side-project', "Let's code"]
 banner = ""
@@ -12,14 +12,14 @@ aliases = ['/angular-advanced-crud/']
 
 ## Introduction
 
-What does word advanced mean? It's just that the CRUD application we are going to implement will have some additional complexity you might expect:
+CRUD application we are going to implement will have some additional complexity you might expect:
 
 - import/export data
 - save/load chunks data
 - lazy data processing
 - pagination
 - tests
-    
+
 This project's source code is in github - [https://github.com/benetis/angular-advanced-crud](https://github.com/benetis/angular-advanced-crud)
 
 p.s some of code parts are not in sync going down - so I advise to also fork github repo and check code yourself
@@ -390,3 +390,19 @@ public fileUploaded(contents: any[]) {
 If file is uploaded - data is imported! All good - we get a response with what happened also! We can pass it to import gatekeeper for it to handle.
 
 ![](/images/2017/05/import-response.gif)
+
+### Cosmetics
+
+App is shaping up. Time to add styles, check what is redundant.
+
+
+![](/images/2017/05/cosmetics.png)
+
+Little updates to UI just to have everything a little bit more organized. We can come back to it later if there is need, but this is not our focus.
+
+### Action menu and multi select
+
+We want to select multiple table rows and perform actions on them:
+
+- Save them as another list
+- Delete them
