@@ -10,69 +10,6 @@
     <atom:link href="https://benetis.me/tags/lets-code/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Let&#39;s code: Advanced CRUD in Angular with unit tests</title>
-      <link>https://benetis.me/post/angular-advanced-crud/</link>
-      <pubDate>Wed, 10 May 2017 23:00:24 +0200</pubDate>
-      
-      <guid>https://benetis.me/post/angular-advanced-crud/</guid>
-      <description>
-
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;What does word advanced mean? It&amp;rsquo;s just that the CRUD application we are going to implement will have some additional complexity you might expect:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;import data&lt;/li&gt;
-&lt;li&gt;save/load chunks data&lt;/li&gt;
-&lt;li&gt;lazy data processing&lt;/li&gt;
-&lt;li&gt;pagination&lt;/li&gt;
-&lt;li&gt;tests&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;requirements-task-itself&#34;&gt;Requirements &amp;amp; Task itself&lt;/h2&gt;
-
-&lt;p&gt;Aside of the stuff we mentioned above - we obviously will be implementing CRUD operations. Our model on which are going to operate is going to be points (coordinate points &lt;code&gt;{x, y}&lt;/code&gt;).&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Input points by hand&lt;/li&gt;
-&lt;li&gt;Import points from file&lt;/li&gt;
-&lt;li&gt;Clear all points&lt;/li&gt;
-&lt;li&gt;Points should be paginated, pagination size can change&lt;/li&gt;
-&lt;li&gt;How many squares can be formed from these squares (lazy processing)&lt;/li&gt;
-&lt;li&gt;Remove loaded points&lt;/li&gt;
-&lt;li&gt;Save chunk of points with specific name (if name exists - overwrite)&lt;/li&gt;
-&lt;li&gt;Load chunk of points from saved list&lt;/li&gt;
-&lt;li&gt;If something happens (duplicate points ignored&amp;hellip;) user needs to be informed&lt;/li&gt;
-&lt;li&gt;Delete list of points&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We will be using Angular 4.1 with CLI 1.0.1&lt;/p&gt;
-
-&lt;h2 id=&#34;planning&#34;&gt;Planning&lt;/h2&gt;
-
-&lt;p&gt;Quick mockup on how I imagine this will look like. Probably best starting place for any application which can be componetized.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/points-mock.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Clearly we will need a good grid/table component. I have implemented tables so many times in Angular that this time I am just gonna skip it. There is even a post on Angular table by me - [&lt;a href=&#34;https://benetis.me/post/angular-table/&#34;&gt;https://benetis.me/post/angular-table/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Tabs component to switch between points and squares. (Since squares need pagination) OR just put squares table below. This is a very possible solution since it let&amp;rsquo;s to look at points and have squares &amp;ldquo;counting&amp;rdquo; at same time.&lt;/p&gt;
-
-&lt;p&gt;Action menu for actions to perform on selected rows of table&lt;/p&gt;
-
-&lt;p&gt;Validations for inputs to add to the table. We have limits&lt;/p&gt;
-
-&lt;p&gt;Research into square finding algorithm - but I guess we can leave that for later.&lt;/p&gt;
-
-&lt;p&gt;Import file and upload to table can be plugged anywhere&lt;/p&gt;
-
-&lt;p&gt;After retro - I have updated mockup with another possible solution:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/updated-mockup.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Let&#39;s code: Authentication in Angular #2 - Auth service</title>
       <link>https://benetis.me/post/angular-authentication-oauth/</link>
       <pubDate>Wed, 10 May 2017 23:00:24 +0200</pubDate>
@@ -465,6 +402,419 @@ export class AuthGuard implements CanActivate {
 &lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
 
 &lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s code: CRUD in Angular with unit tests</title>
+      <link>https://benetis.me/post/angular-advanced-crud/</link>
+      <pubDate>Wed, 10 May 2017 23:00:24 +0200</pubDate>
+      
+      <guid>https://benetis.me/post/angular-advanced-crud/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;CRUD application we are going to implement will have some additional complexity you might expect:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;import/export data&lt;/li&gt;
+&lt;li&gt;save/load chunks data&lt;/li&gt;
+&lt;li&gt;lazy data processing&lt;/li&gt;
+&lt;li&gt;pagination&lt;/li&gt;
+&lt;li&gt;tests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This project&amp;rsquo;s source code is in github - &lt;a href=&#34;https://github.com/benetis/angular-advanced-crud&#34;&gt;https://github.com/benetis/angular-advanced-crud&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;p.s some of code parts are not in sync going down - so I advise to also fork github repo and check code yourself&lt;/p&gt;
+
+&lt;h2 id=&#34;requirements-task-itself&#34;&gt;Requirements &amp;amp; Task itself&lt;/h2&gt;
+
+&lt;p&gt;Aside of the stuff we mentioned above - we obviously will be implementing CRUD operations. Our model on which are going to operate is going to be points (coordinate points &lt;code&gt;{x, y}&lt;/code&gt;).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Input points by hand&lt;/li&gt;
+&lt;li&gt;Import points from file&lt;/li&gt;
+&lt;li&gt;Export points to file&lt;/li&gt;
+&lt;li&gt;Clear all points&lt;/li&gt;
+&lt;li&gt;Points should be paginated, pagination size can change&lt;/li&gt;
+&lt;li&gt;How many squares can be formed from these squares (lazy processing)&lt;/li&gt;
+&lt;li&gt;Remove loaded points&lt;/li&gt;
+&lt;li&gt;Save chunk of points with specific name (if name exists - overwrite)&lt;/li&gt;
+&lt;li&gt;Load chunk of points from saved list&lt;/li&gt;
+&lt;li&gt;If something happens (duplicate points ignored&amp;hellip;) user needs to be informed&lt;/li&gt;
+&lt;li&gt;Delete list of points&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We will be using Angular 4.1 with CLI 1.0.1&lt;/p&gt;
+
+&lt;h2 id=&#34;planning-ui&#34;&gt;Planning UI&lt;/h2&gt;
+
+&lt;p&gt;Quick mockup on how I imagine this will look like. Probably best starting place for any application which can be componetized.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/points-mock.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Clearly we will need a good grid/table component. I have implemented tables so many times in Angular that this time I am just gonna skip it. There is even a post on Angular table by me - [&lt;a href=&#34;https://benetis.me/post/angular-table/&#34;&gt;https://benetis.me/post/angular-table/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tabs component to switch between points and squares. (Since squares need pagination) OR just put squares table below.&lt;/p&gt;
+
+&lt;p&gt;Action menu for actions to perform on selected rows of table&lt;/p&gt;
+
+&lt;p&gt;Validations for inputs to add to the table. We have limits&lt;/p&gt;
+
+&lt;p&gt;Research into square finding algorithm - but I guess we can leave that for later.&lt;/p&gt;
+
+&lt;p&gt;Import file and upload to table can be plugged anywhere&lt;/p&gt;
+
+&lt;p&gt;After retro - I have updated mockup with another possible solution:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/updated-mockup.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It doesn&amp;rsquo;t really matter for us - we can decide this later.&lt;/p&gt;
+
+&lt;h2 id=&#34;architecture-of-code&#34;&gt;Architecture of code&lt;/h2&gt;
+
+&lt;p&gt;We have a mockup, requirements. Now we can look at what components, models we will need.&lt;/p&gt;
+
+&lt;p&gt;I like to start from data since everything revolves around it. Starting from the bottom.&lt;/p&gt;
+
+&lt;h3 id=&#34;main-types&#34;&gt;Main types&lt;/h3&gt;
+
+&lt;p&gt;Point and Square.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;interface Point {x: number, y: number}
+// Corner 1, Corner 2
+interface Square {c1: Point, c2: Point, c3: Point, c4: Point}
+
+// Self explanatory, just for planning
+type ListOfPoints = Point[]
+type ListOfSquares = Square[]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;modules-components-services&#34;&gt;Modules, components, services&lt;/h3&gt;
+
+&lt;p&gt;We can live with one module - app module. No reason to complicate ourselves when task is simple&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Services:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;import/export data&lt;/li&gt;
+&lt;li&gt;IO data transformer&lt;/li&gt;
+&lt;li&gt;square-finder&lt;/li&gt;
+&lt;li&gt;favorite-points&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Components:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;table
+
+&lt;ul&gt;
+&lt;li&gt;pagination&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;action-menu&lt;/li&gt;
+&lt;li&gt;delete button&lt;/li&gt;
+&lt;li&gt;save-list-button&lt;/li&gt;
+&lt;li&gt;replace-list-button&lt;/li&gt;
+&lt;li&gt;inputs&lt;/li&gt;
+&lt;li&gt;points-table&lt;/li&gt;
+&lt;li&gt;squares-table&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We might have forgotten something - but for now it seems like everything. Stuff can be added later.&lt;/p&gt;
+
+&lt;h3 id=&#34;notorious-table&#34;&gt;Notorious table&lt;/h3&gt;
+
+&lt;p&gt;Certainly table is one of the most popular components (everywhere?). I had a &amp;ldquo;pleasure&amp;rdquo; to create two tables (different API) in Angular and this time we will use &lt;a href=&#34;http://swimlane.github.io/ngx-datatable&#34;&gt;http://swimlane.github.io/ngx-datatable&lt;/a&gt;. We will not wrap it inside of our component just for the sake simplicity, however I certainly recommend for you to do so.&lt;/p&gt;
+
+&lt;p&gt;To install:
+&lt;code&gt;npm i @swimlane/ngx-datatable --save&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Creating skeleton for points-table using Angular CLI. Everything under &lt;code&gt;/src/app&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ng g component points-table&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Compile application. Run tests.&lt;/p&gt;
+
+&lt;p&gt;We will need some dummy data, columns. We should think in terms of observables since we will be fetching data from this component directly.&lt;/p&gt;
+
+&lt;p&gt;points-table.component.ts&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;public points$: Observable&amp;lt;Point[]&amp;gt; = of([
+    {x: 1, y: 2},
+    {x: -12, y: 22},
+    {x: -2222, y: 4999},
+]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;points-table.component.html&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;h2&amp;gt;Points table&amp;lt;/h2&amp;gt;
+&amp;lt;ngx-datatable
+  [rows]=&amp;quot;points$ | async&amp;quot;
+  [columns]=&amp;quot;[{name:&#39;X&#39;},{name:&#39;Y&#39;}]&amp;quot;
+  [limit]=&amp;quot;10&amp;quot;
+&amp;gt;
+&amp;lt;/ngx-datatable&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And we can already see something:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/table-initial.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;adding-a-points&#34;&gt;Adding a points&lt;/h3&gt;
+
+&lt;p&gt;Since we will be adding a point - we need a service to handle this for us. We want to subscribe to that service for points to be updated.&lt;/p&gt;
+
+&lt;p&gt;Few tests TDD style and we should have basic service for getting points data.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;
+@Injectable()
+export class PointService {
+
+    private points = new BehaviorSubject([])
+    private _points = []
+
+    constructor() {
+        this.points.subscribe(_ =&amp;gt; this._points = _)
+    }
+
+    public getPoints(): Observable&amp;lt;Point[]&amp;gt; {
+        return this.points;
+    }
+
+    public addPoints(pointsToAdd): Observable&amp;lt;Point[]&amp;gt; {
+        this.points.next([...this._points, ...pointsToAdd])
+        return this.getPoints()
+    }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and their tests:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;it(&#39;should return empty observable when called getPoints&#39;, done =&amp;gt; {
+    service.getPoints().subscribe(p =&amp;gt; {
+        expect(p).toEqual([]);
+        done();
+    })
+})
+
+it(&#39;should add points and return all points&#39;, done =&amp;gt; {
+    const pointsToAdd = [
+        {x: 1, y: 1},
+        {x: 0, y: 1},
+    ]
+
+    service.addPoints(pointsToAdd).subscribe(p =&amp;gt; {
+        expect(p).toEqual(pointsToAdd);
+        done();
+    })
+})
+
+it(&#39;should add points twice and return all points&#39;, done =&amp;gt; {
+    const pointsToAdd = [
+        {x: 1, y: 1},
+        {x: 0, y: 1},
+    ]
+
+    service.addPoints(pointsToAdd)
+    service.addPoints(pointsToAdd)
+
+    service.getPoints().subscribe(p =&amp;gt; {
+        expect(p).toEqual([...pointsToAdd, ...pointsToAdd]);
+        done();
+    })
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can find these files in github - &lt;a href=&#34;https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.ts&#34;&gt;https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.ts&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Of course instead of grabbing points inside points-table we will now need to subscribe for them from service.&lt;/p&gt;
+
+&lt;p&gt;Next - AddPoint component. Put inputs inside that component and after clicking the button - just add points to our points service.&lt;/p&gt;
+
+&lt;p&gt;This gives us a little bit of separation since we will need to handle validation here as well.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;form&amp;gt;
+    &amp;lt;label&amp;gt;X
+        &amp;lt;input type=&amp;quot;text&amp;quot; ngModel #x name=&amp;quot;x&amp;quot;&amp;gt;
+    &amp;lt;/label&amp;gt;
+    &amp;lt;label&amp;gt;Y
+        &amp;lt;input type=&amp;quot;text&amp;quot; ngModel #y name=&amp;quot;y&amp;quot;&amp;gt;
+    &amp;lt;/label&amp;gt;
+    &amp;lt;button (click)=&amp;quot;addPoint(x.value, y.value)&amp;quot;&amp;gt;Add&amp;lt;/button&amp;gt;
+&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;public addPoint(x: number, y: number) {
+    this.pointsService.addPoints([{x, y}])
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And of course validations. Limits are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;integers only&lt;/li&gt;
+&lt;li&gt;min -5000, max +5000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Being lazy - we can just install this library to provide custom validators:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;npm install ng2-validation --save&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;form #addPointForm=&amp;quot;ngForm&amp;quot;&amp;gt;
+    &amp;lt;label&amp;gt;X
+        &amp;lt;input type=&amp;quot;text&amp;quot;
+               [(ngModel)]=&amp;quot;x&amp;quot;
+               #field=&amp;quot;ngModel&amp;quot;
+               name=&amp;quot;x&amp;quot;
+               required
+               number
+               [min]=&amp;quot;-5000&amp;quot;
+               [max]=&amp;quot;5000&amp;quot;&amp;gt;
+    &amp;lt;/label&amp;gt;
+    &amp;lt;label&amp;gt;Y
+        &amp;lt;input type=&amp;quot;text&amp;quot;
+               [(ngModel)]=&amp;quot;y&amp;quot;
+               name=&amp;quot;y&amp;quot;
+               required
+               number
+               [min]=&amp;quot;-5000&amp;quot;
+               [max]=&amp;quot;5000&amp;quot;&amp;gt;
+    &amp;lt;/label&amp;gt;
+    &amp;lt;button (click)=&amp;quot;addPoint(x, y)&amp;quot;&amp;gt;Add&amp;lt;/button&amp;gt;
+&amp;lt;/form&amp;gt;
+&amp;lt;p *ngIf=&amp;quot;!addPointForm.form.valid &amp;amp;&amp;amp; addPointForm.form.dirty&amp;quot;&amp;gt;
+    X and Y need to be between -5000 and 5000
+&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/validation.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next step is to validate if point to add doesn&amp;rsquo;t already exist in list. (No duplicates) + list cannot get bigger than 10000.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;export interface PSResponse {
+    message: string,
+    error: boolean,
+    point?: Point
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;New type will hold response from &lt;code&gt;addPoint&lt;/code&gt; to handle two conditions we defined above.&lt;/p&gt;
+
+&lt;p&gt;Begin by updating tests in points-service. Check them here - &lt;a href=&#34;https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.spec.ts&#34;&gt;https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.spec.ts&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As for code - we ended up with this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;public addPoints(pointsToAdd: Point[]): Observable&amp;lt;PSResponse[]&amp;gt; {
+        const limit = 10000
+        const currentSize = this._points.length
+        const union = _.differenceWith(pointsToAdd, this._points, this.isEqual)
+        const xor = _.isEqual(union, this._points) ? [] : union
+
+        const duplicates = _.intersectionWith(this._points, pointsToAdd, this.isEqual)
+            .map(p =&amp;gt; ({
+                error: true,
+                message: &#39;duplicate&#39;,
+                point: p
+            }))
+
+        const toAddSize = pointsToAdd.length
+        const overLimit: boolean = (currentSize + toAddSize) &amp;gt; limit
+        if (overLimit) {
+            const canBeImported: number = Math.abs(limit - currentSize - toAddSize)
+            this.points.next([...this._points, ...union.slice(0, canBeImported)])
+
+            return of([
+                ...duplicates,
+                {error: true, message: &#39;over limit&#39;}
+            ])
+        } else {
+            this.points.next(this._points.concat(xor))
+            return of([
+                ...duplicates,
+            ])
+        }
+
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s hope to points importing and come back to table a little bit later&lt;/p&gt;
+
+&lt;h2 id=&#34;points-importing&#34;&gt;Points importing&lt;/h2&gt;
+
+&lt;p&gt;Check &lt;a href=&#34;https://caniuse.com/#search=file&#34;&gt;https://caniuse.com/#search=file&lt;/a&gt; to see if File API is supported. Which is good enough&lt;/p&gt;
+
+&lt;p&gt;Create &lt;code&gt;import-gatekeeper&lt;/code&gt; component to hold our input where file will be uploaded. If file is changed - will output its contents out :)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;export class ImportGatekeeperComponent implements OnInit {
+
+    @Output()
+    public fileContents: EventEmitter&amp;lt;any[]&amp;gt; = new EventEmitter();
+
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
+    public fileChange($event) {
+        this.readFile($event.target)
+    }
+
+    private readFile(inputValue) {
+        const file: File = inputValue.files[0];
+        const myReader: FileReader = new FileReader();
+
+        myReader.onloadend = e =&amp;gt; {
+            this.fileContents.emit(
+                myReader
+                    .result
+                    .split(&#39;\n&#39;)
+                    .filter(_ =&amp;gt; _ !== &#39;&#39;)
+                    .map(line =&amp;gt; {
+                        const [x, y] = line.split(&#39; &#39;)
+                        return {x: +x, y: +y}
+                    })
+                )
+        }
+
+        myReader.readAsText(file);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In our wrapper (app.component) connect callback function to addPoints&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-typescript&#34;&gt;public fileUploaded(contents: any[]) {
+    this.importResponses$ = this.pointService.addPoints(contents)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If file is uploaded - data is imported! All good - we get a response with what happened also! We can pass it to import gatekeeper for it to handle.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/import-response.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;cosmetics&#34;&gt;Cosmetics&lt;/h3&gt;
+
+&lt;p&gt;App is shaping up. Time to add styles, check what is redundant.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/05/cosmetics.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Little updates to UI just to have everything a little bit more organized. We can come back to it later if there is need, but this is not our focus.&lt;/p&gt;
+
+&lt;h3 id=&#34;action-menu-and-multi-select&#34;&gt;Action menu and multi select&lt;/h3&gt;
+
+&lt;p&gt;We want to select multiple table rows and perform actions on them:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Save them as another list&lt;/li&gt;
+&lt;li&gt;Delete them&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

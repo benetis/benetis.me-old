@@ -14,13 +14,13 @@
 
 
 
-<meta name="twitter:title" content="Let&#39;s code: Advanced CRUD in Angular with unit tests"/>
+<meta name="twitter:title" content="Let&#39;s code: CRUD in Angular with unit tests"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@benetisz"/>
 
 
 
-  	<meta property="og:title" content="Let&#39;s code: Advanced CRUD in Angular with unit tests &middot; Typical personal blog" />
+  	<meta property="og:title" content="Let&#39;s code: CRUD in Angular with unit tests &middot; Typical personal blog" />
   	<meta property="og:site_name" content="Typical personal blog" />
   	<meta property="og:url" content="https://benetis.me/post/angular-advanced-crud/" />
     
@@ -47,7 +47,7 @@
     
     
 
-    <title>Let&#39;s code: Advanced CRUD in Angular with unit tests &middot; Typical personal blog</title>
+    <title>Let&#39;s code: CRUD in Angular with unit tests &middot; Typical personal blog</title>
 
     
     <meta name="description" content="" />
@@ -102,10 +102,10 @@
             
         ]
     },
-    "headline": "Let's code: Advanced CRUD in Angular with unit tests",
-    "name": "Let's code: Advanced CRUD in Angular with unit tests",
-    "wordCount":  303 ,
-    "timeRequired": "PT2M",
+    "headline": "Let's code: CRUD in Angular with unit tests",
+    "name": "Let's code: CRUD in Angular with unit tests",
+    "wordCount":  1326 ,
+    "timeRequired": "PT7M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
@@ -191,7 +191,7 @@
   <article class="post post">
 
     <header class="post-header">
-        <h1 class="post-title">Let&#39;s code: Advanced CRUD in Angular with unit tests</h1>
+        <h1 class="post-title">Let&#39;s code: CRUD in Angular with unit tests</h1>
         <small></small>
 
         <section class="post-meta">
@@ -217,15 +217,19 @@
 
 <h2 id="introduction">Introduction</h2>
 
-<p>What does word advanced mean? It&rsquo;s just that the CRUD application we are going to implement will have some additional complexity you might expect:</p>
+<p>CRUD application we are going to implement will have some additional complexity you might expect:</p>
 
 <ul>
-<li>import data</li>
+<li>import/export data</li>
 <li>save/load chunks data</li>
 <li>lazy data processing</li>
 <li>pagination</li>
 <li>tests</li>
 </ul>
+
+<p>This project&rsquo;s source code is in github - <a href="https://github.com/benetis/angular-advanced-crud">https://github.com/benetis/angular-advanced-crud</a></p>
+
+<p>p.s some of code parts are not in sync going down - so I advise to also fork github repo and check code yourself</p>
 
 <h2 id="requirements-task-itself">Requirements &amp; Task itself</h2>
 
@@ -234,6 +238,7 @@
 <ul>
 <li>Input points by hand</li>
 <li>Import points from file</li>
+<li>Export points to file</li>
 <li>Clear all points</li>
 <li>Points should be paginated, pagination size can change</li>
 <li>How many squares can be formed from these squares (lazy processing)</li>
@@ -246,7 +251,7 @@
 
 <p>We will be using Angular 4.1 with CLI 1.0.1</p>
 
-<h2 id="planning">Planning</h2>
+<h2 id="planning-ui">Planning UI</h2>
 
 <p>Quick mockup on how I imagine this will look like. Probably best starting place for any application which can be componetized.</p>
 
@@ -254,7 +259,7 @@
 
 <p>Clearly we will need a good grid/table component. I have implemented tables so many times in Angular that this time I am just gonna skip it. There is even a post on Angular table by me - [<a href="https://benetis.me/post/angular-table/">https://benetis.me/post/angular-table/</a></p>
 
-<p>Tabs component to switch between points and squares. (Since squares need pagination) OR just put squares table below. This is a very possible solution since it let&rsquo;s to look at points and have squares &ldquo;counting&rdquo; at same time.</p>
+<p>Tabs component to switch between points and squares. (Since squares need pagination) OR just put squares table below.</p>
 
 <p>Action menu for actions to perform on selected rows of table</p>
 
@@ -267,6 +272,351 @@
 <p>After retro - I have updated mockup with another possible solution:</p>
 
 <p><img src="https://benetis.me/images/2017/05/updated-mockup.png" alt="" /></p>
+
+<p>It doesn&rsquo;t really matter for us - we can decide this later.</p>
+
+<h2 id="architecture-of-code">Architecture of code</h2>
+
+<p>We have a mockup, requirements. Now we can look at what components, models we will need.</p>
+
+<p>I like to start from data since everything revolves around it. Starting from the bottom.</p>
+
+<h3 id="main-types">Main types</h3>
+
+<p>Point and Square.</p>
+
+<pre><code class="language-typescript">interface Point {x: number, y: number}
+// Corner 1, Corner 2
+interface Square {c1: Point, c2: Point, c3: Point, c4: Point}
+
+// Self explanatory, just for planning
+type ListOfPoints = Point[]
+type ListOfSquares = Square[]
+</code></pre>
+
+<h3 id="modules-components-services">Modules, components, services</h3>
+
+<p>We can live with one module - app module. No reason to complicate ourselves when task is simple</p>
+
+<p><strong>Services:</strong></p>
+
+<ul>
+<li>import/export data</li>
+<li>IO data transformer</li>
+<li>square-finder</li>
+<li>favorite-points</li>
+</ul>
+
+<p><strong>Components:</strong></p>
+
+<ul>
+<li>table
+
+<ul>
+<li>pagination</li>
+</ul></li>
+<li>action-menu</li>
+<li>delete button</li>
+<li>save-list-button</li>
+<li>replace-list-button</li>
+<li>inputs</li>
+<li>points-table</li>
+<li>squares-table</li>
+</ul>
+
+<p>We might have forgotten something - but for now it seems like everything. Stuff can be added later.</p>
+
+<h3 id="notorious-table">Notorious table</h3>
+
+<p>Certainly table is one of the most popular components (everywhere?). I had a &ldquo;pleasure&rdquo; to create two tables (different API) in Angular and this time we will use <a href="http://swimlane.github.io/ngx-datatable">http://swimlane.github.io/ngx-datatable</a>. We will not wrap it inside of our component just for the sake simplicity, however I certainly recommend for you to do so.</p>
+
+<p>To install:
+<code>npm i @swimlane/ngx-datatable --save</code></p>
+
+<p>Creating skeleton for points-table using Angular CLI. Everything under <code>/src/app</code></p>
+
+<p><code>ng g component points-table</code></p>
+
+<p>Compile application. Run tests.</p>
+
+<p>We will need some dummy data, columns. We should think in terms of observables since we will be fetching data from this component directly.</p>
+
+<p>points-table.component.ts</p>
+
+<pre><code class="language-typescript">public points$: Observable&lt;Point[]&gt; = of([
+    {x: 1, y: 2},
+    {x: -12, y: 22},
+    {x: -2222, y: 4999},
+]);
+</code></pre>
+
+<p>points-table.component.html</p>
+
+<pre><code class="language-html">&lt;h2&gt;Points table&lt;/h2&gt;
+&lt;ngx-datatable
+  [rows]=&quot;points$ | async&quot;
+  [columns]=&quot;[{name:'X'},{name:'Y'}]&quot;
+  [limit]=&quot;10&quot;
+&gt;
+&lt;/ngx-datatable&gt;
+</code></pre>
+
+<p>And we can already see something:</p>
+
+<p><img src="https://benetis.me/images/2017/05/table-initial.png" alt="" /></p>
+
+<h3 id="adding-a-points">Adding a points</h3>
+
+<p>Since we will be adding a point - we need a service to handle this for us. We want to subscribe to that service for points to be updated.</p>
+
+<p>Few tests TDD style and we should have basic service for getting points data.</p>
+
+<pre><code class="language-typescript">
+@Injectable()
+export class PointService {
+
+    private points = new BehaviorSubject([])
+    private _points = []
+
+    constructor() {
+        this.points.subscribe(_ =&gt; this._points = _)
+    }
+
+    public getPoints(): Observable&lt;Point[]&gt; {
+        return this.points;
+    }
+
+    public addPoints(pointsToAdd): Observable&lt;Point[]&gt; {
+        this.points.next([...this._points, ...pointsToAdd])
+        return this.getPoints()
+    }
+
+}
+
+</code></pre>
+
+<p>and their tests:</p>
+
+<pre><code class="language-typescript">it('should return empty observable when called getPoints', done =&gt; {
+    service.getPoints().subscribe(p =&gt; {
+        expect(p).toEqual([]);
+        done();
+    })
+})
+
+it('should add points and return all points', done =&gt; {
+    const pointsToAdd = [
+        {x: 1, y: 1},
+        {x: 0, y: 1},
+    ]
+
+    service.addPoints(pointsToAdd).subscribe(p =&gt; {
+        expect(p).toEqual(pointsToAdd);
+        done();
+    })
+})
+
+it('should add points twice and return all points', done =&gt; {
+    const pointsToAdd = [
+        {x: 1, y: 1},
+        {x: 0, y: 1},
+    ]
+
+    service.addPoints(pointsToAdd)
+    service.addPoints(pointsToAdd)
+
+    service.getPoints().subscribe(p =&gt; {
+        expect(p).toEqual([...pointsToAdd, ...pointsToAdd]);
+        done();
+    })
+})
+</code></pre>
+
+<p>You can find these files in github - <a href="https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.ts">https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.ts</a></p>
+
+<p>Of course instead of grabbing points inside points-table we will now need to subscribe for them from service.</p>
+
+<p>Next - AddPoint component. Put inputs inside that component and after clicking the button - just add points to our points service.</p>
+
+<p>This gives us a little bit of separation since we will need to handle validation here as well.</p>
+
+<pre><code class="language-html">&lt;form&gt;
+    &lt;label&gt;X
+        &lt;input type=&quot;text&quot; ngModel #x name=&quot;x&quot;&gt;
+    &lt;/label&gt;
+    &lt;label&gt;Y
+        &lt;input type=&quot;text&quot; ngModel #y name=&quot;y&quot;&gt;
+    &lt;/label&gt;
+    &lt;button (click)=&quot;addPoint(x.value, y.value)&quot;&gt;Add&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+<pre><code class="language-typescript">public addPoint(x: number, y: number) {
+    this.pointsService.addPoints([{x, y}])
+}
+</code></pre>
+
+<p>And of course validations. Limits are:</p>
+
+<ul>
+<li>integers only</li>
+<li>min -5000, max +5000</li>
+</ul>
+
+<p>Being lazy - we can just install this library to provide custom validators:</p>
+
+<p><code>npm install ng2-validation --save</code></p>
+
+<pre><code class="language-html">&lt;form #addPointForm=&quot;ngForm&quot;&gt;
+    &lt;label&gt;X
+        &lt;input type=&quot;text&quot;
+               [(ngModel)]=&quot;x&quot;
+               #field=&quot;ngModel&quot;
+               name=&quot;x&quot;
+               required
+               number
+               [min]=&quot;-5000&quot;
+               [max]=&quot;5000&quot;&gt;
+    &lt;/label&gt;
+    &lt;label&gt;Y
+        &lt;input type=&quot;text&quot;
+               [(ngModel)]=&quot;y&quot;
+               name=&quot;y&quot;
+               required
+               number
+               [min]=&quot;-5000&quot;
+               [max]=&quot;5000&quot;&gt;
+    &lt;/label&gt;
+    &lt;button (click)=&quot;addPoint(x, y)&quot;&gt;Add&lt;/button&gt;
+&lt;/form&gt;
+&lt;p *ngIf=&quot;!addPointForm.form.valid &amp;&amp; addPointForm.form.dirty&quot;&gt;
+    X and Y need to be between -5000 and 5000
+&lt;/p&gt;
+</code></pre>
+
+<p><img src="https://benetis.me/images/2017/05/validation.gif" alt="" /></p>
+
+<p>Next step is to validate if point to add doesn&rsquo;t already exist in list. (No duplicates) + list cannot get bigger than 10000.</p>
+
+<pre><code class="language-typescript">export interface PSResponse {
+    message: string,
+    error: boolean,
+    point?: Point
+}
+</code></pre>
+
+<p>New type will hold response from <code>addPoint</code> to handle two conditions we defined above.</p>
+
+<p>Begin by updating tests in points-service. Check them here - <a href="https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.spec.ts">https://github.com/benetis/angular-advanced-crud/blob/master/src/app/points-service.service.spec.ts</a></p>
+
+<p>As for code - we ended up with this:</p>
+
+<pre><code class="language-typescript">public addPoints(pointsToAdd: Point[]): Observable&lt;PSResponse[]&gt; {
+        const limit = 10000
+        const currentSize = this._points.length
+        const union = _.differenceWith(pointsToAdd, this._points, this.isEqual)
+        const xor = _.isEqual(union, this._points) ? [] : union
+
+        const duplicates = _.intersectionWith(this._points, pointsToAdd, this.isEqual)
+            .map(p =&gt; ({
+                error: true,
+                message: 'duplicate',
+                point: p
+            }))
+
+        const toAddSize = pointsToAdd.length
+        const overLimit: boolean = (currentSize + toAddSize) &gt; limit
+        if (overLimit) {
+            const canBeImported: number = Math.abs(limit - currentSize - toAddSize)
+            this.points.next([...this._points, ...union.slice(0, canBeImported)])
+
+            return of([
+                ...duplicates,
+                {error: true, message: 'over limit'}
+            ])
+        } else {
+            this.points.next(this._points.concat(xor))
+            return of([
+                ...duplicates,
+            ])
+        }
+
+    }
+</code></pre>
+
+<p>Let&rsquo;s hope to points importing and come back to table a little bit later</p>
+
+<h2 id="points-importing">Points importing</h2>
+
+<p>Check <a href="https://caniuse.com/#search=file">https://caniuse.com/#search=file</a> to see if File API is supported. Which is good enough</p>
+
+<p>Create <code>import-gatekeeper</code> component to hold our input where file will be uploaded. If file is changed - will output its contents out :)</p>
+
+<pre><code class="language-typescript">export class ImportGatekeeperComponent implements OnInit {
+
+    @Output()
+    public fileContents: EventEmitter&lt;any[]&gt; = new EventEmitter();
+
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
+    public fileChange($event) {
+        this.readFile($event.target)
+    }
+
+    private readFile(inputValue) {
+        const file: File = inputValue.files[0];
+        const myReader: FileReader = new FileReader();
+
+        myReader.onloadend = e =&gt; {
+            this.fileContents.emit(
+                myReader
+                    .result
+                    .split('\n')
+                    .filter(_ =&gt; _ !== '')
+                    .map(line =&gt; {
+                        const [x, y] = line.split(' ')
+                        return {x: +x, y: +y}
+                    })
+                )
+        }
+
+        myReader.readAsText(file);
+    }
+
+}
+</code></pre>
+
+<p>In our wrapper (app.component) connect callback function to addPoints</p>
+
+<pre><code class="language-typescript">public fileUploaded(contents: any[]) {
+    this.importResponses$ = this.pointService.addPoints(contents)
+}
+</code></pre>
+
+<p>If file is uploaded - data is imported! All good - we get a response with what happened also! We can pass it to import gatekeeper for it to handle.</p>
+
+<p><img src="https://benetis.me/images/2017/05/import-response.gif" alt="" /></p>
+
+<h3 id="cosmetics">Cosmetics</h3>
+
+<p>App is shaping up. Time to add styles, check what is redundant.</p>
+
+<p><img src="https://benetis.me/images/2017/05/cosmetics.png" alt="" /></p>
+
+<p>Little updates to UI just to have everything a little bit more organized. We can come back to it later if there is need, but this is not our focus.</p>
+
+<h3 id="action-menu-and-multi-select">Action menu and multi select</h3>
+
+<p>We want to select multiple table rows and perform actions on them:</p>
+
+<ul>
+<li>Save them as another list</li>
+<li>Delete them</li>
+</ul>
 
     </section>
 
@@ -298,7 +648,7 @@
     
 <section class="share">
   <h4>Share this post</h4>
-  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Let%27s%20code%3a%20Advanced%20CRUD%20in%20Angular%20with%20unit%20tests&nbsp;-&nbsp;Typical%20personal%20blog&amp;url=https%3a%2f%2fbenetis.me%2fpost%2fangular-advanced-crud%2f"
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Let%27s%20code%3a%20CRUD%20in%20Angular%20with%20unit%20tests&nbsp;-&nbsp;Typical%20personal%20blog&amp;url=https%3a%2f%2fbenetis.me%2fpost%2fangular-advanced-crud%2f"
       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
       <span class="hidden">Twitter</span>
   </a>
@@ -306,7 +656,7 @@
       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
       <span class="hidden">Facebook</span>
   </a>
-  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fbenetis.me%2fpost%2fangular-advanced-crud%2f&amp;description=Let%27s%20code%3a%20Advanced%20CRUD%20in%20Angular%20with%20unit%20tests"
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fbenetis.me%2fpost%2fangular-advanced-crud%2f&amp;description=Let%27s%20code%3a%20CRUD%20in%20Angular%20with%20unit%20tests"
       onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
       <span class="hidden">Pinterest</span>
   </a>
