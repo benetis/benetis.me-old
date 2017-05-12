@@ -19,8 +19,10 @@ What does word advanced mean? It's just that the CRUD application we are going t
 - lazy data processing
 - pagination
 - tests
-
+    
 This project's source code is in github - [https://github.com/benetis/angular-advanced-crud](https://github.com/benetis/angular-advanced-crud)
+
+p.s some of code parts are not in sync going down - so I advise to also fork github repo and check code yourself
 
 ## Requirements & Task itself
 
@@ -284,7 +286,11 @@ Being lazy - we can just install this library to provide custom validators:
 Next step is to validate if point to add doesn't already exist in list. (No duplicates) + list cannot get bigger than 10000.
 
 ```typescript
-interface PSResponse { message: string, error: boolean }
+export interface PSResponse {
+    message: string,
+    error: boolean,
+    point?: Point
+}
 ```
 
 New type will hold response from `addPoint` to handle two conditions we defined above.
@@ -382,3 +388,5 @@ public fileUploaded(contents: any[]) {
 ```
 
 If file is uploaded - data is imported! All good - we get a response with what happened also! We can pass it to import gatekeeper for it to handle.
+
+![](/images/2017/05/import-response.gif)
