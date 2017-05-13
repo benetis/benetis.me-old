@@ -82,7 +82,7 @@ interface Point {x: number, y: number}
 interface Square {c1: Point, c2: Point, c3: Point, c4: Point}
 
 // Self explanatory, just for planning
-type ListOfPoints = Point[]
+type ListOfPoints = { name: string, points: Point[] }
 type ListOfSquares = Square[]
 ```
 
@@ -436,3 +436,61 @@ and in our data handler just xor
 
 
 ![](/images/2017/05/delete.gif)
+
+### Storing chunks of data
+
+Saving list of points and giving that list name a name. If name exists - overwrite.
+
+Creating a new component to handle all operations related to lists. Selected rows will be outputted from points table and passed into new component
+
+Next is simple:
+
+```typescript
+export class FavoritePointsComponent implements OnInit {
+
+    @Input() selected: Point[] = []
+
+    public savedListsOfPoints: { [key: string]: Point[] } = {}
+
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
+    public saveList(listName) {
+        this.savedListsOfPoints[listName] = this.selected
+    }
+
+    public keys(obj) {
+        return Object.keys(obj)
+    }
+
+}
+```
+
+```html
+<div class="list-menu">
+    <div class="box-sm">
+        <p>Save selected points to list</p>
+        <input type="text"
+               #listName/>
+        <button (click)="saveList(listName.value)">Save list</button>
+    </div>
+    <div class="box-sm">
+        <p>Load list points to table</p>
+        <select>
+            <option
+                    *ngFor="let pointsList of keys(savedListsOfPoints)"
+                    [value]="pointsList">{{pointsList}}
+            </option>
+        </select>
+        <button (click)="loadList($event)">Load list</button>
+        <button (click)="deleteList($event)">Delete list</button>
+    </div>
+</div>
+```
+
+We use object to store our lists since we will overwrite lists (by name). Else is self explanatory
+
+![](/images/2017/05/save-list.gif)
