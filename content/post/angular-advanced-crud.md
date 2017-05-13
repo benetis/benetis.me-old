@@ -224,6 +224,8 @@ Of course instead of grabbing points inside points-table we will now need to sub
 
 Next - AddPoint component. Put inputs inside that component and after clicking the button - just add points to our points service.
 
+Important: component like `addPoint` if possible should be made dumb. You always want to have as many dumb components as possible. It means it shouldnt inject pointsService, but instead let parent component handle that for us. This will enable easier testing
+
 This gives us a little bit of separation since we will need to handle validation here as well.
 
 ```html
@@ -239,9 +241,9 @@ This gives us a little bit of separation since we will need to handle validation
 ```
 
 ```typescript
-public addPoint(x: number, y: number) {
-    this.pointsService.addPoints([{x, y}])
-}
+    public addPoint() {
+        this.addPoints.emit([{x: this.x, y: this.y}])
+    }
 ```
 
 And of course validations. Limits are:
@@ -494,3 +496,18 @@ export class FavoritePointsComponent implements OnInit {
 We use object to store our lists since we will overwrite lists (by name). Else is self explanatory
 
 ![](/images/2017/05/save-list.gif)
+
+### Loading saved lists into table
+
+Table list will be replaced by user chosen saved list.
+
+We need `setPoints` method.
+
+```typescript
+    public setPoints(points: Point[]): Observable<boolean> {
+        this.points.next(points)
+        return of(true);
+    }
+```
+
+![](/images/2017/05/load-list.gif)
