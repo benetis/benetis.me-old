@@ -396,7 +396,7 @@ If file is uploaded - data is imported! All good - we get a response with what h
 App is shaping up. Time to add styles, check what is redundant.
 
 
-![](/images/2017/05/cosmetics.png)
+![](/images/2017/05/presentation.png)
 
 Little updates to UI just to have everything a little bit more organized. We can come back to it later if there is need, but this is not our focus.
 
