@@ -406,3 +406,33 @@ We want to select multiple table rows and perform actions on them:
 
 - Save them as another list
 - Delete them
+
+For delete we need to update our points service to support deleting.
+
+Important moment - we should add id field to our data model to have something "easier" for identification of our object. However, since it is a simple point - we will skip this step.
+
+In points-table add two functions
+```typescript
+    public delete(e) {
+        this.pointsService.deletePoints(this.selected)
+        this.selected = []
+    }
+
+    public onSelect({selected}) {
+        this.selected.splice(0, this.selected.length);
+        this.selected.push(...selected);
+    }
+```
+
+and in our data handler just xor
+
+```typescript
+  public deletePoints(pointsToDelete: Point[]): Observable<boolean> {
+        this.points.next(_.xorWith(pointsToDelete, this._points, this.isEqual))
+
+        return of(true);
+    }
+```
+
+
+![](/images/2017/05/delete.gif)
