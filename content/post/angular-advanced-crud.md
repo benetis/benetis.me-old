@@ -79,7 +79,7 @@ Point and Square.
 ```typescript
 interface Point {x: number, y: number}
 // Corner 1, Corner 2
-interface Square {c1: Point, c2: Point, c3: Point, c4: Point}
+interface Square {q1: Point, q2: Point, q3: Point, q4: Point}
 
 // Self explanatory, just for planning
 type ListOfPoints = { name: string, points: Point[] }
@@ -511,3 +511,32 @@ We need `setPoints` method.
 ```
 
 ![](/images/2017/05/load-list.gif)
+
+## Finding squares
+
+Creating separate table to hold our squares.
+
+Grabbing algorithm from here [http://www.geeksforgeeks.org/check-given-four-points-form-square/](http://www.geeksforgeeks.org/check-given-four-points-form-square/)
+
+Seems to work good enough for this exercise.
+
+We don't care that much about performance - our limits are n < 10000 which can be processed quickly. We care that it will be displayed lazy so user can see as it processes
+
+Squares will be from list of points. That being said we can create a new service which will inject `PointService` to get current list squares and start counting
+
+Code is here - [https://github.com/benetis/angular-advanced-crud/blob/master/src/app/squares.service.ts](https://github.com/benetis/angular-advanced-crud/blob/master/src/app/squares.service.ts)
+
+![](/images/2017/05/find-squares.gif)
+
+## Summary
+
+The thing you want you will find in code, here is just a quick write up on this task :)
+
+
+
+
+
+
+
+
+
