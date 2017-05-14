@@ -34,7 +34,7 @@
     <meta property="og:description" content="" />
   	<meta property="og:type" content="article" />
     <meta property="og:image" content="https://benetis.me/" />
-    <meta property="article:published_time" content="2017-05-10T23:00:24&#43;02:00" />
+    <meta property="article:published_time" content="2017-05-14T23:00:24&#43;02:00" />
 
     
     <meta property="article:tag" content="Angular" />
@@ -104,15 +104,15 @@
     },
     "headline": "Let's code: CRUD in Angular with unit tests",
     "name": "Let's code: CRUD in Angular with unit tests",
-    "wordCount":  1326 ,
-    "timeRequired": "PT7M",
+    "wordCount":  1738 ,
+    "timeRequired": "PT9M",
     "inLanguage": {
       "@type": "Language",
       "alternateName": "en"
     },
     "url": "https://benetis.me/post/angular-advanced-crud/",
-    "datePublished": "2017-05-10T23:00Z",
-    "dateModified": "2017-05-10T23:00Z",
+    "datePublished": "2017-05-14T23:00Z",
+    "dateModified": "2017-05-14T23:00Z",
     
     "keywords": "Angular, Frontend, Side-project, Let's code",
     "description": "",
@@ -196,8 +196,8 @@
 
         <section class="post-meta">
         
-          <time class="post-date" datetime="2017-05-10T23:00:24&#43;02:00">
-            May 10, 2017
+          <time class="post-date" datetime="2017-05-14T23:00:24&#43;02:00">
+            May 14, 2017
           </time>
         
          
@@ -287,10 +287,10 @@
 
 <pre><code class="language-typescript">interface Point {x: number, y: number}
 // Corner 1, Corner 2
-interface Square {c1: Point, c2: Point, c3: Point, c4: Point}
+interface Square {q1: Point, q2: Point, q3: Point, q4: Point}
 
 // Self explanatory, just for planning
-type ListOfPoints = Point[]
+type ListOfPoints = { name: string, points: Point[] }
 type ListOfSquares = Square[]
 </code></pre>
 
@@ -438,6 +438,8 @@ it('should add points twice and return all points', done =&gt; {
 
 <p>Next - AddPoint component. Put inputs inside that component and after clicking the button - just add points to our points service.</p>
 
+<p>Important: component like <code>addPoint</code> if possible should be made dumb. You always want to have as many dumb components as possible. It means it shouldnt inject pointsService, but instead let parent component handle that for us. This will enable easier testing</p>
+
 <p>This gives us a little bit of separation since we will need to handle validation here as well.</p>
 
 <pre><code class="language-html">&lt;form&gt;
@@ -451,9 +453,9 @@ it('should add points twice and return all points', done =&gt; {
 &lt;/form&gt;
 </code></pre>
 
-<pre><code class="language-typescript">public addPoint(x: number, y: number) {
-    this.pointsService.addPoints([{x, y}])
-}
+<pre><code class="language-typescript">    public addPoint() {
+        this.addPoints.emit([{x: this.x, y: this.y}])
+    }
 </code></pre>
 
 <p>And of course validations. Limits are:</p>
@@ -605,7 +607,7 @@ it('should add points twice and return all points', done =&gt; {
 
 <p>App is shaping up. Time to add styles, check what is redundant.</p>
 
-<p><img src="https://benetis.me/images/2017/05/cosmetics.png" alt="" /></p>
+<p><img src="https://benetis.me/images/2017/05/presentation.png" alt="" /></p>
 
 <p>Little updates to UI just to have everything a little bit more organized. We can come back to it later if there is need, but this is not our focus.</p>
 
@@ -617,6 +619,124 @@ it('should add points twice and return all points', done =&gt; {
 <li>Save them as another list</li>
 <li>Delete them</li>
 </ul>
+
+<p>For delete we need to update our points service to support deleting.</p>
+
+<p>Important moment - we should add id field to our data model to have something &ldquo;easier&rdquo; for identification of our object. However, since it is a simple point - we will skip this step.</p>
+
+<p>In points-table add two functions</p>
+
+<pre><code class="language-typescript">    public delete(e) {
+        this.pointsService.deletePoints(this.selected)
+        this.selected = []
+    }
+
+    public onSelect({selected}) {
+        this.selected.splice(0, this.selected.length);
+        this.selected.push(...selected);
+    }
+</code></pre>
+
+<p>and in our data handler just xor</p>
+
+<pre><code class="language-typescript">  public deletePoints(pointsToDelete: Point[]): Observable&lt;boolean&gt; {
+        this.points.next(_.xorWith(pointsToDelete, this._points, this.isEqual))
+
+        return of(true);
+    }
+</code></pre>
+
+<p><img src="https://benetis.me/images/2017/05/delete.gif" alt="" /></p>
+
+<h3 id="storing-chunks-of-data">Storing chunks of data</h3>
+
+<p>Saving list of points and giving that list name a name. If name exists - overwrite.</p>
+
+<p>Creating a new component to handle all operations related to lists. Selected rows will be outputted from points table and passed into new component</p>
+
+<p>Next is simple:</p>
+
+<pre><code class="language-typescript">export class FavoritePointsComponent implements OnInit {
+
+    @Input() selected: Point[] = []
+
+    public savedListsOfPoints: { [key: string]: Point[] } = {}
+
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
+    public saveList(listName) {
+        this.savedListsOfPoints[listName] = this.selected
+    }
+
+    public keys(obj) {
+        return Object.keys(obj)
+    }
+
+}
+</code></pre>
+
+<pre><code class="language-html">&lt;div class=&quot;list-menu&quot;&gt;
+    &lt;div class=&quot;box-sm&quot;&gt;
+        &lt;p&gt;Save selected points to list&lt;/p&gt;
+        &lt;input type=&quot;text&quot;
+               #listName/&gt;
+        &lt;button (click)=&quot;saveList(listName.value)&quot;&gt;Save list&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box-sm&quot;&gt;
+        &lt;p&gt;Load list points to table&lt;/p&gt;
+        &lt;select&gt;
+            &lt;option
+                    *ngFor=&quot;let pointsList of keys(savedListsOfPoints)&quot;
+                    [value]=&quot;pointsList&quot;&gt;{{pointsList}}
+            &lt;/option&gt;
+        &lt;/select&gt;
+        &lt;button (click)=&quot;loadList($event)&quot;&gt;Load list&lt;/button&gt;
+        &lt;button (click)=&quot;deleteList($event)&quot;&gt;Delete list&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>We use object to store our lists since we will overwrite lists (by name). Else is self explanatory</p>
+
+<p><img src="https://benetis.me/images/2017/05/save-list.gif" alt="" /></p>
+
+<h3 id="loading-saved-lists-into-table">Loading saved lists into table</h3>
+
+<p>Table list will be replaced by user chosen saved list.</p>
+
+<p>We need <code>setPoints</code> method.</p>
+
+<pre><code class="language-typescript">    public setPoints(points: Point[]): Observable&lt;boolean&gt; {
+        this.points.next(points)
+        return of(true);
+    }
+</code></pre>
+
+<p><img src="https://benetis.me/images/2017/05/load-list.gif" alt="" /></p>
+
+<h2 id="finding-squares">Finding squares</h2>
+
+<p>Creating separate table to hold our squares.</p>
+
+<p>Grabbing algorithm from here <a href="http://www.geeksforgeeks.org/check-given-four-points-form-square/">http://www.geeksforgeeks.org/check-given-four-points-form-square/</a></p>
+
+<p>Seems to work good enough for this exercise.</p>
+
+<p>We don&rsquo;t care that much about performance - our limits are n &lt; 10000 which can be processed quickly. We care that it will be displayed lazy so user can see as it processes</p>
+
+<p>Squares will be from list of points. That being said we can create a new service which will inject <code>PointService</code> to get current list squares and start counting</p>
+
+<p>Code is here - <a href="https://github.com/benetis/angular-advanced-crud/blob/master/src/app/squares.service.ts">https://github.com/benetis/angular-advanced-crud/blob/master/src/app/squares.service.ts</a></p>
+
+<p><img src="https://benetis.me/images/2017/05/find-squares.gif" alt="" /></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>The thing you want you will find in code, here is just a quick write up on this task :)</p>
 
     </section>
 
