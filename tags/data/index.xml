@@ -148,6 +148,8 @@ case class RTDetailsEquipment(value: String)
 case class RTDetailsShortDescription(value: String)
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;next-up-scraper-and-supervisor&#34;&gt;Next up - Scraper and Supervisor&lt;/h3&gt;
+
 &lt;p&gt;Two more things to talk about: scraper and supervisor&lt;/p&gt;
 
 &lt;p&gt;Scraper is pretty straightforward. Receive a message from Actor and start scraping it. Once we get what we need - pass message to store it into database. Nothing more at this moment. More complex composition/abstraction will need to land here later to fit in more sites and specific categories.&lt;/p&gt;
@@ -395,6 +397,8 @@ class Supervisor(system: ActorSystem) extends Actor {
 
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;deployment-step&#34;&gt;&amp;ldquo;Deployment&amp;rdquo; step&lt;/h3&gt;
+
 &lt;p&gt;Next - preparing for &amp;ldquo;deployment&amp;rdquo;. We will be putting into a an old laptop behind the tv, in private home network. We need to generate a JAR file with all dependencies. For that - &lt;code&gt;sbt-assembly&lt;/code&gt; comes to help. Was a bit tough to set it up - but seems to work well.&lt;/p&gt;
 
 &lt;p&gt;Configure mysql users.&lt;/p&gt;
@@ -406,6 +410,14 @@ class Supervisor(system: ActorSystem) extends Actor {
 &lt;p&gt;You can find code here - &lt;a href=&#34;https://github.com/benetis/rt-pricer&#34;&gt;https://github.com/benetis/rt-pricer&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;That&amp;rsquo;s it!&lt;/p&gt;
+
+&lt;h3 id=&#34;results&#34;&gt;Results&lt;/h3&gt;
+
+&lt;p&gt;A gif how new rows appear in database after code with this specific revision.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/08/rt-pricer-rows-adding.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/benetis/rt-pricer/tree/7b1f783ea94aca5bcaa65e5dc8cb97ff2320e0de&#34;&gt;Code revision&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
 

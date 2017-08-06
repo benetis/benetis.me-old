@@ -104,7 +104,7 @@
     },
     "headline": "Real estate ads scraping with Scala and Akka #1 - Proof of concept",
     "name": "Real estate ads scraping with Scala and Akka #1 - Proof of concept",
-    "wordCount":  1723 ,
+    "wordCount":  1748 ,
     "timeRequired": "PT9M",
     "inLanguage": {
       "@type": "Language",
@@ -345,6 +345,8 @@ case class RTDetailsEquipment(value: String)
 
 case class RTDetailsShortDescription(value: String)
 </code></pre>
+
+<h3 id="next-up-scraper-and-supervisor">Next up - Scraper and Supervisor</h3>
 
 <p>Two more things to talk about: scraper and supervisor</p>
 
@@ -593,6 +595,8 @@ class Supervisor(system: ActorSystem) extends Actor {
 
 </code></pre>
 
+<h3 id="deployment-step">&ldquo;Deployment&rdquo; step</h3>
+
 <p>Next - preparing for &ldquo;deployment&rdquo;. We will be putting into a an old laptop behind the tv, in private home network. We need to generate a JAR file with all dependencies. For that - <code>sbt-assembly</code> comes to help. Was a bit tough to set it up - but seems to work well.</p>
 
 <p>Configure mysql users.</p>
@@ -604,6 +608,14 @@ class Supervisor(system: ActorSystem) extends Actor {
 <p>You can find code here - <a href="https://github.com/benetis/rt-pricer">https://github.com/benetis/rt-pricer</a></p>
 
 <p>That&rsquo;s it!</p>
+
+<h3 id="results">Results</h3>
+
+<p>A gif how new rows appear in database after code with this specific revision.</p>
+
+<p><img src="https://benetis.me/images/2017/08/rt-pricer-rows-adding.gif" alt="" /></p>
+
+<p><a href="https://github.com/benetis/rt-pricer/tree/7b1f783ea94aca5bcaa65e5dc8cb97ff2320e0de">Code revision</a></p>
 
 <h3 id="feedback">Feedback</h3>
 
