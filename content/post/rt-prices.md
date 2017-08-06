@@ -1,7 +1,7 @@
 
 +++
-date = "2017-06-29T18:54:24+02:00"
-draft = true
+date = "2017-08-06T18:54:24+02:00"
+draft = false
 share = true
 title = "Real estate ads scraping with Scala and Akka #1 - Proof of concept"
 slug = "real-estate-prices"
