@@ -5,12 +5,14 @@ draft = true
 share = true
 title = "Real estate ads scraping with Scala and Akka #1 - Proof of concept"
 slug = "real-estate-prices"
-tags = ['scala', 'data', 'devops', 'docker']
+tags = ['scala', 'data', 'mysql', 'docker']
 banner = ""
 aliases = ['/rt-prices/']
 +++
 
 ## Introduction
+
+Disclaimer: Not an expert in scala world - any feedback is appreciated.
 
 A question came to mind - can I crawl through a real estate website, gather some data and infer something from that data. This is also becoming relevant and interesting to me.
 
@@ -41,7 +43,7 @@ Talking about technology stack.
 - Scala, Akka - a language I admire
 ~~- InfluxDB - Interesting database for monitoring real time data - want to try out~~
 - MySQL - battle tested DB, our scraper will not "scale" that much to start encountering lock problems
-- Docker - I want application to run smoothly and automated. I have some prior experience with it - might just use it
+- ~~Docker - I want application to run smoothly and automated. I have some prior experience with it - might just use it~~ Can't use it due that fact that 32bit platforms are not supported by docker engine. You might ask, but why 32bit? Its just that I got this old laptop laying around which is begging to be resurrected.
 
 
 #### Legal corner
@@ -136,3 +138,269 @@ case class RTDetailsEquipment(value: String)
 
 case class RTDetailsShortDescription(value: String)
 ```
+
+Two more things to talk about: scraper and supervisor
+
+Scraper is pretty straightforward. Receive a message from Actor and start scraping it. Once we get what we need - pass message to store it into database. Nothing more at this moment. More complex composition/abstraction will need to land here later to fit in more sites and specific categories.
+
+One thing I don't like about this "MVP" implementation is how parsedItemDetails are parsed with collectFirst by types. This makes my IDE slow due type checking. Some better data structure can be fit here - not to waste too much time here - let's move on.
+
+p.s scraping done with the help of "scalascraper"
+
+```scala
+package rt
+
+import akka.actor.{Actor, ActorRef}
+import net.ruippeixotog.scalascraper.browser.JsoupBrowser
+import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
+import net.ruippeixotog.scalascraper.dsl.DSL._
+import net.ruippeixotog.scalascraper.model.Element
+import net.ruippeixotog.scalascraper.scraper.ContentExtractors.element
+
+import scala.util.Try
+
+class Scraper(supervisor: ActorRef) extends Actor {
+
+  override def receive: Receive = {
+    case ScrapDetails(url, rtSite, rtCategory) =>
+      println("=== start scraping details ===")
+      println(s"url = $url")
+      sender() ! StoreDetails(scrapDetails(url, rtSite, rtCategory), rtSite, rtCategory)
+  }
+
+  def scrapDetails(url: String,
+                   rTSite: RTSite,
+                   rTCategory: RTCategory): RTItem = {
+    val browser = new JsoupBrowser(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
+
+    val doc = browser.get(url)
+
+    println("=== [DETAILS] FLATS ===")
+    val id = url.substring(url.length - 10, url.length - 1)
+
+    val priceEleOpt = doc >?> element(".obj-price")
+
+    priceEleOpt match { // if page exists
+      case Some(priceEle) =>
+        val (price, pricePerMeter) = parsePrice(priceEle)
+
+        val comment = doc >> element(".obj-comment") >?> text
+
+        val detailsTerms = doc >> elementList(".obj-details dt")
+        val detailsItem = doc >> elementList(".obj-details dd")
+
+        val itemDetails = detailsTerms.zip(detailsItem)
+
+        lazy val parsedItemDetails: Seq[Any] = this.splitDetails(itemDetails)
+
+        val stats = doc >> elementList(".obj-stats dl dd")
+
+        val created = stats(1).text
+        val edited = stats(2).text
+        val interested = stats(3).text
+
+
+        RTItem(
+          Some(id)
+          , Some(url)
+          , price
+          , pricePerMeter
+          , parsedItemDetails.collectFirst { case d: RTDetailsArea => d.value }
+          , parsedItemDetails.collectFirst { case d: RTDetailsNumberOfRooms => d.value }
+          , parsedItemDetails.collectFirst { case d: RTDetailsFloor => d.value }
+          , parsedItemDetails.collectFirst { case d: RTDetailsNumberOfFloors => d.value }
+          , parsedItemDetails.collectFirst { case d: RTDetailsBuildYear => d.value }
+          , parsedItemDetails.collectFirst { case d: RTDetailsHouseType => d.value }
+          , parsedItemDetails.collectFirst { case d: RTDetailsHeatingSystem => d.value }
+          , parsedItemDetails.collectFirst { case d: RTDetailsEquipment => d.value }
+          , parsedItemDetails.collectFirst { case d: RTDetailsShortDescription => d.value }
+          , comment
+          , Some(created)
+          , Some(edited)
+          , Some(interested)
+        )
+      case None => RTItem(Some(id), None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+    }
+
+
+  }
+
+  private def parsePrice(price: => Element)
+  : (Option[Double], Option[Double]) = {
+
+    def extractPricePerMeter(priceWithoutAdvert: Option[String]): Option[Double] = {
+
+      val capturePricePerMeterWithWhiteSpace = "\\([0-9 ]+".r
+
+      val matched = capturePricePerMeterWithWhiteSpace
+        .findFirstIn(priceWithoutAdvert.getOrElse("-1"))
+
+      matched
+        .map(_.replace(" ", ""))
+        .map(_.replace("(", ""))
+        .map(_.toDouble)
+
+    }
+
+    def extractPriceWithoutCurrency(priceWithoutAdvert: Option[String]): Option[Double] = {
+      val capturePriceWithoutCurrencyWithWhiteSpace = "^\\s?[0-9 ]+".r
+
+      val matched = capturePriceWithoutCurrencyWithWhiteSpace
+        .findFirstIn(priceWithoutAdvert.getOrElse("-1"))
+
+      matched
+        .map(_.replace(" ", ""))
+        .map(_.toDouble)
+    }
+
+    def extractPriceWithoutAdvert: Option[String] = {
+      val priceAdvert: Option[String] = price >?> element(".price-change") match {
+        case Some(ele: Element) => ele >?> text
+        case None => None
+      }
+
+      val rawPriceOpt = price >?> text
+
+      rawPriceOpt match {
+        case Some(rawPrice: String) => priceAdvert match {
+          case Some(advert: String) => Some(rawPrice.replace(advert, ""))
+          case None => Some(rawPrice)
+        }
+        case None => None
+      }
+    }
+
+    val priceWithoutAdvert = extractPriceWithoutAdvert
+
+    val pricePerMeter = extractPricePerMeter(priceWithoutAdvert)
+
+    val priceWithoutCurrency = extractPriceWithoutCurrency(priceWithoutAdvert)
+
+    (
+      priceWithoutCurrency,
+      pricePerMeter
+    )
+  }
+
+  private def splitDetails(details: Seq[(Element, Element)]): Seq[Any]
+
+  = {
+    lazy val _details = details.map({
+      case (term, item) => term.text match {
+        case "Area (m²):" => convertAreaToDouble(item.text)
+        case "Number of rooms :" => RTDetailsNumberOfRooms(item.text.toInt)
+        case "Floor:" => RTDetailsFloor(item.text.toInt)
+        case "No. of floors:" => RTDetailsNumberOfRooms(item.text.toInt)
+        case "Build year:" => RTDetailsBuildYear(item.text.toInt)
+        case "House Type:" => RTDetailsHouseType(item.text)
+        case "Heating system:" => RTDetailsHeatingSystem(item.text)
+        case "Equipment:" => RTDetailsEquipment(item.text)
+        case "Description:" => RTDetailsShortDescription(item.text)
+        case _ => 1.0d
+      }
+    })
+
+    def convertAreaToDouble(area: String): Option[RTDetailsArea] = {
+      Some({
+        val areaStr = area
+          .dropRight(3) // drop m^2
+          .replace(",", ".") //to dots notation
+
+        if (areaStr.isEmpty)
+          RTDetailsArea(0.0d)
+        else
+          RTDetailsArea(areaStr.toDouble)
+      })
+    }
+
+    _details
+  }
+
+}
+
+```
+
+Last piece of our proof concept - Supervisor.
+
+Here you can inspect "communication" channels for our actors. Implementation is pretty straightforward without any edge case handling. Moreover, you have to handle ids yourself which kinda sucks, but we can improve on that later.
+
+You can also inspect 2 second delay on our scraper - this is not to cause any performance problems for the website.
+
+```scala
+package rt
+
+import akka.actor.{Actor, ActorRef, ActorSystem, _}
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
+
+case class StartDetails(rtSite: RTSite,
+                        rTCategory: RTCategory)
+
+case class StoreDetails(details: RTItem,
+                        rtSite: RTSite,
+                        rTCategory: RTCategory)
+
+case class EndDetails()
+
+case class ScrapDetails(url: String,
+                        rtSite: RTSite,
+                        rTCategory: RTCategory)
+
+class Supervisor(system: ActorSystem) extends Actor {
+
+  var host2Actor = Map.empty[String, ActorRef]
+
+  val scrapers = system.actorOf(Props(new Scraper(self)))
+
+  override def receive: Receive = {
+    case StartDetails(rtSite: RTSite, rTCategory: RTCategory) => startDetails(rtSite, rTCategory)
+    case StoreDetails(details: RTItem, rtSite: RTSite, rtCategory: RTCategory) =>
+      storeDetails(details, rtSite, rtCategory)
+    case EndDetails => ???
+  }
+
+  private def storeDetails(details: RTItem,
+                           rtSite: RTSite,
+                           rtCategory: RTCategory) = {
+    Store.writeDetails(details, rtSite, rtCategory)
+  }
+
+  private def startDetails(site: RTSite,
+                           category: RTCategory) = {
+
+    var id = 2284843
+    val last = 2271641
+    system.scheduler.schedule(2 seconds, 2 seconds)({
+      scrapers ! ScrapDetails(
+        s"https://en.aruodas.lt/1-$id/",
+        site,
+        category
+      )
+      id = id + 1
+    })
+
+  }
+
+
+}
+
+```
+
+Next - preparing for "deployment". We will be putting into a an old laptop behind the tv, in private home network. We need to generate a JAR file with all dependencies. For that - `sbt-assembly` comes to help. Was a bit tough to set it up - but seems to work well.
+
+Configure mysql users.
+
+More on how to - [https://github.com/sbt/sbt-assembly](https://github.com/sbt/sbt-assembly)
+
+Copy everything to the server with `scp` and run `java -jar rt-pricer-assembly.jar`
+
+You can find code here - [https://github.com/benetis/rt-pricer](https://github.com/benetis/rt-pricer)
+
+That's it!
+
+
+### Feedback
+
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
