@@ -139,6 +139,7 @@ case class RTDetailsEquipment(value: String)
 case class RTDetailsShortDescription(value: String)
 ```
 
+### Next up - Scraper and Supervisor
 Two more things to talk about: scraper and supervisor
 
 Scraper is pretty straightforward. Receive a message from Actor and start scraping it. Once we get what we need - pass message to store it into database. Nothing more at this moment. More complex composition/abstraction will need to land here later to fit in more sites and specific categories.
@@ -388,6 +389,8 @@ class Supervisor(system: ActorSystem) extends Actor {
 
 ```
 
+### "Deployment" step
+
 Next - preparing for "deployment". We will be putting into a an old laptop behind the tv, in private home network. We need to generate a JAR file with all dependencies. For that - `sbt-assembly` comes to help. Was a bit tough to set it up - but seems to work well.
 
 Configure mysql users.
@@ -399,6 +402,14 @@ Copy everything to the server with `scp` and run `java -jar rt-pricer-assembly.j
 You can find code here - [https://github.com/benetis/rt-pricer](https://github.com/benetis/rt-pricer)
 
 That's it!
+
+### Results
+
+A gif how new rows appear in database after code with this specific revision.
+
+![](/images/2017/08/rt-pricer-rows-adding.gif)
+
+[Code revision](https://github.com/benetis/rt-pricer/tree/7b1f783ea94aca5bcaa65e5dc8cb97ff2320e0de)
 
 
 ### Feedback
