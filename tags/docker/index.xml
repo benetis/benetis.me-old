@@ -82,7 +82,7 @@
 
 &lt;p&gt;RTDetails is just some sugar to have types for different ad properties. Not sure if this is a good pattern at this moment - not going to go into detail. (pun not intended)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;package rt
+&lt;pre&gt;&lt;code class=&#34;language-language-scala&#34;&gt;package rt
 
 trait RTCategory {
 }
@@ -337,7 +337,7 @@ class Scraper(supervisor: ActorRef) extends Actor {
 
 &lt;p&gt;You can also inspect 2 second delay on our scraper - this is not to cause any performance problems for the website.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;package rt
+&lt;pre&gt;&lt;code class=&#34;language-language-scala&#34;&gt;package rt
 
 import akka.actor.{Actor, ActorRef, ActorSystem, _}
 
