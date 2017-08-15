@@ -50,7 +50,7 @@ Talking about technology stack.
 
 Before scraping websites I advise to read their ToS on their policy of scraping. Unless you are doing it for commercial purposes - owners will usually be okay with it. Be sure to be polite to the website (not hit it with a lot of requests). Web is an open space - unless you "accidentally DOS" or steal content you will be fine.
 
-Website to "mine" on - [aruodas.lt](aruodas.lt) - popular real estate website in Lithuania. Surely I am not planning to share mined raw data with anyone, sell it or keep for a long time. After contacting their administration they were nice enough to give me a permit (on my IP address) to scrape their ads. Thanks a lot!
+Website to "mine" on - [aruodas.lt](aruodas.lt) - popular real estate website in Lithuania. Surely I am not planning to share mined raw data with anyone, sell it or keep for a long time. After contacting their administration they were nice enough to give me a permit (on my IP address) to scrape their ads. ~~Thanks a lot!~~ They did ban my IP - breaking their word.
 
 ## Choice of database
 
@@ -148,7 +148,7 @@ One thing I don't like about this "MVP" implementation is how parsedItemDetails 
 
 p.s scraping done with the help of "scalascraper"
 
-```scala
+```java
 package rt
 
 import akka.actor.{Actor, ActorRef}
