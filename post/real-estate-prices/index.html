@@ -23,7 +23,7 @@
   	<meta property="og:title" content="Real estate ads scraping with Scala and Akka #1 - Proof of concept &middot; Typical personal blog" />
   	<meta property="og:site_name" content="Typical personal blog" />
   	<meta property="og:url" content="https://benetis.me/post/real-estate-prices/" />
-    
+
     
         
             <meta property="og:image" content="https://benetis.me/images/blog_cover_optimized_stars.jpg"/>
@@ -104,7 +104,7 @@
     },
     "headline": "Real estate ads scraping with Scala and Akka #1 - Proof of concept",
     "name": "Real estate ads scraping with Scala and Akka #1 - Proof of concept",
-    "wordCount":  1748 ,
+    "wordCount":  1757 ,
     "timeRequired": "PT9M",
     "inLanguage": {
       "@type": "Language",
@@ -260,7 +260,7 @@
 
 <p>Before scraping websites I advise to read their ToS on their policy of scraping. Unless you are doing it for commercial purposes - owners will usually be okay with it. Be sure to be polite to the website (not hit it with a lot of requests). Web is an open space - unless you &ldquo;accidentally DOS&rdquo; or steal content you will be fine.</p>
 
-<p>Website to &ldquo;mine&rdquo; on - <a href="aruodas.lt">aruodas.lt</a> - popular real estate website in Lithuania. Surely I am not planning to share mined raw data with anyone, sell it or keep for a long time. After contacting their administration they were nice enough to give me a permit (on my IP address) to scrape their ads. Thanks a lot!</p>
+<p>Website to &ldquo;mine&rdquo; on - <a href="aruodas.lt">aruodas.lt</a> - popular real estate website in Lithuania. Surely I am not planning to share mined raw data with anyone, sell it or keep for a long time. After contacting their administration they were nice enough to give me a permit (on my IP address) to scrape their ads. <del>Thanks a lot!</del> They did ban my IP - breaking their word.</p>
 
 <h2 id="choice-of-database">Choice of database</h2>
 
@@ -356,7 +356,7 @@ case class RTDetailsShortDescription(value: String)
 
 <p>p.s scraping done with the help of &ldquo;scalascraper&rdquo;</p>
 
-<pre><code class="language-scala">package rt
+<pre><code class="language-java">package rt
 
 import akka.actor.{Actor, ActorRef}
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
@@ -690,8 +690,8 @@ class Supervisor(system: ActorSystem) extends Actor {
     <script type="text/javascript" src="https://benetis.me/js/index.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-typescript.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-haskell.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-scala.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-haskell.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-javascript.min.js"></script>
     
 </body>
