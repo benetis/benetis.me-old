@@ -72,7 +72,7 @@ Also we have ad itself and its properties. As we are scraping only one website n
 
 RTDetails is just some sugar to have types for different ad properties. Not sure if this is a good pattern at this moment - not going to go into detail. (pun not intended)
 
-```scala
+```language-scala
 package rt
 
 trait RTCategory {
@@ -328,7 +328,7 @@ Here you can inspect "communication" channels for our actors. Implementation is 
 
 You can also inspect 2 second delay on our scraper - this is not to cause any performance problems for the website.
 
-```scala
+```language-scala
 package rt
 
 import akka.actor.{Actor, ActorRef, ActorSystem, _}
