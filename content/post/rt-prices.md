@@ -148,7 +148,7 @@ One thing I don't like about this "MVP" implementation is how parsedItemDetails 
 
 p.s scraping done with the help of "scalascraper"
 
-```java
+```scala
 package rt
 
 import akka.actor.{Actor, ActorRef}
@@ -328,7 +328,7 @@ Here you can inspect "communication" channels for our actors. Implementation is 
 
 You can also inspect 2 second delay on our scraper - this is not to cause any performance problems for the website.
 
-```language-scala
+```scala
 package rt
 
 import akka.actor.{Actor, ActorRef, ActorSystem, _}
