@@ -159,7 +159,7 @@ case class RTDetailsShortDescription(value: String)
 
 &lt;p&gt;p.s scraping done with the help of &amp;ldquo;scalascraper&amp;rdquo;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package rt
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;package rt
 
 import akka.actor.{Actor, ActorRef}
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
@@ -338,7 +338,7 @@ class Scraper(supervisor: ActorRef) extends Actor {
 
 &lt;p&gt;You can also inspect 2 second delay on our scraper - this is not to cause any performance problems for the website.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-language-scala&#34;&gt;package rt
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;package rt
 
 import akka.actor.{Actor, ActorRef, ActorSystem, _}
 

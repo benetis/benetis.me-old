@@ -356,7 +356,7 @@ case class RTDetailsShortDescription(value: String)
 
 <p>p.s scraping done with the help of &ldquo;scalascraper&rdquo;</p>
 
-<pre><code class="language-java">package rt
+<pre><code class="language-scala">package rt
 
 import akka.actor.{Actor, ActorRef}
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
@@ -535,7 +535,7 @@ class Scraper(supervisor: ActorRef) extends Actor {
 
 <p>You can also inspect 2 second delay on our scraper - this is not to cause any performance problems for the website.</p>
 
-<pre><code class="language-language-scala">package rt
+<pre><code class="language-scala">package rt
 
 import akka.actor.{Actor, ActorRef, ActorSystem, _}
 
@@ -689,7 +689,9 @@ class Supervisor(system: ActorSystem) extends Actor {
     <script type="text/javascript" src="https://benetis.me/js/jquery.fitvids.js"></script>
     <script type="text/javascript" src="https://benetis.me/js/index.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-typescript.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-typescript.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-java.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-scala.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-haskell.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-javascript.min.js"></script>
