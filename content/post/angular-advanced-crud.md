@@ -1,14 +1,17 @@
 
-+++
-date = "2017-05-14T23:00:24+02:00"
-draft = false
-share = true
-title = "Let's code: CRUD in Angular with unit tests"
-slug = "angular-advanced-crud"
-tags = ['Angular', 'Frontend', 'Side-project', "Let's code"]
-banner = ""
-aliases = ['/angular-advanced-crud/']
-+++
+---
+date : "2017-05-14T23:00:24+02:00"
+draft : false
+share : true
+title : "Let's code: CRUD in Angular with unit tests"
+slug : "angular-advanced-crud"
+tags : ['Angular', 'Frontend', 'Side-project', "Let's code"]
+banner : ""
+aliases : ['/angular-advanced-crud/']
+menu:
+    main:
+        parent: 'Angular'
+---
 
 ## Introduction
 
@@ -531,12 +534,3 @@ Code is here - [https://github.com/benetis/angular-advanced-crud/blob/master/src
 ## Summary
 
 The thing you want you will find in code, here is just a quick write up on this task :)
-
-
-
-
-
-
-
-
-

@@ -1,13 +1,16 @@
 
-+++
-date = "2016-11-06"
-draft = false
-title = "Let's code: Creating functional table with Angular"
-slug = "angular-table"
-tags = ['Angular2', 'Frontend', 'Side-project', "Let's code"]
-banner = ""
-aliases = ['/angular-table/']
-+++
+---
+date : "2016-11-06"
+draft : false
+title : "Let's code: Creating functional table with Angular"
+slug : "angular-table"
+tags : ['Angular2', 'Frontend', 'Side-project', "Let's code"]
+banner : ""
+aliases : ['/angular-table/']
+menu:
+    main:
+        parent: 'Angular'
+---
 
 ##### Offtopic
 Currently volunteering in organisation called "Erasmus student Network Lithuania". Working with a team to develop internal HR system.

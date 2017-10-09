@@ -7,6 +7,7 @@ slug = "lets-code-learning-haskell-1"
 tags = ['Learning', "Let's code"]
 banner = ""
 aliases = ['/lets-code-learning-haskell-1/']
+menu = "main"
 +++
 
 #### Introduction

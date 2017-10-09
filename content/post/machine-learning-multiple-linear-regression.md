@@ -8,6 +8,7 @@ slug = "linear-regression-ml"
 tags = ['machine-learning', 'scala']
 banner = ""
 aliases = ['/ml-linear-regression/']
+menu = "main"
 +++
 
 

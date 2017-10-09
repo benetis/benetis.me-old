@@ -1,13 +1,16 @@
-+++
-date = "2017-05-10T23:00:24+02:00"
-draft = false
-share = true
-title = "Let's code: Authentication in Angular #2 - Auth service"
-slug = "angular-authentication-oauth"
-tags = ['Angular', 'Frontend', 'Side-project', "Let's code", "ngrx"]
-banner = ""
-aliases = ['/angular-authentication-oauth/']
-+++
+---
+date : "2017-05-10T23:00:24+02:00"
+draft : false
+share : true
+title : "Let's code: Authentication in Angular #2 : Auth service"
+slug : "angular-authentication-oauth"
+tags : ['Angular', 'Frontend', 'Side-project', "Let's code", "ngrx"]
+banner : ""
+aliases : ['/angular-authentication-oauth/']
+menu:
+    main:
+        parent: 'Angular'
+---
 
 ### Introduction
 

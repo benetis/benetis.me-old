@@ -1,13 +1,16 @@
 
-+++
-date = "2016-11-24"
-draft = false
-title = "Angular 2 is cool. So is Typescript"
-slug = "angular2-is-cool-so-is-typescript"
-tags = ['Angular2', 'Frontend']
-banner = ""
-aliases = ['/angular2-is-cool-so-is-typescript/']
-+++
+---
+date : "2016-11-24"
+draft : false
+title : "Angular 2 is cool. So is Typescript"
+slug : "angular2-is-cool-so-is-typescript"
+tags : ['Angular2', 'Frontend']
+banner : ""
+aliases : ['/angular2-is-cool-so-is-typescript/']
+menu:
+    main:
+        parent: 'Angular'
+---
 
 ##### Introduction
 
