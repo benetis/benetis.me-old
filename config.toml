@@ -1,11 +1,11 @@
 baseurl = "https://benetis.me/"
 languageCode = "en-us"
-Title = "Your site title"
+Title = "Typical personal blog"
 # Copyright notice. This is displayer in the footer.
 copyright = "&copy; Copyright notice"
 
 [params]
-  paginate = 10
+  paginate = 5
   # Social accounts. Link to these accounts are displayed in the header and
   # footer
   # twitter = "Your Twitter username"
@@ -33,7 +33,7 @@ copyright = "&copy; Copyright notice"
   # contact = "Your contact link (ex. mailto:foo@example.com)"
   # bio = "Your short bio"
   # Short subtitle/tagline. This is displayed in the header.
-  # subtitle = "Short subtitle"
+  subtitle = "Thoughts on us, humans and software"
   # Logo image. This is displayed ogp image.
   # logo = "/path/to/logo"
   # favicon = "/path/to/favicon"
