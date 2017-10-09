@@ -2,17 +2,17 @@ baseurl = "https://benetis.me/"
 languageCode = "en-us"
 Title = "Typical personal blog"
 # Copyright notice. This is displayer in the footer.
-copyright = "&copy; Copyright notice"
-
+copyright = "&copy; All rights reserved"
+canonifyurls = true
 [params]
   paginate = 5
   # Social accounts. Link to these accounts are displayed in the header and
   # footer
-  # twitter = "Your Twitter username"
+  twitter = "benetisz"
   # facebook = "Your Facebook username"
   # instagram = "Your Instagram username"
   # googleplus = "Your Google+ account URL" # https://plus.google.com/u/0/xxxxxx
-  # github = "Your GitHub username"
+  github = "benetis"
   # npm = "Your npm username"
   # codepen = "Your CodePen username"
   # dribbble = "Your Dribbble username"
@@ -22,16 +22,16 @@ copyright = "&copy; Copyright notice"
   # tumblr = "Your Tumblr username"
   # vimeo = "Your Vimeo username"
   # youtube = "Your YouTube username"
-  # linkedin = "Your LinkedIn username"
+  linkedin = "benetis"
   # Disqus shortname
   # disqus = ""
   # Google Analytics API key.
-  # ga_api_key = "Your Google Analytics tracking id"
-  # author = "Your Name"
+  ga_api_key = "UA-36419336-4"
+  author = "Žygimantas Benetis (Zygimantas Benetis)"
   # authorwebsite = "example.com"
   # avatar = "/path/to/avatar"
   contact = "https://benetis.me/posts/contact-me/"
-  # bio = "Your short bio"
+  bio = "Software engineer - Functional - Frontend - Scala - ML"
   # Short subtitle/tagline. This is displayed in the header.
   subtitle = "Thoughts on us, humans and software"
   # Logo image. This is displayed ogp image.
