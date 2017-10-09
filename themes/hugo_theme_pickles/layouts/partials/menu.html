@@ -3,8 +3,11 @@
   <ul class="p-menu__lists">
     {{ range .Site.Menus.main.ByWeight }}
     {{ if .HasChildren }}
-      <li class="p-menu__listitem p-menu__parent">
-        <span>{{ .Name }}</span>
+      <li class="p-menu__listitem">
+      <style>
+        .menu-name { font-weight: 500;}
+      </style>
+        <span class="menu-name">{{ .Name }}</span>
         <ul>
           {{ range .Children }}
             <li class="p-menu__listitem p-menu__child"><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
