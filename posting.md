@@ -1,11 +1,11 @@
 # Themes
 
-theme info - http://themes.gohugo.io/casper/
+theme info - https://github.com/mismith0227/hugo_theme_pickles
 
 # Posts
 
-new post - `hugo new -t casper post/my-post.md`
+new post - `hugo new -t hugo_theme_pickles post/my-post.md`
 
 # Running
 
-server - `hugo server -t casper --buildDrafts`
+server - `hugo server -t hugo_theme_pickles --buildDrafts`
