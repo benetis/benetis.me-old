@@ -1,83 +1,84 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://benetis.me/post/real-estate-prices/</loc>
+    <loc>https://benetis.me/posts/real-estate-prices/</loc>
     <lastmod>2017-08-06T18:54:24+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/angular-advanced-crud/</loc>
+    <loc>https://benetis.me/posts/angular-advanced-crud/</loc>
     <lastmod>2017-05-14T23:00:24+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/angular-authentication-oauth/</loc>
+    <loc>https://benetis.me/posts/angular-authentication-oauth/</loc>
     <lastmod>2017-05-10T23:00:24+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/angular-authentication/</loc>
+    <loc>https://benetis.me/posts/angular-authentication/</loc>
     <lastmod>2017-04-24T19:40:24+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/contact-me/</loc>
+    <loc>https://benetis.me/posts/contact-me/</loc>
     <lastmod>2017-04-22T18:54:24+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/taming-flexbox-intro-to-handling-the-monster-2/</loc>
+    <loc>https://benetis.me/posts/taming-flexbox-intro-to-handling-the-monster-2/</loc>
     <lastmod>2017-02-21T21:43:46+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/creating-shopping-cart-with-product-list-in-angular2/</loc>
+    <loc>https://benetis.me/posts/creating-shopping-cart-with-product-list-in-angular2/</loc>
     <lastmod>2017-02-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/html5-canvas-fundamentals/</loc>
+    <loc>https://benetis.me/posts/html5-canvas-fundamentals/</loc>
     <lastmod>2017-01-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/2016-2017-review-and-planning/</loc>
+    <loc>https://benetis.me/posts/2016-2017-review-and-planning/</loc>
     <lastmod>2016-12-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/css-variables-custom-properties-a-short-glimpse-2/</loc>
+    <loc>https://benetis.me/posts/css-variables-custom-properties-a-short-glimpse-2/</loc>
     <lastmod>2016-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/vanilla-javascript-challenge/</loc>
+    <loc>https://benetis.me/posts/vanilla-javascript-challenge/</loc>
     <lastmod>2016-12-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/lets-code-learning-haskell-1/</loc>
+    <loc>https://benetis.me/posts/lets-code-learning-haskell-1/</loc>
     <lastmod>2016-12-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/angular2-is-cool-so-is-typescript/</loc>
+    <loc>https://benetis.me/posts/angular2-is-cool-so-is-typescript/</loc>
     <lastmod>2016-11-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/use-functions-to-your-advantage/</loc>
+    <loc>https://benetis.me/posts/use-functions-to-your-advantage/</loc>
     <lastmod>2016-11-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/angular-table/</loc>
+    <loc>https://benetis.me/posts/angular-table/</loc>
     <lastmod>2016-11-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://benetis.me/post/quick-glimpse-at-world-of-elm/</loc>
+    <loc>https://benetis.me/posts/quick-glimpse-at-world-of-elm/</loc>
     <lastmod>2016-11-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -90,6 +91,11 @@
   <url>
     <loc>https://benetis.me/tags/angular2/</loc>
     <lastmod>2017-02-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://benetis.me/categories/</loc>
     <priority>0</priority>
   </url>
   
@@ -148,7 +154,7 @@
   </url>
   
   <url>
-    <loc>https://benetis.me/post/</loc>
+    <loc>https://benetis.me/posts/</loc>
     <lastmod>2017-08-06T18:54:24+02:00</lastmod>
     <priority>0</priority>
   </url>
@@ -167,6 +173,7 @@
   
   <url>
     <loc>https://benetis.me/tags/</loc>
+    <lastmod>2017-05-14T23:00:24+02:00</lastmod>
     <priority>0</priority>
   </url>
   

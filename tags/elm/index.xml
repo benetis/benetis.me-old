@@ -2,64 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Elm on Typical personal blog</title>
-    <link>https://benetis.me/tags/elm/index.xml</link>
+    <link>https://benetis.me/tags/elm/</link>
     <description>Recent content in Elm on Typical personal blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>All rights reserved - 2017</copyright>
-    <atom:link href="https://benetis.me/tags/elm/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; All rights reserved</copyright>
+    <lastBuildDate>Tue, 01 Nov 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://benetis.me/tags/elm/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Quick glimpse at world of Elm</title>
-      <link>https://benetis.me/post/quick-glimpse-at-world-of-elm/</link>
+      <link>https://benetis.me/posts/quick-glimpse-at-world-of-elm/</link>
       <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://benetis.me/post/quick-glimpse-at-world-of-elm/</guid>
-      <description>
-
-&lt;h5 id=&#34;intro&#34;&gt;Intro&lt;/h5&gt;
-
-&lt;p&gt;Recently I have came across a thing called Elm. It is a functional programming language dedicated to frontend.&lt;/p&gt;
-
-&lt;h5 id=&#34;about-language-itself&#34;&gt;About language itself&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Functional language&lt;/li&gt;
-&lt;li&gt;You will not have to worry about state mutations&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;No runtime errors.&lt;/strong&gt; I&amp;rsquo;ll just leave that here&lt;/li&gt;
-&lt;li&gt;Friendly and helpful community. Go to slack, try talking - not only you will get your answers - but community will make you feel part of it&lt;/li&gt;
-&lt;li&gt;Simplicity. You have this simple architecture emerging from language itself. More about it here - &lt;a href=&#34;https://guide.elm-lang.org/architecture/&#34;&gt;The Elm Architecture&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;a-lot-to-gain-by-learning&#34;&gt;A lot to gain by learning&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;Instant new brain power to think in Types while coding&lt;/strong&gt; -
-&lt;em&gt;f(x) transforms my x to f(x)&lt;/em&gt; - while it sounds to simple - this new ability almost instantly made all code produced by me with less side&lt;/p&gt;
-
-&lt;h5 id=&#34;trying-with-simple-app&#34;&gt;Trying with simple app&lt;/h5&gt;
-
-&lt;p&gt;It has one purpose - show how old are you with millisecond accuracy. Imagine your age here - quite a kick to stop procrastinating.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://benetis.me/images/2017/02/giphy--6-.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;While coding - a part where I needed to get current time was more difficult since it involves something that cannot be gained in a pure way. Not enough documentation on this, however Slack community together with SO answers solved the issue.&lt;/p&gt;
-
-&lt;p&gt;You can observe how Elm&amp;rsquo;s code looks here - &lt;a href=&#34;https://github.com/benetis/elm-birthday/blob/master/Main.elm&#34;&gt;github&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;summary&#34;&gt;Summary&lt;/h5&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Thinking in types makes development easier&lt;/li&gt;
-&lt;li&gt;Coding frontend without runtime errors is relaxing&lt;/li&gt;
-&lt;li&gt;Easy to understand architecture keeps things simple&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Elm is cool - try it!&lt;/p&gt;
-
-&lt;h3 id=&#34;feedback&#34;&gt;Feedback&lt;/h3&gt;
-
-&lt;p&gt;If you have any suggestions - I am eagerly waiting for feedback. &lt;a href=&#34;https://benetis.me/post/contact-me/&#34;&gt;https://benetis.me/post/contact-me/&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>https://benetis.me/posts/quick-glimpse-at-world-of-elm/</guid>
+      <description>Intro Recently I have came across a thing called Elm. It is a functional programming language dedicated to frontend.
+About language itself  Functional language You will not have to worry about state mutations No runtime errors. I&amp;rsquo;ll just leave that here Friendly and helpful community. Go to slack, try talking - not only you will get your answers - but community will make you feel part of it Simplicity.</description>
     </item>
     
   </channel>

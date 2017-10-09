@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Typical personal blog</title>
-    <link>https://benetis.me/</link>
-    <description>Recent content on Typical personal blog</description>
+    <title>Posts on Typical personal blog</title>
+    <link>https://benetis.me/posts/</link>
+    <description>Recent content in Posts on Typical personal blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; All rights reserved</copyright>
     <lastBuildDate>Sun, 06 Aug 2017 18:54:24 +0200</lastBuildDate>
     
-	<atom:link href="https://benetis.me/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://benetis.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
