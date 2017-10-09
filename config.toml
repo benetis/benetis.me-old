@@ -30,7 +30,7 @@ copyright = "&copy; Copyright notice"
   # author = "Your Name"
   # authorwebsite = "example.com"
   # avatar = "/path/to/avatar"
-  # contact = "Your contact link (ex. mailto:foo@example.com)"
+  contact = "https://benetis.me/posts/contact-me/"
   # bio = "Your short bio"
   # Short subtitle/tagline. This is displayed in the header.
   subtitle = "Thoughts on us, humans and software"

@@ -8,7 +8,6 @@ slug : "contact-me"
 tags : []
 banner : ""
 aliases : ['/contact-me/']
-menu : "main"
 ---
 
 ## Contacts and feedback

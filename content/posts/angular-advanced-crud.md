@@ -51,7 +51,7 @@ Quick mockup on how I imagine this will look like. Probably best starting place 
 
 ![](/images/2017/05/points-mock.png)
 
-Clearly we will need a good grid/table component. I have implemented tables so many times in Angular that this time I am just gonna skip it. There is even a post on Angular table by me - [[https://benetis.me/post/angular-table/](/post/angular-table/)
+Clearly we will need a good grid/table component. I have implemented tables so many times in Angular that this time I am just gonna skip it. There is even a post on Angular table by me - [[https://benetis.me/posts/angular-table/](/posts/angular-table/)
 
 Tabs component to switch between points and squares. (Since squares need pagination) OR just put squares table below.
 

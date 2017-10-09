@@ -14,7 +14,7 @@ menu:
 
 ### Introduction
 
-This is part two of **Authentication in Angular** series. This one is about building authentication part to handle OAuth calls for us. You can find first post here: [https://benetis.me/post/angular-authentication/](/post/angular-authentication/)
+This is part two of **Authentication in Angular** series. This one is about building authentication part to handle OAuth calls for us. You can find first post here: [https://benetis.me/posts/angular-authentication/](/posts/angular-authentication/)
 
 We will be using redux with our angular project to help us handle side effects. [https://github.com/ngrx/store](https://github.com/ngrx/store)
 
@@ -399,4 +399,4 @@ There are few more things we need to do for auth to be finished. Logout to clean
 
 ### Feedback
 
-If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/posts/contact-me/](/posts/contact-me/)

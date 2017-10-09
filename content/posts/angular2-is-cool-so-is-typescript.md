@@ -214,7 +214,7 @@ Angular versioning is stupid. They know it, we know it. As an example RC5 releas
 
 ###### Feedback
 
-If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/posts/contact-me/](/posts/contact-me/)
 
 ###### Sources
 

@@ -124,4 +124,4 @@ Code is in github - [here](https://github.com/benetis/JavaScript30/blob/608928a4
 
 ### Feedback
 
-If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/post/contact-me/](/post/contact-me/)
+If you have any suggestions - I am eagerly waiting for feedback. [https://benetis.me/posts/contact-me/](/posts/contact-me/)

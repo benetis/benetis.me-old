@@ -11,10 +11,10 @@
     
     <item>
       <title>Creating shopping cart with product list in Angular2</title>
-      <link>http://benetis.me/post/creating-shopping-cart-with-product-list-in-angular2/</link>
+      <link>http://benetis.me/posts/creating-shopping-cart-with-product-list-in-angular2/</link>
       <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://benetis.me/post/creating-shopping-cart-with-product-list-in-angular2/</guid>
+      <guid>http://benetis.me/posts/creating-shopping-cart-with-product-list-in-angular2/</guid>
       <description>
 
 &lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
@@ -723,10 +723,10 @@ export class ShoppingCartComponent implements OnInit {
     
     <item>
       <title>Angular 2 is cool. So is Typescript</title>
-      <link>http://benetis.me/post/angular2-is-cool-so-is-typescript/</link>
+      <link>http://benetis.me/posts/angular2-is-cool-so-is-typescript/</link>
       <pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://benetis.me/post/angular2-is-cool-so-is-typescript/</guid>
+      <guid>http://benetis.me/posts/angular2-is-cool-so-is-typescript/</guid>
       <description>
 
 &lt;h5 id=&#34;introduction&#34;&gt;Introduction&lt;/h5&gt;
@@ -942,10 +942,10 @@ export class AppModule { }
     
     <item>
       <title>Let&#39;s code: Creating functional table with Angular</title>
-      <link>http://benetis.me/post/angular-table/</link>
+      <link>http://benetis.me/posts/angular-table/</link>
       <pubDate>Sun, 06 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://benetis.me/post/angular-table/</guid>
+      <guid>http://benetis.me/posts/angular-table/</guid>
       <description>
 
 &lt;h5 id=&#34;offtopic&#34;&gt;Offtopic&lt;/h5&gt;
