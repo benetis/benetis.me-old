@@ -12,7 +12,7 @@ branches:
 install:
   - rm -rf public || exit 0
 script:
-  - binaries/hugo
+  - binaries/hugo -t hugo_theme_pickles
 after_success:
   - cp .travis.yml public
   - bash deploy.sh
