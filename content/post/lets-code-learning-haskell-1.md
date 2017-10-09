@@ -1,14 +1,17 @@
 
-+++
-date = "2016-12-04"
-draft = false
-title = "Let's code: Learning Haskell #1"
-slug = "lets-code-learning-haskell-1"
-tags = ['Learning', "Let's code"]
-banner = ""
-aliases = ['/lets-code-learning-haskell-1/']
-menu = "main"
-+++
+---
+date : "2016-12-04"
+draft : false
+title : "Let's code: Learning Haskell #1"
+slug : "lets-code-learning-haskell-1"
+tags : ['Learning', "Let's code"]
+banner : ""
+aliases : ['/lets-code-learning-haskell-1/']
+menu : "main"
+menu:
+    main:
+        parent: 'Functional programming and math'
+---
 
 #### Introduction
 

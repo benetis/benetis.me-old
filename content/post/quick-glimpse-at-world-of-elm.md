@@ -1,13 +1,16 @@
 
-+++
-date = "2016-11-01"
-draft = false
-title = "Quick glimpse at world of Elm"
-slug = "quick-glimpse-at-world-of-elm"
-tags = ['Frontend', 'Elm', 'Learning']
-banner = ""
-aliases = ['/quick-glimpse-at-world-of-elm/']
-+++
+---
+date : "2016-11-01"
+draft : false
+title : "Quick glimpse at world of Elm"
+slug : "quick-glimpse-at-world-of-elm"
+tags : ['Frontend', 'Elm', 'Learning']
+banner : ""
+aliases : ['/quick-glimpse-at-world-of-elm/']
+menu:
+    main:
+        parent: 'Web, Frontend and Client side'
+---
 
 ##### Intro
 Recently I have came across a thing called Elm. It is a functional programming language dedicated to frontend.

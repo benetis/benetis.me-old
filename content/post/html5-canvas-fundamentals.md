@@ -1,13 +1,13 @@
 
-+++
-date = "2017-01-15"
-draft = false
-title = "HTML5 Canvas. Fundamentals"
-slug = "html5-canvas-fundamentals"
-tags = ['Learning', 'Frontend']
-banner = ""
-aliases = ['/html5-canvas-fundamentals/']
-+++
+---
+date : "2017-01-15"
+draft : false
+title : "HTML5 Canvas. Fundamentals"
+slug : "html5-canvas-fundamentals"
+tags : ['Learning', 'Frontend']
+banner : ""
+aliases : ['/html5-canvas-fundamentals/']
+---
 
 #### Introduction
 

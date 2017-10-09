@@ -1,15 +1,17 @@
 
-+++
-date = "2017-10-09T23:54:24+02:00"
-draft = true
-share = true
-title = "Machine learning #1: Multiple linear regression"
-slug = "linear-regression-ml"
-tags = ['machine-learning', 'scala']
-banner = ""
-aliases = ['/ml-linear-regression/']
-menu = "main"
-+++
+---
+date : "2017-10-09T23:54:24+02:00"
+draft : true
+share : true
+title : "Machine learning #1: Multiple variable linear regression"
+slug : "linear-regression-ml"
+tags : ['machine-learning', 'scala']
+banner : ""
+aliases : ['/ml-linear-regression/']
+menu:
+    main:
+        parent: 'Machine learning'
+---
 
 
 ### Introduction

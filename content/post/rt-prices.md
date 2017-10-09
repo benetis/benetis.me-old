@@ -1,14 +1,17 @@
 
-+++
-date = "2017-08-06T18:54:24+02:00"
-draft = false
-share = true
-title = "Real estate ads scraping with Scala and Akka - Proof of concept"
-slug = "real-estate-prices"
-tags = ['scala', 'data', 'mysql', 'docker']
-banner = ""
-aliases = ['/rt-prices/']
-+++
+---
+date : "2017-08-06T18:54:24+02:00"
+draft : false
+share : true
+title : "Real estate ads scraping with Scala and Akka - Proof of concept"
+slug : "real-estate-prices"
+tags : ['scala', 'data', 'mysql', 'docker']
+banner : ""
+aliases : ['/rt-prices/']
+menu:
+    main:
+        parent: 'Other algorithms, exercises and pet projects'
+---
 
 ## Introduction
 

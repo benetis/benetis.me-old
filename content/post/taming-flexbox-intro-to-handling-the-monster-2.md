@@ -1,12 +1,15 @@
-+++
-date = "2017-02-21T21:43:46+02:00"
-draft = false
-title = "Becoming the one with flexbox: Intro to handling the monster"
-slug = "taming-flexbox-intro-to-handling-the-monster-2"
-tags = []
-banner = ""
-aliases = ['/taming-flexbox-intro-to-handling-the-monster-2/']
-+++
+---
+date : "2017-02-21T21:43:46+02:00"
+draft : false
+title : "Becoming the one with flexbox: Intro to handling the monster"
+slug : "taming-flexbox-intro-to-handling-the-monster-2"
+tags : []
+banner : ""
+aliases : ['/taming-flexbox-intro-to-handling-the-monster-2/']
+menu:
+    main:
+        parent: 'Web, Frontend and Client side'
+---
 
 ### Learn more about it. But why?
 

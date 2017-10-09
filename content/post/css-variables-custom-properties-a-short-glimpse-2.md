@@ -1,13 +1,16 @@
 
-+++
-date = "2016-12-18"
-draft = false
-title = "A quick view at CSS Variables (Custom properties)"
-slug = "css-variables-custom-properties-a-short-glimpse-2"
-tags = ['Frontend']
-banner = ""
-aliases = ['/css-variables-custom-properties-a-short-glimpse-2/']
-+++
+---
+date : "2016-12-18"
+draft : false
+title : "A quick view at CSS Variables (Custom properties)"
+slug : "css-variables-custom-properties-a-short-glimpse-2"
+tags : ['Frontend']
+banner : ""
+aliases : ['/css-variables-custom-properties-a-short-glimpse-2/']
+menu:
+    main:
+        parent: 'Web, Frontend and Client side'
+---
 
 ##### Introduction
 

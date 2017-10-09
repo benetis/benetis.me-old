@@ -1,13 +1,17 @@
 
-+++
-date = "2016-12-27"
-draft = false
-title = "2016-2017. Review and planning"
-slug = "2016-2017-review-and-planning"
-tags = []
-banner = ""
-aliases = ['/2016-2017-review-and-planning/']
-+++
+---
+date : "2016-12-27"
+draft : false
+title : "2016-2017. Review and planning"
+slug : "2016-2017-review-and-planning"
+tags : []
+banner : ""
+aliases : ['/2016-2017-review-and-planning/']
+menu:
+    main:
+        parent: 'Self development'
+        weight: -110
+---
 
 #### Introduction
 

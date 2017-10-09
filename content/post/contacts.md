@@ -1,14 +1,15 @@
 
-+++
+---
 date = "2017-04-22T18:54:24+02:00"
 draft = false
 share = true
-title = "How to contact me. Waiting for your feedback!"
-slug = "contact-me"
-tags = []
-banner = ""
-aliases = ['/contact-me/']
-+++
+title : "How to contact me. Waiting for your feedback!"
+slug : "contact-me"
+tags : []
+banner : ""
+aliases : ['/contact-me/']
+menu : "main"
+---
 
 ## Contacts and feedback
 

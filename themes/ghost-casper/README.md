@@ -95,12 +95,12 @@ thumbnail: images/john.png
 
 Example override author per page file:
 ``` toml
-+++
+---
 author = ""
 date = "2014-07-11T10:54:24+02:00"
 title = ""
 ...
-+++
+---
 
 Contents here
 
@@ -136,7 +136,7 @@ Example of a menu definition in main config file.
 ## Metadata on each content file, example
 
 ``` toml
-+++
+---
 author = ""
 date = "2014-07-11T10:54:24+02:00"
 draft = false
@@ -147,7 +147,7 @@ image = "images/2014/Jul/titledotscale.png"
 comments = true     # set false to hide Disqus comments
 share = true        # set false to share buttons
 menu = ""           # set "main" to add this content to the main menu
-+++
+---
 
 Contents here
 ```

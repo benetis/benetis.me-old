@@ -1,13 +1,16 @@
 
-+++
-date = "2016-11-12"
-draft = false
-title = "Use functions to your advantage"
-slug = "use-functions-to-your-advantage"
-tags = []
-banner = ""
-aliases = ['/use-functions-to-your-advantage/']
-+++
+---
+date : "2016-11-12"
+draft : false
+title : "Beginner tips: Use functions to your advantage"
+slug : "use-functions-to-your-advantage"
+tags : []
+banner : ""
+aliases : ['/use-functions-to-your-advantage/']
+menu:
+    main:
+        parent: 'Functional programming and math'
+---
 
 ##### Intro
 Looking on how to write better code? One way to do that would be to use functions more than variables. You want to define some variable which returns some data? Define it as a function!
