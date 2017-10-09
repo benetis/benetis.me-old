@@ -18,11 +18,11 @@ canonifyurls = true
     url        = "/functional_and_math/"
     weight     = 5
 
-    [[menu.main]]
-    identifier = "artificial_intelligence"
-    name       = "Machine learning"
-    url        = "/artificial_intelligence/"
-    weight     = 1
+    # [[menu.main]]
+    # identifier = "artificial_intelligence"
+    # name       = "Machine learning"
+    # url        = "/artificial_intelligence/"
+    # weight     = 1
 
     [[menu.main]]
     identifier = "frontend"
