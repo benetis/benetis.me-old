@@ -10,7 +10,7 @@ banner : ""
 aliases : ['/rt-prices/']
 menu:
     main:
-        parent: 'Other algorithms, exercises and pet projects'
+        parent: 'algorithms_pet_projects'
 ---
 
 ## Introduction

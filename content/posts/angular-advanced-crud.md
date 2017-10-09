@@ -10,7 +10,7 @@ banner : ""
 aliases : ['/angular-advanced-crud/']
 menu:
     main:
-        parent: 'Angular'
+        parent: 'angular'
 ---
 
 ## Introduction

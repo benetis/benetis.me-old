@@ -10,7 +10,7 @@ aliases : ['/lets-code-learning-haskell-1/']
 menu : "main"
 menu:
     main:
-        parent: 'Functional programming and math'
+        parent: 'functional'
 ---
 
 #### Introduction

@@ -9,7 +9,7 @@ banner : ""
 aliases : ['/use-functions-to-your-advantage/']
 menu:
     main:
-        parent: 'Functional programming and math'
+        parent: 'functional'
 ---
 
 ##### Intro

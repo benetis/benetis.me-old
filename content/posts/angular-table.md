@@ -9,7 +9,7 @@ banner : ""
 aliases : ['/angular-table/']
 menu:
     main:
-        parent: 'Angular'
+        parent: 'angular'
 ---
 
 ##### Offtopic

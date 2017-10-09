@@ -9,8 +9,7 @@ banner : ""
 aliases : ['/2016-2017-review-and-planning/']
 menu:
     main:
-        parent: 'Self development & other human things'
-        weight: -110
+        parent: 'human_things'
 ---
 
 #### Introduction

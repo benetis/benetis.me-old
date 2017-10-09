@@ -9,7 +9,7 @@ banner : ""
 aliases : ['/creating-shopping-cart-with-product-list-in-angular2/']
 menu:
     main:
-        parent: 'Angular'
+        parent: 'angular'
 ---
 
 ### Introduction

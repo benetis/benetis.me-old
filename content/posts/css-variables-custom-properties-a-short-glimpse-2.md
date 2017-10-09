@@ -9,7 +9,7 @@ banner : ""
 aliases : ['/css-variables-custom-properties-a-short-glimpse-2/']
 menu:
     main:
-        parent: 'Web, Frontend and Client side'
+        parent: 'frontend'
 ---
 
 ##### Introduction

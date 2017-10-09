@@ -4,6 +4,44 @@ Title = "Typical personal blog"
 # Copyright notice. This is displayer in the footer.
 copyright = "&copy; All rights reserved"
 canonifyurls = true
+
+[menu]
+    [[menu.main]]
+    identifier = "angular"
+    name       = "Angular"
+    url        = "/angular"
+    weight     = 4
+
+    [[menu.main]]
+    identifier = "functional"
+    name       = "Functional programming and math"
+    url        = "/functional_and_math/"
+    weight     = 5
+
+    [[menu.main]]
+    identifier = "artificial_intelligence"
+    name       = "Machine learning"
+    url        = "/artificial_intelligence/"
+    weight     = 1
+
+    [[menu.main]]
+    identifier = "frontend"
+    name       = "Web, Frontend and Client side"
+    url        = "/fronend_web/"
+    weight     = 5
+
+    [[menu.main]]
+    identifier = "human_things"
+    name       = "Self development & other human things"
+    url        = "/self-development-human-things/"
+    weight     = 5
+
+    [[menu.main]]
+    identifier = "algorithms_pet_projects"
+    name       = "Other algorithms, exercises and pet projects"
+    url        = "/algorithms_pet_projects/"
+    weight     = 6
+
 [params]
   paginate = 5
   # Social accounts. Link to these accounts are displayed in the header and

@@ -10,7 +10,7 @@ banner : ""
 aliases : ['/ml-linear-regression/']
 menu:
     main:
-        parent: 'Machine learning'
+        parent: 'artificial_intelligence'
 ---
 
 

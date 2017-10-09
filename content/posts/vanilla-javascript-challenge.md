@@ -9,7 +9,7 @@ banner : ""
 aliases : ['/vanilla-javascript-challenge/']
 menu:
     main:
-        parent: 'Web, Frontend and Client side'
+        parent: 'frontend'
 ---
 
 ##### Challenge

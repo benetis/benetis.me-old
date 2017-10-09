@@ -8,7 +8,7 @@ banner : ""
 aliases : ['/taming-flexbox-intro-to-handling-the-monster-2/']
 menu:
     main:
-        parent: 'Web, Frontend and Client side'
+        parent: 'frontend'
 ---
 
 ### Learn more about it. But why?

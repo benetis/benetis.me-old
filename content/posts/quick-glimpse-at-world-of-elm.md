@@ -9,7 +9,7 @@ banner : ""
 aliases : ['/quick-glimpse-at-world-of-elm/']
 menu:
     main:
-        parent: 'Web, Frontend and Client side'
+        parent: 'frontend'
 ---
 
 ##### Intro

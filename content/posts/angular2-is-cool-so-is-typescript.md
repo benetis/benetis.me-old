@@ -9,7 +9,7 @@ banner : ""
 aliases : ['/angular2-is-cool-so-is-typescript/']
 menu:
     main:
-        parent: 'Angular'
+        parent: 'angular'
 ---
 
 ##### Introduction

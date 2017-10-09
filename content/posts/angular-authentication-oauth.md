@@ -9,7 +9,7 @@ banner : ""
 aliases : ['/angular-authentication-oauth/']
 menu:
     main:
-        parent: 'Angular'
+        parent: 'angular'
 ---
 
 ### Introduction

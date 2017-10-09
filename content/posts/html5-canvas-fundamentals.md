@@ -7,6 +7,9 @@ slug : "html5-canvas-fundamentals"
 tags : ['Learning', 'Frontend']
 banner : ""
 aliases : ['/html5-canvas-fundamentals/']
+menu:
+    main:
+        parent: 'frontend'
 ---
 
 #### Introduction
