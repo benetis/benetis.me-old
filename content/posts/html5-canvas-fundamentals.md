@@ -121,7 +121,7 @@ Adding this line after `ctx.beginPath()` will result in drawing gummy bear worms
 
 If you want - you can adjust width and count hue differently like it is shown in challenge, but IMHO this is enough for understanding the very very basics of HTML5 canvas.
 
-Code is in github - [here](https://github.com/benetis/JavaScript30/blob/608928a47a6b1c6f54a9fa99118f5a3f6f605bdf/08%20-%20Fun%20with%20HTML5%20Canvas/index-START.html)
+Code is in github - [here](https://github.com/benetis/Javascript30_Challenge/tree/master/08%20-%20Fun%20with%20HTML5%20Canvas)
 
 [0] - http://www.w3schools.com/html/html5_canvas.asp
 

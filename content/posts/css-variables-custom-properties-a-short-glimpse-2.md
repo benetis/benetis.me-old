@@ -58,7 +58,7 @@ document.documentElement.style.setProperty(`--header-color`, `red`);
 
 ![](/images/2017/02/3o6ZsSmLsROdCXMtws.gif)
 
-Working code example - [github](https://github.com/benetis/JavaScript30/blob/master/03%20-%20CSS%20Variables/index-START.html)
+Working code example - [github](https://github.com/benetis/Javascript30_Challenge/blob/master/03%20-%20CSS%20Variables)
 
 ##### More use cases
 

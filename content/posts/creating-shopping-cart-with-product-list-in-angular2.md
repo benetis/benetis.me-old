@@ -16,7 +16,7 @@ menu:
 
 A common scenario - you want a product list with "Add to cart" functionality. Angular can do that - let's see how effective it is.
 
-You can find code in this repository - [github](https://github.com/benetis/didactic-computing-machine/tree/master/ng/small-commercial-spa)
+You can find code in this repository - [github](https://github.com/benetis/didactic-computing-machine/tree/master/angular/small-commercial-spa)
 
 ### Goal
 
@@ -720,8 +720,8 @@ At this moment we have few problems left:
 
 But IMHO that is enough for now.
 
-You can find code here - [https://github.com/benetis/didactic-computing-machine/tree/master/ng/small-commercial-spa
-](https://github.com/benetis/didactic-computing-machine/tree/master/ng/small-commercial-spa)
+You can find code here - [https://github.com/benetis/didactic-computing-machine/tree/master/angular/small-commercial-spa
+](https://github.com/benetis/didactic-computing-machine/tree/master/angular/small-commercial-spa)
 
 ### Feedback
 
