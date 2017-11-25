@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://benetis.me/posts/shutdown-time-off/</loc>
+    <lastmod>2017-11-25T20:58:35+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://benetis.me/posts/real-estate-prices/</loc>
     <lastmod>2017-08-06T18:54:24+02:00</lastmod>
   </url>
@@ -155,13 +160,19 @@
   
   <url>
     <loc>https://benetis.me/posts/</loc>
-    <lastmod>2017-08-06T18:54:24+02:00</lastmod>
+    <lastmod>2017-11-25T20:58:35+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://benetis.me/tags/scala/</loc>
     <lastmod>2017-08-06T18:54:24+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://benetis.me/tags/shutdown/</loc>
+    <lastmod>2017-11-25T20:58:35+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -178,8 +189,14 @@
   </url>
   
   <url>
+    <loc>https://benetis.me/tags/time-off/</loc>
+    <lastmod>2017-11-25T20:58:35+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://benetis.me/</loc>
-    <lastmod>2017-08-06T18:54:24+02:00</lastmod>
+    <lastmod>2017-11-25T20:58:35+02:00</lastmod>
     <priority>0</priority>
   </url>
   
